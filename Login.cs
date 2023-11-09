@@ -83,5 +83,25 @@ namespace soft
                 checkLoginCredentials();
             }
         }
+
+        private void tbUserName_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tbPassword_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tbUserName_MouseClick(object sender, MouseEventArgs e)
+        {
+            tbUserName.Text = "";
+        }
+
+        private void tbPassword_MouseClick(object sender, MouseEventArgs e)
+        {
+            tbPassword.Text = "";
+        }
     }
 }

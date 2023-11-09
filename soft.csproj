@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.cs" />
+    <Compile Include="Consultant.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="DBconnection.cs" />
     <Compile Include="AdminRegister.cs">
@@ -127,6 +128,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>myDatabase1.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\Screenshot 2023-11-09 221555.png" />
+    <None Include="Resources\Screenshot 2023-11-09 220437.png" />
     <None Include="Resources\47774.png" />
     <None Include="Resources\images %281%29.png" />
     <None Include="Resources\360_F_119670247_HDccziQUuo2kFpaNiM22dIto5I8GPAWW.jpg" />

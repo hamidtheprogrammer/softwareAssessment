@@ -40,16 +40,20 @@ namespace soft
             
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {   //display admin account details
+        private void btnEditProfile_Click(object sender, EventArgs e)
+        { 
+            //display admin account details
 
             pnEditProfile.Visible = true;
             pnCreateProduct.Visible = false;
             pnShowInventory.Visible = false;
+            pnCreateNewUser.Visible = false;
             tbnewUserName.Text = currentAdmin.Name;
             tbNewEmail.Text = currentAdmin.Email;
-            tbnewPassword.Text = currentAdmin.Password; 
+            tbnewPassword.Text = currentAdmin.Password;
+
         }
+       
 
         private void btnLogin_Click(object sender, EventArgs e)
         {   //update admin account
@@ -67,13 +71,14 @@ namespace soft
             pnCreateProduct.Visible = true;
             pnEditProfile.Visible= false;
             pnShowInventory.Visible= false;
+            pnCreateNewUser.Visible = false;
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             byte[] pdf = File.ReadAllBytes(lbfilePath.Text);
 
-            Product product = new Product(tbProductName.Text, rtbDescription.Text, tbProductSoftware.Text, tbBusinessArea.Text, pdf, tbUrl.Text);
+            Product product = new Product(1,tbProductName.Text, rtbDescription.Text, tbProductSoftware.Text, tbBusinessArea.Text, pdf, tbUrl.Text);
             //new product object
 
             //var cols = new List<string>(){"Name","Description","Type_Of_Software","Business_Area","PDF","Link"};
@@ -126,9 +131,47 @@ namespace soft
             pnShowInventory.Visible = true;
             pnEditProfile.Visible= false;
             pnCreateProduct.Visible= false;
+            pnCreateNewUser.Visible = false;
             DataSet getProduct = dbconnection.getDataSet(query.getProductFromDb());
             //DataTable dataTable = getProduct.Tables[0];
             dgvViewproduct.DataSource = getProduct.Tables[0];
         }
+
+        private void btnCreateNewUser_Click(object sender, EventArgs e)
+        { 
+             pnCreateNewUser.Visible = true;
+             pnCreateProduct.Visible = false;
+             pnEditProfile.Visible = false;
+             pnShowInventory.Visible = false;
+
+            rbConsultant.Checked = true;
+
+        }
+
+        private void btnAddNewUser_Click(object sender, EventArgs e)
+        {
+            if(rbAdmin.Checked)
+            {
+                Admin admin = new Admin(1,tbAddNewUserName.Text, tbAddNewUserEmail.Text, tbAddNewUserPassword.Text);
+                admin.saveAdminToDb(query , admin);
+            }
+            else
+            {
+                Consultant consultant = new Consultant(1, tbAddNewUserName.Text, tbAddNewUserEmail.Text, tbAddNewUserPassword.Text);
+                consultant.saveConsultantToDb(query , consultant);
+            }
+        }
+
+
+
+        /* private void button3_Click(object sender, EventArgs e)
+         {
+            
+         }
+
+         private void btnCreateNewUser_Click(object sender, EventArgs e)
+         {
+
+         }*/
     }
 }

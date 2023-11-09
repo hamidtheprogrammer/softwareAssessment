@@ -71,7 +71,7 @@ namespace soft
             }
         }
 
-        public void savetoDB(string sqlQuery, string table, List<string> cols, List<object> data)
+        /*public void savetoDB(string sqlQuery, string table, List<string> cols, List<object> data)
         {
             using (SqlConnection connToDb = new SqlConnection(_connectionString))
             {
@@ -91,7 +91,7 @@ namespace soft
 
             }
 
-        }
+        }*/
 
         public void saveProductToDb(string sqlQuery, string name,  string description, string typeOfSoftware,string businessArea , byte[] pdf,string link)
         {

@@ -9,6 +9,7 @@ namespace soft
 {
     public class Product
     {
+        public int Id { get; set; }
         public string Name {  get; set; }
         public string Description {  get; set; }
         public string TypeOfSoftware {  get; set; }
@@ -19,8 +20,9 @@ namespace soft
         DBconnection dbconnection = DBconnection.getInstanceOfDBconnection();
         Login login = new Login();
 
-        public Product( string name, string description, string typeOfsoftware, string businessArea, byte[] pdf, string link)
+        public Product( int id, string name, string description, string typeOfsoftware, string businessArea, byte[] pdf, string link)
         {
+            Id = id;
             Name = name;
             Description = description;
             TypeOfSoftware = typeOfsoftware;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,10 @@ namespace soft
         public String Password {  get; set; }
 
         public static Admin _instanceOfAdmin;
+
+        DBconnection dbconnection = DBconnection.getInstanceOfDBconnection();
+
+        Login login = new Login();
 
         public Admin(int iD , string name, string email, string password) 
         {
@@ -30,6 +35,12 @@ namespace soft
                 _instanceOfAdmin = new Admin(iD,name, email, password);
             }
             return _instanceOfAdmin;
+        }
+        public void saveAdminToDb(Queries query, Admin admin)
+        {
+            dbconnection.saveToDb(query.createNewAdmin(), admin.Name, admin.Email, admin.Password);
+            login.messagePrompt("User added successfully");
+
         }
     }
 }

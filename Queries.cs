@@ -28,5 +28,17 @@ namespace soft
             string query = "SELECT * from product";
             return query;
         }
+
+        public string createNewAdmin()
+        {
+            string query = "INSERT INTO admin (Username, Email, Password) VALUES (@Username, @Email, @Password)";
+            return query;
+        }
+
+        public string createNewConsultant()
+        {
+            string query = "INSERT INTO consultant (Username, Email, Password) VALUES (@Username, @Email, @Password)";
+            return query;
+        }
     }
 }

@@ -38,7 +38,7 @@
             this.tbnewUserName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnCreateProduct = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnCreateNewUser = new System.Windows.Forms.Button();
             this.btnUpdateProduct = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -64,10 +64,22 @@
             this.pnShowInventory = new System.Windows.Forms.Panel();
             this.dgvViewproduct = new System.Windows.Forms.DataGridView();
             this.btnShowInventory = new System.Windows.Forms.Button();
+            this.pnCreateNewUser = new System.Windows.Forms.Panel();
+            this.rbConsultant = new System.Windows.Forms.RadioButton();
+            this.rbAdmin = new System.Windows.Forms.RadioButton();
+            this.btnAddNewUser = new System.Windows.Forms.Button();
+            this.tbAddNewUserEmail = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tbAddNewUserPassword = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tbAddNewUserName = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.pnEditProfile.SuspendLayout();
             this.pnCreateProduct.SuspendLayout();
             this.pnShowInventory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewproduct)).BeginInit();
+            this.pnCreateNewUser.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -89,7 +101,7 @@
             this.pnEditProfile.Controls.Add(this.label3);
             this.pnEditProfile.Controls.Add(this.tbnewUserName);
             this.pnEditProfile.Controls.Add(this.label2);
-            this.pnEditProfile.Location = new System.Drawing.Point(146, 73);
+            this.pnEditProfile.Location = new System.Drawing.Point(140, 70);
             this.pnEditProfile.Name = "pnEditProfile";
             this.pnEditProfile.Size = new System.Drawing.Size(657, 373);
             this.pnEditProfile.TabIndex = 1;
@@ -170,14 +182,15 @@
             this.btnCreateProduct.UseVisualStyleBackColor = true;
             this.btnCreateProduct.Click += new System.EventHandler(this.btnCreateProduct_Click);
             // 
-            // button3
+            // btnCreateNewUser
             // 
-            this.button3.Location = new System.Drawing.Point(-8, 231);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(148, 40);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Create new user";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnCreateNewUser.Location = new System.Drawing.Point(-8, 231);
+            this.btnCreateNewUser.Name = "btnCreateNewUser";
+            this.btnCreateNewUser.Size = new System.Drawing.Size(148, 40);
+            this.btnCreateNewUser.TabIndex = 3;
+            this.btnCreateNewUser.Text = "Create new user";
+            this.btnCreateNewUser.UseVisualStyleBackColor = true;
+            this.btnCreateNewUser.Click += new System.EventHandler(this.btnCreateNewUser_Click);
             // 
             // btnUpdateProduct
             // 
@@ -223,7 +236,7 @@
             this.btnEditProfile.TabIndex = 8;
             this.btnEditProfile.Text = "Edit profile";
             this.btnEditProfile.UseVisualStyleBackColor = true;
-            this.btnEditProfile.Click += new System.EventHandler(this.button6_Click);
+            this.btnEditProfile.Click += new System.EventHandler(this.btnEditProfile_Click);
             // 
             // lbwelcome
             // 
@@ -418,13 +431,131 @@
             this.btnShowInventory.UseVisualStyleBackColor = true;
             this.btnShowInventory.Click += new System.EventHandler(this.btnShowInventory_Click);
             // 
+            // pnCreateNewUser
+            // 
+            this.pnCreateNewUser.Controls.Add(this.label14);
+            this.pnCreateNewUser.Controls.Add(this.rbConsultant);
+            this.pnCreateNewUser.Controls.Add(this.rbAdmin);
+            this.pnCreateNewUser.Controls.Add(this.btnAddNewUser);
+            this.pnCreateNewUser.Controls.Add(this.tbAddNewUserEmail);
+            this.pnCreateNewUser.Controls.Add(this.label11);
+            this.pnCreateNewUser.Controls.Add(this.tbAddNewUserPassword);
+            this.pnCreateNewUser.Controls.Add(this.label12);
+            this.pnCreateNewUser.Controls.Add(this.tbAddNewUserName);
+            this.pnCreateNewUser.Controls.Add(this.label13);
+            this.pnCreateNewUser.Location = new System.Drawing.Point(140, 70);
+            this.pnCreateNewUser.Name = "pnCreateNewUser";
+            this.pnCreateNewUser.Size = new System.Drawing.Size(660, 373);
+            this.pnCreateNewUser.TabIndex = 16;
+            // 
+            // rbConsultant
+            // 
+            this.rbConsultant.AutoSize = true;
+            this.rbConsultant.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbConsultant.Location = new System.Drawing.Point(102, 259);
+            this.rbConsultant.Name = "rbConsultant";
+            this.rbConsultant.Size = new System.Drawing.Size(126, 24);
+            this.rbConsultant.TabIndex = 15;
+            this.rbConsultant.TabStop = true;
+            this.rbConsultant.Text = "Consultant";
+            this.rbConsultant.UseVisualStyleBackColor = true;
+            // 
+            // rbAdmin
+            // 
+            this.rbAdmin.AutoSize = true;
+            this.rbAdmin.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbAdmin.Location = new System.Drawing.Point(13, 259);
+            this.rbAdmin.Name = "rbAdmin";
+            this.rbAdmin.Size = new System.Drawing.Size(83, 24);
+            this.rbAdmin.TabIndex = 14;
+            this.rbAdmin.TabStop = true;
+            this.rbAdmin.Text = "Admin";
+            this.rbAdmin.UseVisualStyleBackColor = true;
+            // 
+            // btnAddNewUser
+            // 
+            this.btnAddNewUser.BackColor = System.Drawing.SystemColors.ControlText;
+            this.btnAddNewUser.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnAddNewUser.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAddNewUser.Font = new System.Drawing.Font("Sans Serif Collection", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddNewUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAddNewUser.Location = new System.Drawing.Point(140, 305);
+            this.btnAddNewUser.Name = "btnAddNewUser";
+            this.btnAddNewUser.Size = new System.Drawing.Size(116, 44);
+            this.btnAddNewUser.TabIndex = 13;
+            this.btnAddNewUser.Text = "Create";
+            this.btnAddNewUser.UseVisualStyleBackColor = false;
+            this.btnAddNewUser.Click += new System.EventHandler(this.btnAddNewUser_Click);
+            // 
+            // tbAddNewUserEmail
+            // 
+            this.tbAddNewUserEmail.Location = new System.Drawing.Point(180, 145);
+            this.tbAddNewUserEmail.Name = "tbAddNewUserEmail";
+            this.tbAddNewUserEmail.Size = new System.Drawing.Size(292, 20);
+            this.tbAddNewUserEmail.TabIndex = 12;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Sans Serif Collection", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(6, 134);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(94, 39);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "Email:";
+            // 
+            // tbAddNewUserPassword
+            // 
+            this.tbAddNewUserPassword.Location = new System.Drawing.Point(180, 204);
+            this.tbAddNewUserPassword.Name = "tbAddNewUserPassword";
+            this.tbAddNewUserPassword.Size = new System.Drawing.Size(292, 20);
+            this.tbAddNewUserPassword.TabIndex = 10;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Sans Serif Collection", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(6, 192);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(150, 39);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "Password:";
+            // 
+            // tbAddNewUserName
+            // 
+            this.tbAddNewUserName.Location = new System.Drawing.Point(180, 83);
+            this.tbAddNewUserName.Name = "tbAddNewUserName";
+            this.tbAddNewUserName.Size = new System.Drawing.Size(292, 20);
+            this.tbAddNewUserName.TabIndex = 8;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Sans Serif Collection", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(6, 74);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(155, 39);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "Username:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(6, 11);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(242, 24);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "Set up new user account";
+            // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 444);
-            this.Controls.Add(this.btnShowInventory);
+            this.Controls.Add(this.pnCreateNewUser);
             this.Controls.Add(this.pnCreateProduct);
+            this.Controls.Add(this.btnShowInventory);
             this.Controls.Add(this.pnShowInventory);
             this.Controls.Add(this.lbwelcome);
             this.Controls.Add(this.btnEditProfile);
@@ -432,10 +563,10 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.btnUpdateProduct);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnCreateNewUser);
             this.Controls.Add(this.btnCreateProduct);
-            this.Controls.Add(this.pnEditProfile);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.pnEditProfile);
             this.Name = "AdminDashboard";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.AdminDashboard_Load);
@@ -445,6 +576,8 @@
             this.pnCreateProduct.PerformLayout();
             this.pnShowInventory.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewproduct)).EndInit();
+            this.pnCreateNewUser.ResumeLayout(false);
+            this.pnCreateNewUser.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -455,7 +588,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel pnEditProfile;
         private System.Windows.Forms.Button btnCreateProduct;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnCreateNewUser;
         private System.Windows.Forms.Button btnUpdateProduct;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox textBox1;
@@ -488,5 +621,16 @@
         private System.Windows.Forms.Panel pnShowInventory;
         private System.Windows.Forms.DataGridView dgvViewproduct;
         private System.Windows.Forms.Button btnShowInventory;
+        private System.Windows.Forms.Panel pnCreateNewUser;
+        private System.Windows.Forms.Button btnAddNewUser;
+        private System.Windows.Forms.TextBox tbAddNewUserEmail;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox tbAddNewUserPassword;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox tbAddNewUserName;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.RadioButton rbConsultant;
+        private System.Windows.Forms.RadioButton rbAdmin;
+        private System.Windows.Forms.Label label14;
     }
 }
