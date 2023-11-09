@@ -93,7 +93,7 @@ namespace soft
 
         }
 
-        public void saveProductToDb(string sqlQuery, string name, string typeOfSoftware, string businessArea, string link, byte[] pdf, string description)
+        public void saveProductToDb(string sqlQuery, string name,  string description, string typeOfSoftware,string businessArea , byte[] pdf,string link)
         {
             using (SqlConnection connToDb = new SqlConnection(_connectionString))
             {
@@ -110,6 +110,7 @@ namespace soft
                 sqlCommand.Parameters.Add(new SqlParameter("PDF", pdf));
                 sqlCommand.Parameters.Add(new SqlParameter("Link", link));
 
+                sqlCommand.ExecuteNonQuery();
 
             }
         }

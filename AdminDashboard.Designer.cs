@@ -39,7 +39,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnCreateProduct = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnUpdateProduct = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -61,8 +61,12 @@
             this.tbProductName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.pnUpdateProduct = new System.Windows.Forms.Panel();
+            this.dgvViewproduct = new System.Windows.Forms.DataGridView();
             this.pnEditProfile.SuspendLayout();
             this.pnCreateProduct.SuspendLayout();
+            this.pnUpdateProduct.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvViewproduct)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -174,14 +178,15 @@
             this.button3.Text = "Create new user";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnUpdateProduct
             // 
-            this.button4.Location = new System.Drawing.Point(1, 188);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(148, 34);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "update product";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnUpdateProduct.Location = new System.Drawing.Point(1, 188);
+            this.btnUpdateProduct.Name = "btnUpdateProduct";
+            this.btnUpdateProduct.Size = new System.Drawing.Size(148, 34);
+            this.btnUpdateProduct.TabIndex = 4;
+            this.btnUpdateProduct.Text = "update product";
+            this.btnUpdateProduct.UseVisualStyleBackColor = true;
+            this.btnUpdateProduct.Click += new System.EventHandler(this.btnUpdateProduct_Click);
             // 
             // button5
             // 
@@ -245,7 +250,7 @@
             this.pnCreateProduct.Controls.Add(this.label6);
             this.pnCreateProduct.Controls.Add(this.tbProductName);
             this.pnCreateProduct.Controls.Add(this.label7);
-            this.pnCreateProduct.Location = new System.Drawing.Point(146, 73);
+            this.pnCreateProduct.Location = new System.Drawing.Point(140, 73);
             this.pnCreateProduct.Name = "pnCreateProduct";
             this.pnCreateProduct.Size = new System.Drawing.Size(657, 373);
             this.pnCreateProduct.TabIndex = 10;
@@ -386,18 +391,35 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // pnUpdateProduct
+            // 
+            this.pnUpdateProduct.Controls.Add(this.dgvViewproduct);
+            this.pnUpdateProduct.Location = new System.Drawing.Point(143, 73);
+            this.pnUpdateProduct.Name = "pnUpdateProduct";
+            this.pnUpdateProduct.Size = new System.Drawing.Size(657, 373);
+            this.pnUpdateProduct.TabIndex = 11;
+            // 
+            // dgvViewproduct
+            // 
+            this.dgvViewproduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvViewproduct.Location = new System.Drawing.Point(136, 56);
+            this.dgvViewproduct.Name = "dgvViewproduct";
+            this.dgvViewproduct.Size = new System.Drawing.Size(304, 184);
+            this.dgvViewproduct.TabIndex = 0;
+            // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 444);
             this.Controls.Add(this.pnCreateProduct);
+            this.Controls.Add(this.pnUpdateProduct);
             this.Controls.Add(this.lbwelcome);
             this.Controls.Add(this.btnEditProfile);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnUpdateProduct);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnCreateProduct);
             this.Controls.Add(this.pnEditProfile);
@@ -409,6 +431,8 @@
             this.pnEditProfile.PerformLayout();
             this.pnCreateProduct.ResumeLayout(false);
             this.pnCreateProduct.PerformLayout();
+            this.pnUpdateProduct.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvViewproduct)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -420,7 +444,7 @@
         private System.Windows.Forms.Panel pnEditProfile;
         private System.Windows.Forms.Button btnCreateProduct;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnUpdateProduct;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
@@ -449,5 +473,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label lbfilePath;
+        private System.Windows.Forms.Panel pnUpdateProduct;
+        private System.Windows.Forms.DataGridView dgvViewproduct;
     }
 }

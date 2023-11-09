@@ -20,7 +20,12 @@ namespace soft
 
         public string saveProductToDb()
         {
-            string query = ("INSERT INTO product (Name, Description, Type_Of_Software, Business_Area, PDF, Link) VALUES (@Name, @Description, @Type_Of_Software, @Business_Area, @PDF, @Link)");
+            string query = "INSERT INTO product (Name, Description, Type_Of_Software, Business_Area, PDF, Link) VALUES (@Name, @Description, @Type_Of_Software, @Business_Area, @PDF, @Link)";
+            return query;
+        }
+
+        public string getProductFromDb() {
+            string query = "SELECT * from product";
             return query;
         }
     }

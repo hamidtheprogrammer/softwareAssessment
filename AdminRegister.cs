@@ -44,5 +44,11 @@ namespace soft
             passwordBox.Text = "";
 
         }
+
+        private void btnShow_Click(object sender, EventArgs e)
+        {
+            DataSet datasetAdmin = dbconnection.getDataSet("SELECT * FROM admin");
+            dataGridView1.DataSource = datasetAdmin.Tables[0];
+        }
     }
 }

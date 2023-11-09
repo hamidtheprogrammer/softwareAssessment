@@ -37,7 +37,10 @@
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.register = new System.Windows.Forms.Button();
             this.usernameBox = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnShow = new System.Windows.Forms.Button();
             this.AdminDashboard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // AdminDashboard
@@ -45,6 +48,8 @@
             this.AdminDashboard.BackColor = System.Drawing.SystemColors.Highlight;
             this.AdminDashboard.BackgroundImage = global::soft.Properties.Resources._360_F_119670247_HDccziQUuo2kFpaNiM22dIto5I8GPAWW;
             this.AdminDashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AdminDashboard.Controls.Add(this.btnShow);
+            this.AdminDashboard.Controls.Add(this.dataGridView1);
             this.AdminDashboard.Controls.Add(this.label4);
             this.AdminDashboard.Controls.Add(this.emailBox);
             this.AdminDashboard.Controls.Add(this.label1);
@@ -130,6 +135,24 @@
             this.usernameBox.Size = new System.Drawing.Size(223, 20);
             this.usernameBox.TabIndex = 3;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(381, 213);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(374, 150);
+            this.dataGridView1.TabIndex = 8;
+            // 
+            // btnShow
+            // 
+            this.btnShow.Location = new System.Drawing.Point(646, 90);
+            this.btnShow.Name = "btnShow";
+            this.btnShow.Size = new System.Drawing.Size(75, 23);
+            this.btnShow.TabIndex = 9;
+            this.btnShow.Text = "show";
+            this.btnShow.UseVisualStyleBackColor = true;
+            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
+            // 
             // AdminRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -141,6 +164,7 @@
             this.Text = "Form1";
             this.AdminDashboard.ResumeLayout(false);
             this.AdminDashboard.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -156,6 +180,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel AdminDashboard;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnShow;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

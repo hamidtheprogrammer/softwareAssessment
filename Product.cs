@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ namespace soft
         public string Link {  get; set; }
 
         DBconnection dbconnection = DBconnection.getInstanceOfDBconnection();
+        Login login = new Login();
 
         public Product( string name, string description, string typeOfsoftware, string businessArea, byte[] pdf, string link)
         {
@@ -26,9 +28,11 @@ namespace soft
             PDF = pdf;
             Link = link;
         }
-        public void addProduct()
+        public void addProduct(Queries query, Product product)
         {
-            
+            dbconnection.saveProductToDb(query.saveProductToDb(), product.Name, product.Description, product.TypeOfSoftware, product.BusinessArea, product.PDF, product.Link);
+
+            login.messagePrompt("Product added successfully");
 
         }
     }

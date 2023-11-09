@@ -45,6 +45,7 @@ namespace soft
 
             pnEditProfile.Visible = true;
             pnCreateProduct.Visible = false;
+            pnUpdateProduct.Visible = false;
             tbnewUserName.Text = currentAdmin.Name;
             tbNewEmail.Text = currentAdmin.Email;
             tbnewPassword.Text = currentAdmin.Password; 
@@ -62,16 +63,17 @@ namespace soft
         }
 
         private void btnCreateProduct_Click(object sender, EventArgs e)
-        {
+        {   //add a new product 
             pnCreateProduct.Visible = true;
             pnEditProfile.Visible= false;
+            pnUpdateProduct.Visible= false;
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             byte[] pdf = File.ReadAllBytes(lbfilePath.Text);
 
-            Product product = new Product(tbProductName.Text, tbProductSoftware.Text, tbBusinessArea.Text, tbUrl.Text, pdf, rtbDescription.Text);
+            Product product = new Product(tbProductName.Text, rtbDescription.Text, tbProductSoftware.Text, tbBusinessArea.Text, pdf, tbUrl.Text);
             //new product object
 
             //var cols = new List<string>(){"Name","Description","Type_Of_Software","Business_Area","PDF","Link"};
@@ -80,9 +82,7 @@ namespace soft
             //var data = new List<object>() { product.Name, product.TypeOfSoftware, product.BusinessArea, product.Link, product.PDF, product.Description };
             //add data to be inserted in the database to list
 
-            dbconnection.saveProductToDb(query.saveProductToDb() , product.Name, product.Description, product.TypeOfSoftware, product.BusinessArea, product.PDF, product.Link);
-
-            login.messagePrompt("Product added successfully");
+            product.addProduct(query, product);
 
             //dbconnection.saveToDb("INSERT INTO admin (Username, Email, Password) VALUES (@Username, @Email, @Password)", name, email, password);
         }
@@ -113,6 +113,17 @@ namespace soft
             this.Hide();
             login.Show();
              
+        }
+
+        private void btnUpdateProduct_Click(object sender, EventArgs e)
+        {
+            pnUpdateProduct.Visible = true;
+            pnEditProfile.Visible= false;
+            pnCreateProduct.Visible= false;
+            DataSet getProduct = dbconnection.getDataSet(query.getProductFromDb());
+            //DataTable dataTable = getProduct.Tables[0];
+            dgvViewproduct.DataSource = getProduct.Tables[0];
+
         }
     }
 }
