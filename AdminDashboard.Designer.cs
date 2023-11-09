@@ -61,11 +61,12 @@
             this.tbProductName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.pnUpdateProduct = new System.Windows.Forms.Panel();
+            this.pnShowInventory = new System.Windows.Forms.Panel();
             this.dgvViewproduct = new System.Windows.Forms.DataGridView();
+            this.btnShowInventory = new System.Windows.Forms.Button();
             this.pnEditProfile.SuspendLayout();
             this.pnCreateProduct.SuspendLayout();
-            this.pnUpdateProduct.SuspendLayout();
+            this.pnShowInventory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewproduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -161,7 +162,7 @@
             // 
             // btnCreateProduct
             // 
-            this.btnCreateProduct.Location = new System.Drawing.Point(1, 118);
+            this.btnCreateProduct.Location = new System.Drawing.Point(-8, 196);
             this.btnCreateProduct.Name = "btnCreateProduct";
             this.btnCreateProduct.Size = new System.Drawing.Size(148, 40);
             this.btnCreateProduct.TabIndex = 2;
@@ -171,7 +172,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1, 153);
+            this.button3.Location = new System.Drawing.Point(-8, 231);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(148, 40);
             this.button3.TabIndex = 3;
@@ -180,7 +181,7 @@
             // 
             // btnUpdateProduct
             // 
-            this.btnUpdateProduct.Location = new System.Drawing.Point(1, 188);
+            this.btnUpdateProduct.Location = new System.Drawing.Point(-8, 266);
             this.btnUpdateProduct.Name = "btnUpdateProduct";
             this.btnUpdateProduct.Size = new System.Drawing.Size(148, 34);
             this.btnUpdateProduct.TabIndex = 4;
@@ -190,7 +191,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(1, 220);
+            this.button5.Location = new System.Drawing.Point(-8, 298);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(148, 37);
             this.button5.TabIndex = 5;
@@ -216,7 +217,7 @@
             // 
             // btnEditProfile
             // 
-            this.btnEditProfile.Location = new System.Drawing.Point(1, 86);
+            this.btnEditProfile.Location = new System.Drawing.Point(-8, 86);
             this.btnEditProfile.Name = "btnEditProfile";
             this.btnEditProfile.Size = new System.Drawing.Size(148, 37);
             this.btnEditProfile.TabIndex = 8;
@@ -391,29 +392,40 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // pnUpdateProduct
+            // pnShowInventory
             // 
-            this.pnUpdateProduct.Controls.Add(this.dgvViewproduct);
-            this.pnUpdateProduct.Location = new System.Drawing.Point(143, 73);
-            this.pnUpdateProduct.Name = "pnUpdateProduct";
-            this.pnUpdateProduct.Size = new System.Drawing.Size(657, 373);
-            this.pnUpdateProduct.TabIndex = 11;
+            this.pnShowInventory.Controls.Add(this.dgvViewproduct);
+            this.pnShowInventory.Location = new System.Drawing.Point(143, 70);
+            this.pnShowInventory.Name = "pnShowInventory";
+            this.pnShowInventory.Size = new System.Drawing.Size(657, 373);
+            this.pnShowInventory.TabIndex = 11;
             // 
             // dgvViewproduct
             // 
             this.dgvViewproduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvViewproduct.Location = new System.Drawing.Point(136, 56);
+            this.dgvViewproduct.Location = new System.Drawing.Point(19, 12);
             this.dgvViewproduct.Name = "dgvViewproduct";
-            this.dgvViewproduct.Size = new System.Drawing.Size(304, 184);
+            this.dgvViewproduct.Size = new System.Drawing.Size(632, 358);
             this.dgvViewproduct.TabIndex = 0;
+            // 
+            // btnShowInventory
+            // 
+            this.btnShowInventory.Location = new System.Drawing.Point(-8, 162);
+            this.btnShowInventory.Name = "btnShowInventory";
+            this.btnShowInventory.Size = new System.Drawing.Size(148, 37);
+            this.btnShowInventory.TabIndex = 12;
+            this.btnShowInventory.Text = "Show Inventory";
+            this.btnShowInventory.UseVisualStyleBackColor = true;
+            this.btnShowInventory.Click += new System.EventHandler(this.btnShowInventory_Click);
             // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 444);
+            this.Controls.Add(this.btnShowInventory);
             this.Controls.Add(this.pnCreateProduct);
-            this.Controls.Add(this.pnUpdateProduct);
+            this.Controls.Add(this.pnShowInventory);
             this.Controls.Add(this.lbwelcome);
             this.Controls.Add(this.btnEditProfile);
             this.Controls.Add(this.label1);
@@ -431,7 +443,7 @@
             this.pnEditProfile.PerformLayout();
             this.pnCreateProduct.ResumeLayout(false);
             this.pnCreateProduct.PerformLayout();
-            this.pnUpdateProduct.ResumeLayout(false);
+            this.pnShowInventory.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewproduct)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -473,7 +485,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label lbfilePath;
-        private System.Windows.Forms.Panel pnUpdateProduct;
+        private System.Windows.Forms.Panel pnShowInventory;
         private System.Windows.Forms.DataGridView dgvViewproduct;
+        private System.Windows.Forms.Button btnShowInventory;
     }
 }

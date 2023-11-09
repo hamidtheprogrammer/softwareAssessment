@@ -45,7 +45,7 @@ namespace soft
 
             pnEditProfile.Visible = true;
             pnCreateProduct.Visible = false;
-            pnUpdateProduct.Visible = false;
+            pnShowInventory.Visible = false;
             tbnewUserName.Text = currentAdmin.Name;
             tbNewEmail.Text = currentAdmin.Email;
             tbnewPassword.Text = currentAdmin.Password; 
@@ -66,7 +66,7 @@ namespace soft
         {   //add a new product 
             pnCreateProduct.Visible = true;
             pnEditProfile.Visible= false;
-            pnUpdateProduct.Visible= false;
+            pnShowInventory.Visible= false;
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
@@ -117,13 +117,18 @@ namespace soft
 
         private void btnUpdateProduct_Click(object sender, EventArgs e)
         {
-            pnUpdateProduct.Visible = true;
+            
+
+        }
+
+        private void btnShowInventory_Click(object sender, EventArgs e)
+        {
+            pnShowInventory.Visible = true;
             pnEditProfile.Visible= false;
             pnCreateProduct.Visible= false;
             DataSet getProduct = dbconnection.getDataSet(query.getProductFromDb());
             //DataTable dataTable = getProduct.Tables[0];
             dgvViewproduct.DataSource = getProduct.Tables[0];
-
         }
     }
 }
