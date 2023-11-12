@@ -11,10 +11,19 @@ namespace soft
 {
     public class Queries
     {
-        public string updateAccount(string user ,int ID )
+        public string checkLoginAdmin(string getUsername, string getPassword)
+        {
+            return ($"SELECT * from admin Where Username='{getUsername}' AND Password = '{getPassword}'");
+        }
+
+        public string checkLoginConsultant(string getUsername, string getPassword)
+        {
+            return ($"SELECT * from consultant Where Username='{getUsername}' AND Password = '{getPassword}'");
+        }
+        public string updateAccount( int ID)
         {
             //return ("UPDATE '"+user+"' SET Name = '"+@newUsername+"', Email = '"+@newEmail+"', Password = '"+@newPassword+"' Where ID = '"+ID+"'" );string newUsername,, string newEmail, string newPassword
-            return ("UPDATE '"+user+ "' SET Name = newUsername, newEmail, newPassword Where ID = '"+ID+"'");
+            return ($"UPDATE admin SET Username = @Username, Email = @Email, Password = @Password Where ID = '{ID}'");
             //dbconnection.saveToDb("INSERT INTO admin (Username, Email, Password) VALUES (@Username, @Email, @Password)", name, email, password);
         }
 

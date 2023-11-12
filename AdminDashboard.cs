@@ -19,7 +19,7 @@ namespace soft
         {
             InitializeComponent();
         }
-        Admin currentAdmin = Admin.getInstanceOfAdmin(Login.Id, Login.currentUserName , Login.currentUserEmail, Login.currentUserPassword);
+        Admin currentAdmin = new Admin(Login.Id, Login.currentUserName , Login.currentUserEmail, Login.currentUserPassword);
         //create instance for the logged in admin
 
         Queries query = new Queries();
@@ -32,7 +32,7 @@ namespace soft
         //object of login class
 
         
-
+        //welcome User
         private void AdminDashboard_Load(object sender, EventArgs e)
         {
 
@@ -40,10 +40,10 @@ namespace soft
             
         }
 
-        private void btnEditProfile_Click(object sender, EventArgs e)
-        { 
-            //display admin account details
 
+        //admin account
+        private void btnEditProfile_Click(object sender, EventArgs e)
+        {   //display admin account details
             pnEditProfile.Visible = true;
             pnCreateProduct.Visible = false;
             pnShowInventory.Visible = false;
@@ -51,21 +51,25 @@ namespace soft
             tbnewUserName.Text = currentAdmin.Name;
             tbNewEmail.Text = currentAdmin.Email;
             tbnewPassword.Text = currentAdmin.Password;
-
         }
        
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {   //update admin account
+        private void btnUpdateAccount_Click(object sender, EventArgs e)
+        { //update admin account
             string newCurrentUserName = tbnewUserName.Text;
             string newCurrentUserEmail = tbNewEmail.Text;
             string newCurrentUserPassword = tbnewPassword.Text;
 
-            dbconnection.saveToDb(query.updateAccount("admin" , currentAdmin.ID) , newCurrentUserName, newCurrentUserEmail, newCurrentUserPassword) ;
-            login.messagePrompt("Account successfully updated");
+            currentAdmin.updateAdmin(query, currentAdmin.ID, newCurrentUserName, newCurrentUserEmail, newCurrentUserPassword);
 
+            tbnewUserName.Text = newCurrentUserName;
+            tbNewEmail.Text = newCurrentUserEmail;
+            tbnewPassword.Text = newCurrentUserPassword;
+
+            lbwelcome.Text = "Welcome "+newCurrentUserName;            
         }
 
+
+        //Product info
         private void btnCreateProduct_Click(object sender, EventArgs e)
         {   //add a new product 
             pnCreateProduct.Visible = true;
@@ -110,14 +114,6 @@ namespace soft
                     lbfilePath.Text = filePath;
                 }
             } 
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            login.Show();
-             
         }
 
         private void btnUpdateProduct_Click(object sender, EventArgs e)
@@ -125,7 +121,7 @@ namespace soft
             
 
         }
-
+        
         private void btnShowInventory_Click(object sender, EventArgs e)
         {
             pnShowInventory.Visible = true;
@@ -137,6 +133,16 @@ namespace soft
             dgvViewproduct.DataSource = getProduct.Tables[0];
         }
 
+
+        //logout
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            login.Show();             
+        }
+
+        
+        //User creation and role assignment
         private void btnCreateNewUser_Click(object sender, EventArgs e)
         { 
              pnCreateNewUser.Visible = true;
@@ -160,18 +166,6 @@ namespace soft
                 Consultant consultant = new Consultant(1, tbAddNewUserName.Text, tbAddNewUserEmail.Text, tbAddNewUserPassword.Text);
                 consultant.saveConsultantToDb(query , consultant);
             }
-        }
-
-
-
-        /* private void button3_Click(object sender, EventArgs e)
-         {
-            
-         }
-
-         private void btnCreateNewUser_Click(object sender, EventArgs e)
-         {
-
-         }*/
+        }        
     }
 }

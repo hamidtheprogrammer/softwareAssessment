@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace soft
 {
@@ -22,6 +23,7 @@ namespace soft
         public static string currentUserEmail;
 
         DBconnection dbconnection = DBconnection.getInstanceOfDBconnection();
+        Queries queries = new Queries();
 
         public void messagePrompt(string message)
         {
@@ -39,6 +41,7 @@ namespace soft
             return password;
         }
 
+
         private void checkLoginCredentials()
         {
             if (getUserName() == "" || getPassword() == "")
@@ -46,11 +49,14 @@ namespace soft
                 messagePrompt("Please fill in credentials");
             }
             else
-            {
-                string query = "SELECT * from admin Where Username= '" + getUserName() + "' AND Password = '" +getPassword() + "'";
-                DataSet datasetadmin = dbconnection.getDataSet(query);
+            {             
+                DataSet datasetadmin = dbconnection.getDataSet(queries.checkLoginAdmin(getUserName(), getPassword()));
                 DataTable dataTable = datasetadmin.Tables[0];
-                if(dataTable.Rows.Count == 1) 
+
+                DataSet datasetConsultant = dbconnection.getDataSet(queries.checkLoginConsultant(getUserName(), getPassword()));
+                DataTable dataTable1 = datasetConsultant.Tables[0];
+
+                if (dataTable.Rows.Count == 1) 
                 {
                     Id = Convert.ToInt16(dataTable.Rows[0]["ID"]);
                     currentUserName = dataTable.Rows[0]["Username"].ToString();
@@ -61,6 +67,17 @@ namespace soft
                     adminDashboard.Show();
                     this.Hide();
                     
+                }
+                else if (dataTable1.Rows.Count == 1) 
+                {
+                    Id = Convert.ToInt16(dataTable1.Rows[0]["ID"]);
+                    currentUserName = dataTable1.Rows[0]["Username"].ToString();
+                    currentUserEmail = dataTable1.Rows[0]["Email"].ToString();
+                    currentUserPassword = dataTable1.Rows[0]["Password"].ToString();
+
+                    ConsultantDashboard consultantDashboard = new ConsultantDashboard();
+                    consultantDashboard.Show();
+                    this.Hide();
                 }
                 else
                 {

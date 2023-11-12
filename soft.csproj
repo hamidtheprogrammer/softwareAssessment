@@ -64,6 +64,12 @@
   <ItemGroup>
     <Compile Include="Admin.cs" />
     <Compile Include="Consultant.cs" />
+    <Compile Include="ConsultantDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultantDashboard.Designer.cs">
+      <DependentUpon>ConsultantDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Product.cs" />
     <Compile Include="DBconnection.cs" />
     <Compile Include="AdminRegister.cs">
@@ -93,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultantDashboard.resx">
+      <DependentUpon>ConsultantDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

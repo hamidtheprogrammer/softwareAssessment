@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
@@ -41,6 +42,12 @@ namespace soft
             dbconnection.saveToDb(query.createNewAdmin(), admin.Name, admin.Email, admin.Password);
             login.messagePrompt("User added successfully");
 
+        }
+
+        public void updateAdmin(Queries query, int Id , string newCurrentUserName, string newCurrentUserEmail, string newCurrentUserPassword )
+        {
+            dbconnection.saveToDb(query.updateAccount(Id), newCurrentUserName, newCurrentUserEmail, newCurrentUserPassword);
+            login.messagePrompt("Account successfully updated");
         }
     }
 }

@@ -65,6 +65,7 @@
             this.dgvViewproduct = new System.Windows.Forms.DataGridView();
             this.btnShowInventory = new System.Windows.Forms.Button();
             this.pnCreateNewUser = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
             this.rbConsultant = new System.Windows.Forms.RadioButton();
             this.rbAdmin = new System.Windows.Forms.RadioButton();
             this.btnAddNewUser = new System.Windows.Forms.Button();
@@ -74,7 +75,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.tbAddNewUserName = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.pnEditProfile.SuspendLayout();
             this.pnCreateProduct.SuspendLayout();
             this.pnShowInventory.SuspendLayout();
@@ -101,7 +101,7 @@
             this.pnEditProfile.Controls.Add(this.label3);
             this.pnEditProfile.Controls.Add(this.tbnewUserName);
             this.pnEditProfile.Controls.Add(this.label2);
-            this.pnEditProfile.Location = new System.Drawing.Point(140, 70);
+            this.pnEditProfile.Location = new System.Drawing.Point(140, 73);
             this.pnEditProfile.Name = "pnEditProfile";
             this.pnEditProfile.Size = new System.Drawing.Size(657, 373);
             this.pnEditProfile.TabIndex = 1;
@@ -113,13 +113,13 @@
             this.btnupdateAccount.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnupdateAccount.Font = new System.Drawing.Font("Sans Serif Collection", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnupdateAccount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnupdateAccount.Location = new System.Drawing.Point(97, 243);
+            this.btnupdateAccount.Location = new System.Drawing.Point(102, 245);
             this.btnupdateAccount.Name = "btnupdateAccount";
             this.btnupdateAccount.Size = new System.Drawing.Size(233, 44);
             this.btnupdateAccount.TabIndex = 6;
             this.btnupdateAccount.Text = "Update account";
             this.btnupdateAccount.UseVisualStyleBackColor = false;
-            this.btnupdateAccount.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnupdateAccount.Click += new System.EventHandler(this.btnUpdateAccount_Click);
             // 
             // tbNewEmail
             // 
@@ -448,6 +448,16 @@
             this.pnCreateNewUser.Size = new System.Drawing.Size(660, 373);
             this.pnCreateNewUser.TabIndex = 16;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(6, 11);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(242, 24);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "Set up new user account";
+            // 
             // rbConsultant
             // 
             this.rbConsultant.AutoSize = true;
@@ -538,25 +548,14 @@
             this.label13.TabIndex = 7;
             this.label13.Text = "Username:";
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(6, 11);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(242, 24);
-            this.label14.TabIndex = 16;
-            this.label14.Text = "Set up new user account";
-            // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 444);
-            this.Controls.Add(this.pnCreateNewUser);
-            this.Controls.Add(this.pnCreateProduct);
-            this.Controls.Add(this.btnShowInventory);
+            this.Controls.Add(this.pnEditProfile);
             this.Controls.Add(this.pnShowInventory);
+            this.Controls.Add(this.btnShowInventory);
             this.Controls.Add(this.lbwelcome);
             this.Controls.Add(this.btnEditProfile);
             this.Controls.Add(this.label1);
@@ -566,7 +565,8 @@
             this.Controls.Add(this.btnCreateNewUser);
             this.Controls.Add(this.btnCreateProduct);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.pnEditProfile);
+            this.Controls.Add(this.pnCreateNewUser);
+            this.Controls.Add(this.pnCreateProduct);
             this.Name = "AdminDashboard";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.AdminDashboard_Load);
