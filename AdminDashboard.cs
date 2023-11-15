@@ -31,6 +31,9 @@ namespace soft
         Login login = new Login();
         //object of login class
 
+        Product product;
+        //object of product class
+
         
         //welcome User
         private void AdminDashboard_Load(object sender, EventArgs e)
@@ -41,6 +44,7 @@ namespace soft
         }
 
 
+
         //admin account
         private void btnEditProfile_Click(object sender, EventArgs e)
         {   //display admin account details
@@ -48,6 +52,7 @@ namespace soft
             pnCreateProduct.Visible = false;
             pnShowInventory.Visible = false;
             pnCreateNewUser.Visible = false;
+            pnUpdateProduct.Visible = false;
             tbnewUserName.Text = currentAdmin.Name;
             tbNewEmail.Text = currentAdmin.Email;
             tbnewPassword.Text = currentAdmin.Password;
@@ -69,6 +74,7 @@ namespace soft
         }
 
 
+
         //Product info
         private void btnCreateProduct_Click(object sender, EventArgs e)
         {   //add a new product 
@@ -76,13 +82,14 @@ namespace soft
             pnEditProfile.Visible= false;
             pnShowInventory.Visible= false;
             pnCreateNewUser.Visible = false;
+            pnUpdateProduct.Visible = false;
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             byte[] pdf = File.ReadAllBytes(lbfilePath.Text);
 
-            Product product = new Product(1,tbProductName.Text, rtbDescription.Text, tbProductSoftware.Text, tbBusinessArea.Text, pdf, tbUrl.Text);
+            product = new Product(1,tbProductName.Text, rtbDescription.Text, tbProductSoftware.Text, tbBusinessArea.Text, pdf, tbUrl.Text);
             //new product object
 
             //var cols = new List<string>(){"Name","Description","Type_Of_Software","Business_Area","PDF","Link"};
@@ -98,27 +105,16 @@ namespace soft
 
         private void btnSavePdf_Click(object sender, EventArgs e)
         {
-            using(OpenFileDialog openFileDialog =  new OpenFileDialog())
-            {   //openfiledialog object
-
-                openFileDialog.Filter = "PDF Files |*.pdf";
-                //filter for pdf files
-
-                openFileDialog.Title = "Please select a PDF file for attachment";
-                //tell user to select a PDF file
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                    //verify correct PDF file
-                {
-                    string filePath = openFileDialog.FileName;
-                    lbfilePath.Text = filePath;
-                }
-            } 
+            lbfilePath.Text = Product.insertPdf();
         }
 
         private void btnUpdateProduct_Click(object sender, EventArgs e)
         {
-            
+            pnUpdateProduct.Visible = true;
+            pnShowInventory.Visible = false;
+            pnEditProfile.Visible = false;
+            pnCreateProduct.Visible = false;
+            pnCreateNewUser.Visible = false;
 
         }
         
@@ -128,10 +124,61 @@ namespace soft
             pnEditProfile.Visible= false;
             pnCreateProduct.Visible= false;
             pnCreateNewUser.Visible = false;
-            DataSet getProduct = dbconnection.getDataSet(query.getProductFromDb());
+            pnUpdateProduct.Visible = false;
+
             //DataTable dataTable = getProduct.Tables[0];
-            dgvViewproduct.DataSource = getProduct.Tables[0];
+            dgvViewproduct.DataSource = Product.showInventory(dbconnection, query).Tables[0];
         }
+
+
+        
+        private void btnsearchIndex_Click(object sender, EventArgs e)
+        {
+            if (tbEnterIndex.Text == "") 
+            {
+                MessageBox.Show("Please Enter an index");
+            }
+            else
+            {
+                DataTable getproductTable = Product.checkProduct(dbconnection , query, Convert.ToInt16(tbEnterIndex.Text));
+                //the product.checkproduct method is used to search the product id that was entered.
+
+                Product currentProduct = Product.displayCurrentProduct(getproductTable);
+                //using the contents stored in the getproductTable, The product information is extracted from the database and stored in a Product object so they can be displayed
+
+                lbcurrentId.Text = $"Id: {Convert.ToString(currentProduct.Id)}";
+                tbNewProductName.Text = currentProduct.Name;
+                rtNewDescription.Text = currentProduct.Description;
+                tbNewProductSoftware.Text = currentProduct.TypeOfSoftware;
+                tbNewBusinessArea.Text = currentProduct.BusinessArea;
+                //tbnewpdf = currentProduct.PDF;
+                tbNewURL.Text = currentProduct.Link;
+              
+
+
+                //Product currentProduct = new Product(Product.currentProductId, Product.currentProductName, Product.currentProductDescription, Product.currentProductTypeOfSoftware, Product.currentProductBusinessArea, Product.currentProductPDF, Product.currentProductURL);
+                //currentProduct.checkProduct(query ,Convert.ToInt16(tbEnterIndex.Text));
+            }
+        }
+
+        private void tbsearchBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAttachNewPDF_Click(object sender, EventArgs e)
+        {
+            lbNewfilepath.Text = Product.insertPdf();
+        }
+
+        private void btnChangeProduct_Click(object sender, EventArgs e)
+        {
+
+            Product.changeCurrentProduct(dbconnection, query, Convert.ToInt16(lbcurrentId.Text), tbNewProductName.Text , rtNewDescription.Text , tbNewProductSoftware.Text , tbNewBusinessArea.Text , File.ReadAllBytes(lbNewfilepath.Text) , tbNewURL.Text);
+
+
+        }
+
 
 
         //logout
@@ -141,6 +188,7 @@ namespace soft
             login.Show();             
         }
 
+
         
         //User creation and role assignment
         private void btnCreateNewUser_Click(object sender, EventArgs e)
@@ -149,6 +197,7 @@ namespace soft
              pnCreateProduct.Visible = false;
              pnEditProfile.Visible = false;
              pnShowInventory.Visible = false;
+            pnUpdateProduct.Visible = false;
 
             rbConsultant.Checked = true;
 
@@ -166,6 +215,8 @@ namespace soft
                 Consultant consultant = new Consultant(1, tbAddNewUserName.Text, tbAddNewUserEmail.Text, tbAddNewUserPassword.Text);
                 consultant.saveConsultantToDb(query , consultant);
             }
-        }        
+        }
+
+       
     }
 }

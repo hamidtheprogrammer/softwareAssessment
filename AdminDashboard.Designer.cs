@@ -41,7 +41,7 @@
             this.btnCreateNewUser = new System.Windows.Forms.Button();
             this.btnUpdateProduct = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbsearchBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnEditProfile = new System.Windows.Forms.Button();
             this.lbwelcome = new System.Windows.Forms.Label();
@@ -75,11 +75,32 @@
             this.label12 = new System.Windows.Forms.Label();
             this.tbAddNewUserName = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.pnUpdateProduct = new System.Windows.Forms.Panel();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.lbNewfilepath = new System.Windows.Forms.Label();
+            this.btnAttachNewPDF = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.tbNewURL = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.tbNewBusinessArea = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.rtNewDescription = new System.Windows.Forms.RichTextBox();
+            this.btnChangeProduct = new System.Windows.Forms.Button();
+            this.tbNewProductSoftware = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.tbNewProductName = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.btnsearchIndex = new System.Windows.Forms.Button();
+            this.tbEnterIndex = new System.Windows.Forms.TextBox();
+            this.lbcurrentId = new System.Windows.Forms.Label();
             this.pnEditProfile.SuspendLayout();
             this.pnCreateProduct.SuspendLayout();
             this.pnShowInventory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewproduct)).BeginInit();
             this.pnCreateNewUser.SuspendLayout();
+            this.pnUpdateProduct.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -211,13 +232,14 @@
             this.button5.Text = "Delete product";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // tbsearchBox
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(353, -2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 6;
+            this.tbsearchBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbsearchBox.Location = new System.Drawing.Point(353, -2);
+            this.tbsearchBox.Name = "tbsearchBox";
+            this.tbsearchBox.Size = new System.Drawing.Size(100, 20);
+            this.tbsearchBox.TabIndex = 6;
+            this.tbsearchBox.TextChanged += new System.EventHandler(this.tbsearchBox_TextChanged);
             // 
             // label1
             // 
@@ -548,25 +570,230 @@
             this.label13.TabIndex = 7;
             this.label13.Text = "Username:";
             // 
+            // pnUpdateProduct
+            // 
+            this.pnUpdateProduct.Controls.Add(this.lbcurrentId);
+            this.pnUpdateProduct.Controls.Add(this.label23);
+            this.pnUpdateProduct.Controls.Add(this.label22);
+            this.pnUpdateProduct.Controls.Add(this.lbNewfilepath);
+            this.pnUpdateProduct.Controls.Add(this.btnAttachNewPDF);
+            this.pnUpdateProduct.Controls.Add(this.label16);
+            this.pnUpdateProduct.Controls.Add(this.tbNewURL);
+            this.pnUpdateProduct.Controls.Add(this.label17);
+            this.pnUpdateProduct.Controls.Add(this.tbNewBusinessArea);
+            this.pnUpdateProduct.Controls.Add(this.label18);
+            this.pnUpdateProduct.Controls.Add(this.rtNewDescription);
+            this.pnUpdateProduct.Controls.Add(this.btnChangeProduct);
+            this.pnUpdateProduct.Controls.Add(this.tbNewProductSoftware);
+            this.pnUpdateProduct.Controls.Add(this.label19);
+            this.pnUpdateProduct.Controls.Add(this.label20);
+            this.pnUpdateProduct.Controls.Add(this.tbNewProductName);
+            this.pnUpdateProduct.Controls.Add(this.label21);
+            this.pnUpdateProduct.Controls.Add(this.btnsearchIndex);
+            this.pnUpdateProduct.Controls.Add(this.tbEnterIndex);
+            this.pnUpdateProduct.Location = new System.Drawing.Point(143, 70);
+            this.pnUpdateProduct.Name = "pnUpdateProduct";
+            this.pnUpdateProduct.Size = new System.Drawing.Size(657, 376);
+            this.pnUpdateProduct.TabIndex = 1;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(5, 28);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(389, 13);
+            this.label23.TabIndex = 31;
+            this.label23.Text = "You can also edit and update the product by clicking the \'update product\' button." +
+    "";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(4, 11);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(617, 13);
+            this.label22.TabIndex = 30;
+            this.label22.Text = "Navigate to the \'show inventory\' tab to view all product and their indexes. Enter" +
+    " an index below to display the product information. ";
+            // 
+            // lbNewfilepath
+            // 
+            this.lbNewfilepath.AutoSize = true;
+            this.lbNewfilepath.Font = new System.Drawing.Font("Gabriola", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNewfilepath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lbNewfilepath.Location = new System.Drawing.Point(249, 219);
+            this.lbNewfilepath.Name = "lbNewfilepath";
+            this.lbNewfilepath.Size = new System.Drawing.Size(130, 28);
+            this.lbNewfilepath.TabIndex = 29;
+            this.lbNewfilepath.Text = "file path shows here...";
+            // 
+            // btnAttachNewPDF
+            // 
+            this.btnAttachNewPDF.Location = new System.Drawing.Point(168, 220);
+            this.btnAttachNewPDF.Name = "btnAttachNewPDF";
+            this.btnAttachNewPDF.Size = new System.Drawing.Size(75, 23);
+            this.btnAttachNewPDF.TabIndex = 28;
+            this.btnAttachNewPDF.Text = "Attach pdf";
+            this.btnAttachNewPDF.UseVisualStyleBackColor = true;
+            this.btnAttachNewPDF.Click += new System.EventHandler(this.btnAttachNewPDF_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Sans Serif Collection", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(3, 214);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(121, 29);
+            this.label16.TabIndex = 27;
+            this.label16.Text = "Save pdf file";
+            // 
+            // tbNewURL
+            // 
+            this.tbNewURL.Location = new System.Drawing.Point(168, 188);
+            this.tbNewURL.Name = "tbNewURL";
+            this.tbNewURL.Size = new System.Drawing.Size(292, 20);
+            this.tbNewURL.TabIndex = 26;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Sans Serif Collection", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(3, 187);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(52, 29);
+            this.label17.TabIndex = 25;
+            this.label17.Text = "URL";
+            // 
+            // tbNewBusinessArea
+            // 
+            this.tbNewBusinessArea.Location = new System.Drawing.Point(168, 153);
+            this.tbNewBusinessArea.Name = "tbNewBusinessArea";
+            this.tbNewBusinessArea.Size = new System.Drawing.Size(292, 20);
+            this.tbNewBusinessArea.TabIndex = 24;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Sans Serif Collection", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(3, 150);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(138, 29);
+            this.label18.TabIndex = 23;
+            this.label18.Text = "Business area";
+            // 
+            // rtNewDescription
+            // 
+            this.rtNewDescription.Location = new System.Drawing.Point(168, 253);
+            this.rtNewDescription.Name = "rtNewDescription";
+            this.rtNewDescription.Size = new System.Drawing.Size(335, 96);
+            this.rtNewDescription.TabIndex = 22;
+            this.rtNewDescription.Text = "";
+            // 
+            // btnChangeProduct
+            // 
+            this.btnChangeProduct.BackColor = System.Drawing.SystemColors.ControlText;
+            this.btnChangeProduct.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnChangeProduct.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnChangeProduct.Font = new System.Drawing.Font("Sans Serif Collection", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangeProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnChangeProduct.Location = new System.Drawing.Point(503, 339);
+            this.btnChangeProduct.Name = "btnChangeProduct";
+            this.btnChangeProduct.Size = new System.Drawing.Size(157, 37);
+            this.btnChangeProduct.TabIndex = 21;
+            this.btnChangeProduct.Text = "update product";
+            this.btnChangeProduct.UseVisualStyleBackColor = false;
+            this.btnChangeProduct.Click += new System.EventHandler(this.btnChangeProduct_Click);
+            // 
+            // tbNewProductSoftware
+            // 
+            this.tbNewProductSoftware.Location = new System.Drawing.Point(168, 118);
+            this.tbNewProductSoftware.Name = "tbNewProductSoftware";
+            this.tbNewProductSoftware.Size = new System.Drawing.Size(292, 20);
+            this.tbNewProductSoftware.TabIndex = 20;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Sans Serif Collection", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(3, 115);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(159, 29);
+            this.label19.TabIndex = 19;
+            this.label19.Text = "Type of software";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Sans Serif Collection", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(3, 248);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(114, 29);
+            this.label20.TabIndex = 18;
+            this.label20.Text = "Description";
+            // 
+            // tbNewProductName
+            // 
+            this.tbNewProductName.Location = new System.Drawing.Point(168, 86);
+            this.tbNewProductName.Name = "tbNewProductName";
+            this.tbNewProductName.Size = new System.Drawing.Size(292, 20);
+            this.tbNewProductName.TabIndex = 17;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Sans Serif Collection", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(6, 83);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(64, 29);
+            this.label21.TabIndex = 16;
+            this.label21.Text = "Name";
+            // 
+            // btnsearchIndex
+            // 
+            this.btnsearchIndex.Location = new System.Drawing.Point(141, 46);
+            this.btnsearchIndex.Name = "btnsearchIndex";
+            this.btnsearchIndex.Size = new System.Drawing.Size(75, 23);
+            this.btnsearchIndex.TabIndex = 1;
+            this.btnsearchIndex.Text = "Enter";
+            this.btnsearchIndex.UseVisualStyleBackColor = true;
+            this.btnsearchIndex.Click += new System.EventHandler(this.btnsearchIndex_Click);
+            // 
+            // tbEnterIndex
+            // 
+            this.tbEnterIndex.Location = new System.Drawing.Point(41, 47);
+            this.tbEnterIndex.Name = "tbEnterIndex";
+            this.tbEnterIndex.Size = new System.Drawing.Size(100, 20);
+            this.tbEnterIndex.TabIndex = 0;
+            // 
+            // lbcurrentId
+            // 
+            this.lbcurrentId.AutoSize = true;
+            this.lbcurrentId.Location = new System.Drawing.Point(392, 55);
+            this.lbcurrentId.Name = "lbcurrentId";
+            this.lbcurrentId.Size = new System.Drawing.Size(21, 13);
+            this.lbcurrentId.TabIndex = 32;
+            this.lbcurrentId.Text = "ID:";
+            // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 444);
-            this.Controls.Add(this.pnEditProfile);
-            this.Controls.Add(this.pnShowInventory);
             this.Controls.Add(this.btnShowInventory);
             this.Controls.Add(this.lbwelcome);
             this.Controls.Add(this.btnEditProfile);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbsearchBox);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.btnUpdateProduct);
             this.Controls.Add(this.btnCreateNewUser);
             this.Controls.Add(this.btnCreateProduct);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.pnUpdateProduct);
+            this.Controls.Add(this.pnShowInventory);
             this.Controls.Add(this.pnCreateNewUser);
             this.Controls.Add(this.pnCreateProduct);
+            this.Controls.Add(this.pnEditProfile);
             this.Name = "AdminDashboard";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.AdminDashboard_Load);
@@ -578,6 +805,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewproduct)).EndInit();
             this.pnCreateNewUser.ResumeLayout(false);
             this.pnCreateNewUser.PerformLayout();
+            this.pnUpdateProduct.ResumeLayout(false);
+            this.pnUpdateProduct.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -591,7 +820,7 @@
         private System.Windows.Forms.Button btnCreateNewUser;
         private System.Windows.Forms.Button btnUpdateProduct;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbsearchBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnEditProfile;
         private System.Windows.Forms.Label lbwelcome;
@@ -632,5 +861,25 @@
         private System.Windows.Forms.RadioButton rbConsultant;
         private System.Windows.Forms.RadioButton rbAdmin;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Panel pnUpdateProduct;
+        private System.Windows.Forms.TextBox tbEnterIndex;
+        private System.Windows.Forms.Button btnsearchIndex;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label lbNewfilepath;
+        private System.Windows.Forms.Button btnAttachNewPDF;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox tbNewURL;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox tbNewBusinessArea;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.RichTextBox rtNewDescription;
+        private System.Windows.Forms.Button btnChangeProduct;
+        private System.Windows.Forms.TextBox tbNewProductSoftware;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox tbNewProductName;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label lbcurrentId;
     }
 }

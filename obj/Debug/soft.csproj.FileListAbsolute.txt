@@ -2,14 +2,13 @@ C:\Users\HAMID\source\repos\soft\bin\Debug\myDatabase1.mdf
 C:\Users\HAMID\source\repos\soft\bin\Debug\myDatabase1_log.ldf
 C:\Users\HAMID\source\repos\soft\bin\Debug\soft.exe.config
 C:\Users\HAMID\source\repos\soft\bin\Debug\soft.exe
-C:\Users\HAMID\source\repos\soft\bin\Debug\soft.pdb
 C:\Users\HAMID\source\repos\soft\obj\Debug\soft.csproj.AssemblyReference.cache
 C:\Users\HAMID\source\repos\soft\obj\Debug\soft.AdminRegister.resources
+C:\Users\HAMID\source\repos\soft\obj\Debug\soft.AdminDashboard.resources
+C:\Users\HAMID\source\repos\soft\obj\Debug\soft.ConsultantDashboard.resources
+C:\Users\HAMID\source\repos\soft\obj\Debug\soft.Login.resources
 C:\Users\HAMID\source\repos\soft\obj\Debug\soft.Properties.Resources.resources
 C:\Users\HAMID\source\repos\soft\obj\Debug\soft.csproj.GenerateResource.cache
 C:\Users\HAMID\source\repos\soft\obj\Debug\soft.csproj.CoreCompileInputs.cache
 C:\Users\HAMID\source\repos\soft\obj\Debug\soft.exe
 C:\Users\HAMID\source\repos\soft\obj\Debug\soft.pdb
-C:\Users\HAMID\source\repos\soft\obj\Debug\soft.Login.resources
-C:\Users\HAMID\source\repos\soft\obj\Debug\soft.AdminDashboard.resources
-C:\Users\HAMID\source\repos\soft\obj\Debug\soft.ConsultantDashboard.resources

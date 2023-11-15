@@ -19,6 +19,17 @@ namespace soft
         public string checkLoginConsultant(string getUsername, string getPassword)
         {
             return ($"SELECT * from consultant Where Username='{getUsername}' AND Password = '{getPassword}'");
+        } 
+        public string createNewAdmin()
+        {
+            string query = "INSERT INTO admin (Username, Email, Password) VALUES (@Username, @Email, @Password)";
+            return query;
+        }
+
+        public string createNewConsultant()
+        {
+            string query = "INSERT INTO consultant (Username, Email, Password) VALUES (@Username, @Email, @Password)";
+            return query;
         }
         public string updateAccount( int ID)
         {
@@ -38,16 +49,18 @@ namespace soft
             return query;
         }
 
-        public string createNewAdmin()
+        public string getSpecificProduct(int id)
         {
-            string query = "INSERT INTO admin (Username, Email, Password) VALUES (@Username, @Email, @Password)";
-            return query;
+            return ($"SELECT * from product Where Id = '{id}'");
         }
 
-        public string createNewConsultant()
+        public string updateProduct(int id)
         {
-            string query = "INSERT INTO consultant (Username, Email, Password) VALUES (@Username, @Email, @Password)";
-            return query;
+            return $"UPDATE product SET Name = @Name, Description = @Description, Type_Of_Software = @Type_Of_Software, Business_Area = @Business_Area, PDF = @PDF , Link = @Link Where ID = '{id}'";
         }
+
+       
+
+        
     }
 }
