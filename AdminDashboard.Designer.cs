@@ -76,6 +76,7 @@
             this.tbAddNewUserName = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.pnUpdateProduct = new System.Windows.Forms.Panel();
+            this.lbcurrentId = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.lbNewfilepath = new System.Windows.Forms.Label();
@@ -94,7 +95,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.btnsearchIndex = new System.Windows.Forms.Button();
             this.tbEnterIndex = new System.Windows.Forms.TextBox();
-            this.lbcurrentId = new System.Windows.Forms.Label();
             this.pnEditProfile.SuspendLayout();
             this.pnCreateProduct.SuspendLayout();
             this.pnShowInventory.SuspendLayout();
@@ -596,6 +596,15 @@
             this.pnUpdateProduct.Size = new System.Drawing.Size(657, 376);
             this.pnUpdateProduct.TabIndex = 1;
             // 
+            // lbcurrentId
+            // 
+            this.lbcurrentId.AutoSize = true;
+            this.lbcurrentId.Location = new System.Drawing.Point(392, 55);
+            this.lbcurrentId.Name = "lbcurrentId";
+            this.lbcurrentId.Size = new System.Drawing.Size(21, 13);
+            this.lbcurrentId.TabIndex = 32;
+            this.lbcurrentId.Text = "ID:";
+            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -765,15 +774,6 @@
             this.tbEnterIndex.Size = new System.Drawing.Size(100, 20);
             this.tbEnterIndex.TabIndex = 0;
             // 
-            // lbcurrentId
-            // 
-            this.lbcurrentId.AutoSize = true;
-            this.lbcurrentId.Location = new System.Drawing.Point(392, 55);
-            this.lbcurrentId.Name = "lbcurrentId";
-            this.lbcurrentId.Size = new System.Drawing.Size(21, 13);
-            this.lbcurrentId.TabIndex = 32;
-            this.lbcurrentId.Text = "ID:";
-            // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -789,11 +789,11 @@
             this.Controls.Add(this.btnCreateNewUser);
             this.Controls.Add(this.btnCreateProduct);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.pnUpdateProduct);
-            this.Controls.Add(this.pnShowInventory);
             this.Controls.Add(this.pnCreateNewUser);
             this.Controls.Add(this.pnCreateProduct);
             this.Controls.Add(this.pnEditProfile);
+            this.Controls.Add(this.pnUpdateProduct);
+            this.Controls.Add(this.pnShowInventory);
             this.Name = "AdminDashboard";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.AdminDashboard_Load);

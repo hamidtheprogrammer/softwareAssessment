@@ -59,6 +59,11 @@ namespace soft
             return $"UPDATE product SET Name = @Name, Description = @Description, Type_Of_Software = @Type_Of_Software, Business_Area = @Business_Area, PDF = @PDF , Link = @Link Where ID = '{id}'";
         }
 
+        public string addClient()
+        {
+            return "INSERT INTO clients (Name, Email, Request, ClientType) VALUES (@Name, @Email, @Request, @ClientType)";
+        }
+
        
 
         

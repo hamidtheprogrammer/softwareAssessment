@@ -146,7 +146,7 @@ namespace soft
                 Product currentProduct = Product.displayCurrentProduct(getproductTable);
                 //using the contents stored in the getproductTable, The product information is extracted from the database and stored in a Product object so they can be displayed
 
-                lbcurrentId.Text = $"Id: {Convert.ToString(currentProduct.Id)}";
+                lbcurrentId.Text = Convert.ToString(currentProduct.Id);
                 tbNewProductName.Text = currentProduct.Name;
                 rtNewDescription.Text = currentProduct.Description;
                 tbNewProductSoftware.Text = currentProduct.TypeOfSoftware;

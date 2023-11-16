@@ -16,5 +16,76 @@ namespace soft
         {
             InitializeComponent();
         }
+
+        Queries query = new Queries();
+        DBconnection dbconnection = DBconnection.getInstanceOfDBconnection();
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
+        private void btnClients_Click(object sender, EventArgs e)
+        {
+            pnAddClient.Visible = false;
+            pnUpdateClient.Visible = false;
+            pnClients.Visible = true;
+        }
+        
+        private void btnCreateclient_Click(object sender, EventArgs e)
+        {
+            pnAddClient.Visible = true;
+            pnUpdateClient.Visible = false;
+            pnClients.Visible = false;
+            rbPending.Checked = true;
+        }
+        
+        private void btnEditClients_Click(object sender, EventArgs e)
+        {
+            pnAddClient.Visible = false;
+            pnClients.Visible = false;
+            pnUpdateClient.Visible = true;
+        }
+
+       /* private string status()
+        {
+            string status;
+            if (rbPending.Checked)
+            {
+                status = "Pending";
+                return status;
+            }
+            else if (rbInProgress.Checked)
+            {
+                status = "In progress";
+                return status;
+            }
+            else if (rbCompleted.Checked)
+            {
+                status = "Completed";
+                return status;
+            }
+            
+        }*/
+        private void btnAddclient_Click(object sender, EventArgs e)
+        {
+            //creating predefined strings to be stored in the database for client's request's status
+           
+            if (tbAddClientName != null) 
+            { 
+               
+
+                Client client = new Client(1, tbAddClientName.Text , tbAddClientEmail.Text, tbAddClientRequest.Text, tbAddClientType.Text, "status");
+                client.addClient(query , client);
+            }
+            else
+            {
+                MessageBox.Show("Client name cannot be null");
+            }
+            
+        }
+
+       
     }
 }

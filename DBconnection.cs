@@ -49,6 +49,8 @@ namespace soft
             return dataSet;
         }
 
+
+        //Db connection for Users
         public void saveToDb(string sqlQuery, String userName, string email, string password)
         {
             using (SqlConnection connToDb = new SqlConnection(_connectionString))
@@ -93,6 +95,8 @@ namespace soft
 
         }*/
 
+
+        //Dbconnection for product
         public void saveProductToDb(string sqlQuery, string name,  string description, string typeOfSoftware,string businessArea , byte[] pdf,string link)
         {
             using (SqlConnection connToDb = new SqlConnection(_connectionString))
@@ -109,6 +113,30 @@ namespace soft
                 sqlCommand.Parameters.Add(new SqlParameter("Business_Area", businessArea));             
                 sqlCommand.Parameters.Add(new SqlParameter("PDF", pdf));
                 sqlCommand.Parameters.Add(new SqlParameter("Link", link));
+
+                sqlCommand.ExecuteNonQuery();
+
+            }
+        }
+
+
+        //dbconnection for clients
+        public void saveClientToDb(string sqlQuery, string name, string email, string request, string clientType, string status)
+        {
+            using (SqlConnection connToDb = new SqlConnection(_connectionString))
+            {
+                connToDb.Open();
+
+                SqlCommand sqlCommand = new SqlCommand(sqlQuery, connToDb);
+
+                sqlCommand.CommandType = CommandType.Text;
+
+                sqlCommand.Parameters.Add(new SqlParameter("Name", name));
+                sqlCommand.Parameters.Add(new SqlParameter("Email", email));
+                sqlCommand.Parameters.Add(new SqlParameter("Request", request));
+                sqlCommand.Parameters.Add(new SqlParameter("ClientType", clientType));
+                sqlCommand.Parameters.Add(new SqlParameter("Status", status));
+
 
                 sqlCommand.ExecuteNonQuery();
 

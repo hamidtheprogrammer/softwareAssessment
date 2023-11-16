@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="Consultant.cs" />
     <Compile Include="ConsultantDashboard.cs">
       <SubType>Form</SubType>
