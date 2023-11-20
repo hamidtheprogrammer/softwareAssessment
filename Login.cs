@@ -25,7 +25,7 @@ namespace soft
         DBconnection dbconnection = DBconnection.getInstanceOfDBconnection();
         Queries queries = new Queries();
 
-        public void messagePrompt(string message)
+        public static void messagePrompt(string message)
         {
             MessageBox.Show(message);
         }

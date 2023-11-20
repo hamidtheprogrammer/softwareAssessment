@@ -59,9 +59,70 @@ namespace soft
             return $"UPDATE product SET Name = @Name, Description = @Description, Type_Of_Software = @Type_Of_Software, Business_Area = @Business_Area, PDF = @PDF , Link = @Link Where ID = '{id}'";
         }
 
+        public string updateProduct(int id, int foreignKey)
+        {
+            return $"UPDATE product SET companyId = '{foreignKey}' Where ID = '{id}'";
+        }
+
+        public string deleteProduct(int Id)
+        {
+            return $"DELETE from product where Id = '{Id}'";
+        }
+
+        public string searchProduct(string name)
+        {
+            return $"SELECT * from product where Name like '%{name}%'";
+        }
+
+        public string addCompanyToDb()
+        {
+            return "INSERT INTO Company (Company_Name, Contact, Website, Established_Date, Location_Countries, Location_Cities, Addresses) VALUES (@Company_Name, @Contact, @Website, @Established_Date, @Location_Countries, @Location_Cities, @Addresses)";
+        }
+
+        public string getCompany()
+        {
+            return "SELECT * FROM COMPANY WHERE ID = (SELECT MAX(ID) FROM Company)";
+        }
+
+        public string displayCompany()
+        {
+            return $"SELECT * FROM company";
+        }
+        public string updateCompany(int id)
+        {
+            return $"UPDATE Company SET Company_Name = @Company_Name, Contact = @Contact, Website = @Website, Established_date = @Established_date, Location_Countries = @Location_Countries , Location_Cities = @Location_Cities , Addresses = @Addresses Where ID = '{id}'";
+        }
+
+        public string deleteCompany(int Id)
+        {
+            return $"DELETE from company where Id = '{Id}'";
+        }
+
+        public string addForeignKeyToNewlyAddedProduct()
+        {
+            return $"UPDATE product SET CompanyId = @CompanyId WHERE ID = (SELECT MAX(ID) FROM product)";
+        }
+
+        public string getCompanyWithForeignKey(int Id)
+        {
+            return $"SELECT Company.* FROM Company JOIN Product ON Company.Id = Product.CompanyId WHERE Product.Id = '{Id}'";
+        }
+
+        public String removeForeignKey(int Id)
+        {
+            return $"UPDATE product SET CompanyId = NULL Where ID = '{Id}'";
+        }
+
+        
+
         public string addClient()
         {
             return "INSERT INTO clients (Name, Email, Request, ClientType) VALUES (@Name, @Email, @Request, @ClientType)";
+        }
+
+        public string getClient()
+        {
+            return "SELECT * from clients";
         }
 
        

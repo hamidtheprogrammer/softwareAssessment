@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using static System.Windows.Forms.LinkLabel;
+using System.Xml.Linq;
 
 namespace soft
 {
@@ -61,9 +63,6 @@ namespace soft
         public void addProduct(Queries query, Product product)
         {
             dbconnection.saveProductToDb(query.saveProductToDb(), product.Name, product.Description, product.TypeOfSoftware, product.BusinessArea, product.PDF, product.Link);
-
-            login.messagePrompt("Product added successfully");
-
         }
 
         public static DataSet showInventory(DBconnection dbconnection, Queries query)
@@ -83,43 +82,58 @@ namespace soft
         public static byte[] currentProductPDF;
         public static string currentProductURL;
 
-        public static DataTable checkProduct(DBconnection dbconnection, Queries query, int index)
+        public static Product displayCurrentProduct(DataRowView dataRowView)
         {
-            DataSet getproduct = dbconnection.getDataSet(query.getSpecificProduct(index));
-            DataTable getProductTable = getproduct.Tables[0]; 
+            currentProductId = Convert.ToInt16(dataRowView["Id"]);
+            currentProductName = dataRowView["Name"].ToString();
+            currentProductDescription= dataRowView["Description"].ToString();
+            currentProductTypeOfSoftware = dataRowView["Type_Of_Software"].ToString();
+            currentProductBusinessArea = dataRowView["Business_Area"].ToString();
+            //currentProductPDF = dataRowView
+            currentProductURL = dataRowView["Link"].ToString();
 
-            return getProductTable;
-        }
+            Product clicked_product = new Product(currentProductId, currentProductName, currentProductDescription, currentProductTypeOfSoftware,currentProductBusinessArea, currentProductPDF, currentProductURL);
 
-        public static Product displayCurrentProduct(DataTable getProductTable) { 
-
-            if (getProductTable.Rows.Count == 1)
-            {
-                currentProductId = Convert.ToInt16(getProductTable.Rows[0]["Id"]);
-                currentProductName = getProductTable.Rows[0]["Name"].ToString();
-                currentProductDescription = getProductTable.Rows[0]["Description"].ToString();
-                currentProductTypeOfSoftware = getProductTable.Rows[0]["Type_Of_Software"].ToString();
-                currentProductBusinessArea = getProductTable.Rows[0]["Business_Area"].ToString();
-                //currentProductPDF = File.ReadAllBytes(Convert.ToString((getProductTable.Rows[0]["PDF"])));
-                currentProductURL = getProductTable.Rows[0]["Link"].ToString();
-                Product currentProduct = new Product(currentProductId,currentProductName, currentProductDescription, currentProductTypeOfSoftware, currentProductBusinessArea, currentProductPDF,currentProductURL);
-                return currentProduct;
-            }
-            else
-            {
-                MessageBox.Show("No result found");
-                return null;
-            }
-
-
+            return clicked_product;
         }
 
         public static void changeCurrentProduct(DBconnection dbconnection, Queries query, int id, string name, string description, string typeOfsoftware, string businessArea, byte[] pdf, string link)
         {
             dbconnection.saveProductToDb(query.updateProduct(id), name, description, typeOfsoftware, businessArea, pdf, link);
-            MessageBox.Show("Product successfully updated");
+            Login.messagePrompt("Product successfully updated");
            
         }
+
+
+        //overloaded method to pass foreign key to dbconnection class
+        public static void changeCurrentProduct(DBconnection dbconnection, Queries query,  int foreignKey)
+        {
+            dbconnection.saveProductToDb(query.addForeignKeyToNewlyAddedProduct(), foreignKey);
+        }
+
+        //overloaded method to delete foreign key
+        public static void deletefromProduct(DBconnection dbconnection, Queries query, int Id)
+        {
+            dbconnection.saveProductToDb(query.removeForeignKey(Id));
+        }
+
+        //overloaded method to store foreign key
+        public static void changeCurrentProduct(DBconnection dbconnection, Queries query, int id, int foreignKey)
+        {
+            dbconnection.saveProductToDb(query.updateProduct(id, foreignKey),foreignKey);
+        }
+
+        public static DataSet searchProduct(DBconnection dbconnection, Queries query, string name)
+        {
+            return dbconnection.getDataSet(query.searchProduct(name));
+        }
+        //delete product
+        public static void deleteproduct(DBconnection dbconnection, Queries query, int Id)
+        {
+            dbconnection.saveProductToDb(query.deleteProduct(Id));
+        }
+
+
 
     }
 }

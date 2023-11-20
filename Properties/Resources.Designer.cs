@@ -93,6 +93,36 @@ namespace soft.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap magnifying_glass_or_search_icon_on_white_background_illustration_eps_10_vector {
+            get {
+                object obj = ResourceManager.GetObject("magnifying-glass-or-search-icon-on-white-background-illustration-eps-10-vector", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngtree_outline_user_icon_png_image_5045523 {
+            get {
+                object obj = ResourceManager.GetObject("pngtree-outline-user-icon-png-image_5045523", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap profile_user_icon_isolated_on_white_background_eps10_free_vector {
+            get {
+                object obj = ResourceManager.GetObject("profile-user-icon-isolated-on-white-background-eps10-free-vector", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Screenshot_2023_11_09_220437 {
             get {
                 object obj = ResourceManager.GetObject("Screenshot 2023-11-09 220437", resourceCulture);

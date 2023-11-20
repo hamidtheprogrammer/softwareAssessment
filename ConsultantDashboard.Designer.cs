@@ -69,9 +69,13 @@
             this.label27 = new System.Windows.Forms.Label();
             this.tbNewClientType = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
+            this.pnShowClients = new System.Windows.Forms.Panel();
+            this.dgvShowClients = new System.Windows.Forms.DataGridView();
             this.pnAddClient.SuspendLayout();
             this.pnClients.SuspendLayout();
             this.pnUpdateClient.SuspendLayout();
+            this.pnShowClients.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShowClients)).BeginInit();
             this.SuspendLayout();
             // 
             // btnShowInventory
@@ -334,6 +338,7 @@
             this.btnShowClients.TabIndex = 34;
             this.btnShowClients.Text = "Show Clients";
             this.btnShowClients.UseVisualStyleBackColor = true;
+            this.btnShowClients.Click += new System.EventHandler(this.btnShowClients_Click);
             // 
             // btnEditClients
             // 
@@ -493,6 +498,22 @@
             this.label28.TabIndex = 20;
             this.label28.Text = "Client Type:";
             // 
+            // pnShowClients
+            // 
+            this.pnShowClients.Controls.Add(this.dgvShowClients);
+            this.pnShowClients.Location = new System.Drawing.Point(140, 78);
+            this.pnShowClients.Name = "pnShowClients";
+            this.pnShowClients.Size = new System.Drawing.Size(660, 373);
+            this.pnShowClients.TabIndex = 35;
+            // 
+            // dgvShowClients
+            // 
+            this.dgvShowClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvShowClients.Location = new System.Drawing.Point(23, 21);
+            this.dgvShowClients.Name = "dgvShowClients";
+            this.dgvShowClients.Size = new System.Drawing.Size(621, 346);
+            this.dgvShowClients.TabIndex = 0;
+            // 
             // ConsultantDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -501,15 +522,16 @@
             this.Controls.Add(this.btnClients);
             this.Controls.Add(this.btnShowInventory);
             this.Controls.Add(this.lbwelcome);
-            this.Controls.Add(this.pnAddClient);
             this.Controls.Add(this.btnEditProfile);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbsearchBox);
             this.Controls.Add(this.btnUpdateProduct);
             this.Controls.Add(this.btnCreateProduct);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.pnClients);
             this.Controls.Add(this.pnUpdateClient);
+            this.Controls.Add(this.pnAddClient);
+            this.Controls.Add(this.pnShowClients);
+            this.Controls.Add(this.pnClients);
             this.Name = "ConsultantDashboard";
             this.Text = "ConsultantDashboard";
             this.pnAddClient.ResumeLayout(false);
@@ -517,6 +539,8 @@
             this.pnClients.ResumeLayout(false);
             this.pnUpdateClient.ResumeLayout(false);
             this.pnUpdateClient.PerformLayout();
+            this.pnShowClients.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShowClients)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -565,5 +589,7 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TextBox tbNewClientType;
         private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Panel pnShowClients;
+        private System.Windows.Forms.DataGridView dgvShowClients;
     }
 }

@@ -16,7 +16,7 @@ namespace soft
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ConsultantDashboard());
+            Application.Run(new AdminDashboard());
         }
     }
 }

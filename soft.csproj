@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Admin.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="Company.cs" />
     <Compile Include="Consultant.cs" />
     <Compile Include="ConsultantDashboard.cs">
       <SubType>Form</SubType>
@@ -138,6 +139,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>myDatabase1.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\magnifying-glass-or-search-icon-on-white-background-illustration-eps-10-vector.jpg" />
+    <None Include="Resources\profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg" />
+    <None Include="Resources\pngtree-outline-user-icon-png-image_5045523.jpg" />
     <None Include="Resources\Screenshot 2023-11-09 221555.png" />
     <None Include="Resources\Screenshot 2023-11-09 220437.png" />
     <None Include="Resources\47774.png" />

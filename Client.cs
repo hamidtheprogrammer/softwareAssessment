@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace soft
 {
@@ -32,7 +34,13 @@ namespace soft
         public void addClient(Queries query, Client client)
         {
             dBconnection.saveClientToDb(query.addClient() , client.Name , client.Email, client.Request, client.ClientType, client.Status);
-            MessageBox.Show("Client successfully added");
+            Login.messagePrompt("Client successfully added");
+        }
+
+        public static DataSet getClient(DBconnection dbconnection , Queries query)
+        {
+            DataSet getclient = dbconnection.getDataSet(query.getClient());
+            return getclient;
         }
     }
 }

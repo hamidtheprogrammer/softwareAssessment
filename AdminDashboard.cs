@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Xml.Linq;
+using System.Drawing.Text;
 
 namespace soft
 {
@@ -34,11 +35,23 @@ namespace soft
         Product product;
         //object of product class
 
+        Company company;
+        //object of Company class
+
         
         //welcome User
         private void AdminDashboard_Load(object sender, EventArgs e)
         {
-
+            pnDashboard.Visible = true;
+            pnEditProfile.Visible = false;
+            pnAddCompany.Visible = false;
+            pnCreateProduct.Visible = false;
+            pnShowInventory.Visible = false;
+            pnCreateNewUser.Visible = false;
+            pnUpdateProduct.Visible = false;
+            pnShowCompanies.Visible = false;
+            pnUpdateCompany.Visible = false;
+            pnMergeProductCompany.Visible = false;
             lbwelcome.Text = "Welcome "+currentAdmin.Name;
             
         }
@@ -49,10 +62,15 @@ namespace soft
         private void btnEditProfile_Click(object sender, EventArgs e)
         {   //display admin account details
             pnEditProfile.Visible = true;
+            pnAddCompany.Visible = false;
             pnCreateProduct.Visible = false;
             pnShowInventory.Visible = false;
             pnCreateNewUser.Visible = false;
             pnUpdateProduct.Visible = false;
+            pnShowCompanies.Visible = false;
+            pnUpdateCompany.Visible = false;
+            pnDashboard.Visible = false;
+            pnMergeProductCompany.Visible = false;
             tbnewUserName.Text = currentAdmin.Name;
             tbNewEmail.Text = currentAdmin.Email;
             tbnewPassword.Text = currentAdmin.Password;
@@ -79,28 +97,58 @@ namespace soft
         private void btnCreateProduct_Click(object sender, EventArgs e)
         {   //add a new product 
             pnCreateProduct.Visible = true;
+            pnAddCompany.Visible = false;
             pnEditProfile.Visible= false;
             pnShowInventory.Visible= false;
             pnCreateNewUser.Visible = false;
             pnUpdateProduct.Visible = false;
+            pnShowCompanies.Visible = false;
+            pnUpdateCompany.Visible = false;
+            pnDashboard.Visible = false;
+            pnMergeProductCompany.Visible = false;
+        }
+        private void includePdf()
+        {
+            MessageBox.Show("Must Include a PDF file attached");
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            byte[] pdf = File.ReadAllBytes(lbfilePath.Text);
+            
 
-            product = new Product(1,tbProductName.Text, rtbDescription.Text, tbProductSoftware.Text, tbBusinessArea.Text, pdf, tbUrl.Text);
-            //new product object
+            try{ 
+                byte[] pdf = File.ReadAllBytes(lbfilePath.Text);
 
-            //var cols = new List<string>(){"Name","Description","Type_Of_Software","Business_Area","PDF","Link"};
-            //add database column to fill to list
+                product = new Product(1, tbProductName.Text, rtbDescription.Text, tbProductSoftware.Text, tbBusinessArea.Text, pdf, tbUrl.Text);
+                //new product object
 
-            //var data = new List<object>() { product.Name, product.TypeOfSoftware, product.BusinessArea, product.Link, product.PDF, product.Description };
-            //add data to be inserted in the database to list
+                product.addProduct(query, product);
 
-            product.addProduct(query, product);
+                DialogResult addCompany = MessageBox.Show("Product added successfully\nWould you like to Enter a Company information for this product", "confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
-            //dbconnection.saveToDb("INSERT INTO admin (Username, Email, Password) VALUES (@Username, @Email, @Password)", name, email, password);
+                if (addCompany == DialogResult.Yes)
+                {
+                    pnAddCompany.Visible = true;
+                    pnEditProfile.Visible = false;
+                    pnCreateProduct.Visible = false;
+                    pnShowInventory.Visible = false;
+                    pnCreateNewUser.Visible = false;
+                    pnUpdateProduct.Visible = false;
+                    pnShowCompanies.Visible = false;
+                    pnUpdateCompany.Visible = false;
+                    pnDashboard.Visible = false;
+                    pnMergeProductCompany.Visible = false;
+                }
+                
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                includePdf();
+            }
+            catch(System.ArgumentException)
+            {
+                includePdf();
+            }
         }
 
         private void btnSavePdf_Click(object sender, EventArgs e)
@@ -108,57 +156,76 @@ namespace soft
             lbfilePath.Text = Product.insertPdf();
         }
 
-        private void btnUpdateProduct_Click(object sender, EventArgs e)
-        {
-            pnUpdateProduct.Visible = true;
-            pnShowInventory.Visible = false;
-            pnEditProfile.Visible = false;
-            pnCreateProduct.Visible = false;
-            pnCreateNewUser.Visible = false;
-
-        }
+        
         
         private void btnShowInventory_Click(object sender, EventArgs e)
         {
             pnShowInventory.Visible = true;
+            pnAddCompany.Visible = false;
             pnEditProfile.Visible= false;
             pnCreateProduct.Visible= false;
             pnCreateNewUser.Visible = false;
             pnUpdateProduct.Visible = false;
+            pnShowCompanies.Visible = false;
+            pnUpdateCompany.Visible = false;
+            pnDashboard.Visible = false;
+            pnMergeProductCompany.Visible = false;
 
             //DataTable dataTable = getProduct.Tables[0];
             dgvViewproduct.DataSource = Product.showInventory(dbconnection, query).Tables[0];
         }
 
-
-        
-        private void btnsearchIndex_Click(object sender, EventArgs e)
+        private void dgvViewproduct_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (tbEnterIndex.Text == "") 
+            if(e.RowIndex >= 0 && e.ColumnIndex>= 0)
             {
-                MessageBox.Show("Please Enter an index");
-            }
-            else
-            {
-                DataTable getproductTable = Product.checkProduct(dbconnection , query, Convert.ToInt16(tbEnterIndex.Text));
-                //the product.checkproduct method is used to search the product id that was entered.
+                DataRowView clicked_row = (DataRowView)dgvViewproduct.Rows[e.RowIndex].DataBoundItem;
+                 ForeignKey.Text = clicked_row["CompanyId"].ToString();
 
-                Product currentProduct = Product.displayCurrentProduct(getproductTable);
-                //using the contents stored in the getproductTable, The product information is extracted from the database and stored in a Product object so they can be displayed
+                pnUpdateProduct.Visible = true;
+                pnAddCompany.Visible = false;
+                pnShowInventory.Visible = false;
+                pnEditProfile.Visible = false;
+                pnCreateProduct.Visible = false;
+                pnCreateNewUser.Visible = false;
+                pnShowCompanies.Visible = false;
+                pnUpdateCompany.Visible = false;
+                pnDashboard.Visible = false;
+                pnMergeProductCompany.Visible = false;
 
-                lbcurrentId.Text = Convert.ToString(currentProduct.Id);
-                tbNewProductName.Text = currentProduct.Name;
-                rtNewDescription.Text = currentProduct.Description;
-                tbNewProductSoftware.Text = currentProduct.TypeOfSoftware;
-                tbNewBusinessArea.Text = currentProduct.BusinessArea;
+                Product clicked_Product = Product.displayCurrentProduct(clicked_row);
+
+                clickedProductId.Text = Convert.ToString(clicked_Product.Id);
+                tbNewProductName.Text = clicked_Product.Name;
+                rtNewDescription.Text = clicked_Product.Description;
+                tbNewProductSoftware.Text = clicked_Product.TypeOfSoftware;
+                tbNewBusinessArea.Text = clicked_Product.BusinessArea;
                 //tbnewpdf = currentProduct.PDF;
-                tbNewURL.Text = currentProduct.Link;
-              
+                tbNewURL.Text = clicked_Product.Link;
 
+                clickedProductId.Visible = false;
+                if (ForeignKey.Text == "")
+                {
+                    btnViewCompanyInfo.Visible = false;
+                    btnDeleteCompanyInfo.Visible = false;
+                    btnlinkProduct.Visible = true;
+                    lbdeletecompanyInfo.Visible = false;
+                    lbviewcompanyInfo.Visible = false;
+                    lbLinkProduct.Visible = true;
+                   
+                }
+                else
+                {
+                    btnViewCompanyInfo.Visible = true;
+                    btnDeleteCompanyInfo.Visible = true;
+                    btnlinkProduct.Visible = false;
+                    lbdeletecompanyInfo.Visible= true;
+                    lbviewcompanyInfo.Visible = true;
+                    lbLinkProduct.Visible = false;
 
-                //Product currentProduct = new Product(Product.currentProductId, Product.currentProductName, Product.currentProductDescription, Product.currentProductTypeOfSoftware, Product.currentProductBusinessArea, Product.currentProductPDF, Product.currentProductURL);
-                //currentProduct.checkProduct(query ,Convert.ToInt16(tbEnterIndex.Text));
-            }
+                }
+
+            } 
         }
 
         private void tbsearchBox_TextChanged(object sender, EventArgs e)
@@ -173,11 +240,162 @@ namespace soft
 
         private void btnChangeProduct_Click(object sender, EventArgs e)
         {
-
-            Product.changeCurrentProduct(dbconnection, query, Convert.ToInt16(lbcurrentId.Text), tbNewProductName.Text , rtNewDescription.Text , tbNewProductSoftware.Text , tbNewBusinessArea.Text , File.ReadAllBytes(lbNewfilepath.Text) , tbNewURL.Text);
-
-
+            Product.changeCurrentProduct(dbconnection, query, Convert.ToInt16(clickedProductId.Text), tbNewProductName.Text , rtNewDescription.Text , tbNewProductSoftware.Text , tbNewBusinessArea.Text , File.ReadAllBytes(lbNewfilepath.Text) , tbNewURL.Text);
         }
+
+        private void btnDeleteCompanyInfo_Click(object sender, EventArgs e)
+        {
+            DialogResult confirm = MessageBox.Show("Are you sure you want to delete the company information for this product\n The company information will remain for other linked product.Confirm?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (confirm == DialogResult.Yes)
+            {
+                Product.deletefromProduct(dbconnection, query, Convert.ToInt16(clickedProductId.Text));
+            }
+        }
+
+        private void btnDeleteProduct_Click(object sender, EventArgs e)
+        {
+            DialogResult confirm = MessageBox.Show("Are you sure you want to delete this product?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (confirm == DialogResult.Yes)
+            {
+                Product.deleteproduct(dbconnection, query, Convert.ToInt16(clickedProductId.Text));
+                MessageBox.Show("Product deleted");
+
+                pnShowInventory.Visible = true;
+                pnAddCompany.Visible = false;
+                pnEditProfile.Visible = false;
+                pnCreateProduct.Visible = false;
+                pnCreateNewUser.Visible = false;
+                pnUpdateProduct.Visible = false;
+                pnShowCompanies.Visible = false;
+                pnUpdateCompany.Visible = false;
+                pnDashboard.Visible = false;
+                pnMergeProductCompany.Visible = false;
+
+            }
+            
+        }
+        private void btnlinkProduct_Click(object sender, EventArgs e)
+        {
+            pnCreateNewUser.Visible = false;
+            pnAddCompany.Visible = false;
+            pnCreateProduct.Visible = false;
+            pnEditProfile.Visible = false;
+            pnShowInventory.Visible = false;
+            pnUpdateProduct.Visible = false;
+            pnShowCompanies.Visible = false;
+            pnUpdateCompany.Visible = false;
+            pnDashboard.Visible = false;
+            pnMergeProductCompany.Visible = true;
+
+            dgvMergeCompanyProduct.DataSource = Company.displayCompanies(dbconnection, query).Tables[0];
+        }
+
+        public void searchProduct()
+        {
+            if (tbsearchBox.Text != null && tbsearchBox.Text != "search vendor products")
+            {
+                pnShowInventory.Visible = true;
+                pnAddCompany.Visible = false;
+                pnEditProfile.Visible = false;
+                pnCreateProduct.Visible = false;
+                pnCreateNewUser.Visible = false;
+                pnUpdateProduct.Visible = false;
+                pnShowCompanies.Visible = false;
+                pnUpdateCompany.Visible = false;
+                pnDashboard.Visible = false;
+                pnMergeProductCompany.Visible = false;
+
+                //DataTable dataTable = getProduct.Tables[0];
+                
+
+                dgvViewproduct.DataSource =  Product.searchProduct(dbconnection, query, tbsearchBox.Text);
+            }
+        }
+
+        private void pnImgsearchProduct_MouseClick(object sender, MouseEventArgs e)
+        {
+            searchProduct();
+        }
+
+
+
+        //company info
+        private void btnAddCompany_Click(object sender, EventArgs e)
+        {
+            company = new Company(1,tbCompanyName.Text, tbCompanyContact.Text , tbCompanyWeb.Text, tbEstablishedDate.Text, tbCountries.Text, tbCities.Text, tbAddresses.Text);
+            company.addCompany(query , company);
+
+            int companyId = company.getCompany(query);
+
+            Product.changeCurrentProduct(dbconnection, query, companyId);
+        }
+
+        private void btnViewCompanyInfo_Click(object sender, EventArgs e)
+        {
+            pnUpdateProduct.Visible = false;
+            pnAddCompany.Visible = false;
+            pnShowInventory.Visible = false;
+            pnEditProfile.Visible = false;
+            pnCreateProduct.Visible = false;
+            pnCreateNewUser.Visible = false;
+            pnShowCompanies.Visible = true;
+            pnUpdateCompany.Visible = false;
+            pnDashboard.Visible = false;
+            pnMergeProductCompany.Visible = false;
+
+            DataSet companyInventory = dbconnection.getDataSet(query.getCompanyWithForeignKey(Convert.ToInt16(clickedProductId.Text)));
+            DataTable companydata = companyInventory.Tables[0];
+            dgvShowCompanies.DataSource = companydata;
+        }
+
+        private void dgvShowCompanies_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            pnUpdateCompany.Visible = true;
+            pnUpdateProduct.Visible = false;
+            pnAddCompany.Visible = false;
+            pnShowInventory.Visible = false;
+            pnEditProfile.Visible = false;
+            pnCreateProduct.Visible = false;
+            pnCreateNewUser.Visible = false;
+            pnShowCompanies.Visible = false;
+            pnDashboard.Visible = false;
+            pnMergeProductCompany.Visible = false;
+
+            DataRowView clickedrow = (DataRowView)dgvShowCompanies.Rows[e.RowIndex].DataBoundItem;
+
+            Company clickedCompany = Company.displayclicked_company(clickedrow);
+            lbNewCompanyId.Text = Convert.ToString(clickedCompany.Id);
+            tbNewCompanyName.Text = clickedCompany.CompanyName;
+            tbNewCompanyContact.Text = clickedCompany.Contact;
+            tbNewWebsite.Text = clickedCompany.Website;
+            tbNewCompanyEstablishedDate.Text = clickedCompany.EstablishedDate;
+            tbNewCompanyLocationCountries.Text = clickedCompany.LocationCountries;
+            tbNewCompanyLocationCities.Text = clickedCompany.LocationCities;
+            tbNewCompanyAddresses.Text = clickedCompany.Addresses;
+        }
+
+        private void btnUpdateCompany_Click(object sender, EventArgs e)
+        {
+            Company newCompany = new Company(Convert.ToInt16(lbNewCompanyId.Text), tbNewCompanyName.Text, tbNewCompanyContact.Text, tbNewWebsite.Text, tbNewCompanyEstablishedDate.Text, tbNewCompanyLocationCountries.Text, tbNewCompanyLocationCities.Text, tbNewCompanyAddresses.Text);
+            newCompany.addCompany(dbconnection, query, newCompany, newCompany.Id);
+        }
+
+        private void dgvMergeCompanyProduct_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataRowView clicked_row = (DataRowView)dgvMergeCompanyProduct.Rows[e.RowIndex].DataBoundItem;
+                int keyFromCompany = Convert.ToInt16(clicked_row.Row["Id"].ToString());
+                DialogResult sure = MessageBox.Show("Would you like to link product with {} company", "confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (sure == DialogResult.Yes)
+                {
+                    Product.changeCurrentProduct(dbconnection, query, Convert.ToInt16(clickedProductId.Text), keyFromCompany);
+                }
+            }
+        }
+
 
 
 
@@ -193,11 +411,16 @@ namespace soft
         //User creation and role assignment
         private void btnCreateNewUser_Click(object sender, EventArgs e)
         { 
-             pnCreateNewUser.Visible = true;
-             pnCreateProduct.Visible = false;
-             pnEditProfile.Visible = false;
-             pnShowInventory.Visible = false;
+            pnCreateNewUser.Visible = true;
+            pnAddCompany.Visible = false;
+            pnCreateProduct.Visible = false;
+            pnEditProfile.Visible = false;
+            pnShowInventory.Visible = false;
             pnUpdateProduct.Visible = false;
+            pnShowCompanies.Visible = false;
+            pnUpdateCompany.Visible = false;
+            pnDashboard.Visible = false;
+            pnMergeProductCompany.Visible = false;
 
             rbConsultant.Checked = true;
 
@@ -217,6 +440,6 @@ namespace soft
             }
         }
 
-       
+        
     }
 }

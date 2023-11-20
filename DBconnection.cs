@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.LinkLabel;
+using System.Xml.Linq;
 
 namespace soft
 {
@@ -120,8 +122,64 @@ namespace soft
         }
 
 
-        //dbconnection for clients
-        public void saveClientToDb(string sqlQuery, string name, string email, string request, string clientType, string status)
+        //overloaded method to store foriegn key
+        public void saveProductToDb(string sqlQuery, int id)
+        {
+            using (SqlConnection connToDb = new SqlConnection(_connectionString))
+            {
+                connToDb.Open();
+
+                SqlCommand sqlCommand = new SqlCommand(sqlQuery, connToDb);
+
+                sqlCommand.CommandType = CommandType.Text;
+
+                sqlCommand.Parameters.Add(new SqlParameter("CompanyId", id));
+
+                sqlCommand.ExecuteNonQuery();
+
+            }
+        }
+        //overloaded method to remove foreign key
+        public void saveProductToDb(string sqlQuery)
+        {
+            using (SqlConnection connToDb = new SqlConnection(_connectionString))
+            {
+                connToDb.Open();
+
+                SqlCommand sqlCommand = new SqlCommand(sqlQuery, connToDb);
+
+                sqlCommand.CommandType = CommandType.Text;
+
+                sqlCommand.ExecuteNonQuery();
+
+            }
+        }
+
+        public void saveCompanyToDb(string sqlQuery, string company_Name, string contact, string website, string established_date, string location_Countries, string location_Cities, string addresses)
+        {
+            using (SqlConnection connToDb = new SqlConnection(_connectionString))
+            {
+                connToDb.Open();
+
+                SqlCommand sqlCommand = new SqlCommand(sqlQuery, connToDb);
+                sqlCommand.CommandType = CommandType.Text;
+
+                sqlCommand.Parameters.Add(new SqlParameter("Company_Name", company_Name));
+                sqlCommand.Parameters.Add(new SqlParameter("Contact", contact));
+                sqlCommand.Parameters.Add(new SqlParameter("Website", website));
+                sqlCommand.Parameters.Add(new SqlParameter("Established_Date", established_date));
+                sqlCommand.Parameters.Add(new SqlParameter("Location_Countries", location_Countries));
+                sqlCommand.Parameters.Add(new SqlParameter("Location_Cities", location_Cities));
+                sqlCommand.Parameters.Add(new SqlParameter("Addresses", addresses));
+
+                sqlCommand.ExecuteNonQuery();
+
+            }
+
+        }
+
+            //dbconnection for clients
+            public void saveClientToDb(string sqlQuery, string name, string email, string request, string clientType, string status)
         {
             using (SqlConnection connToDb = new SqlConnection(_connectionString))
             {

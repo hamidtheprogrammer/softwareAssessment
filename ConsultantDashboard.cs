@@ -31,6 +31,7 @@ namespace soft
             pnAddClient.Visible = false;
             pnUpdateClient.Visible = false;
             pnClients.Visible = true;
+            pnShowClients.Visible = false;
         }
         
         private void btnCreateclient_Click(object sender, EventArgs e)
@@ -38,6 +39,7 @@ namespace soft
             pnAddClient.Visible = true;
             pnUpdateClient.Visible = false;
             pnClients.Visible = false;
+            pnShowClients.Visible = false;
             rbPending.Checked = true;
         }
         
@@ -46,6 +48,7 @@ namespace soft
             pnAddClient.Visible = false;
             pnClients.Visible = false;
             pnUpdateClient.Visible = true;
+            pnShowClients.Visible = false;
         }
 
        /* private string status()
@@ -86,6 +89,13 @@ namespace soft
             
         }
 
-       
+        private void btnShowClients_Click(object sender, EventArgs e)
+        {
+            pnShowClients.Visible = true;
+            pnAddClient.Visible = false;
+            pnUpdateClient.Visible = false;
+            pnClients.Visible = false;
+            dgvShowClients.DataSource = Client.getClient(dbconnection, query).Tables[0];
+        }
     }
 }

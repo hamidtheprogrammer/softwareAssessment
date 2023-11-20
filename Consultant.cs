@@ -14,8 +14,6 @@ namespace soft
         public String Password { get; set; }
 
         DBconnection dbconnection = DBconnection.getInstanceOfDBconnection();
-        
-        Login login = new Login();
 
         public static Consultant _instanceOfConsultant;
 
@@ -41,7 +39,7 @@ namespace soft
         public void saveConsultantToDb(Queries query, Consultant consultant)
         {
             dbconnection.saveToDb(query.createNewConsultant(), consultant.Name, consultant.Email, consultant.Password);
-            login.messagePrompt("User added successfully");
+            Login.messagePrompt("User added successfully");
 
         }
     
