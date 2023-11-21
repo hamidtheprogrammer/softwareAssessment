@@ -11,15 +11,29 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Xml.Linq;
 using System.Drawing.Text;
+using System.Data.SqlTypes;
 
 namespace soft
 {
     public partial class AdminDashboard : Form
     {
+        private Timer _timer;
         public AdminDashboard()
         {
             InitializeComponent();
+
+            // Initialize the timer
+            _timer = new Timer();
+            _timer.Interval = 1000; // Set the interval to 1000 milliseconds (1 second)
+            _timer.Tick += Timer_Tick;
+            _timer.Start();
         }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Update the label with the current date and time
+            lbTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        }
+
         Admin currentAdmin = new Admin(Login.Id, Login.currentUserName , Login.currentUserEmail, Login.currentUserPassword);
         //create instance for the logged in admin
 
@@ -38,9 +52,10 @@ namespace soft
         Company company;
         //object of Company class
 
+
         
-        //welcome User
-        private void AdminDashboard_Load(object sender, EventArgs e)
+        //panels
+        public void panelLoadDashboard()
         {
             pnDashboard.Visible = true;
             pnEditProfile.Visible = false;
@@ -52,15 +67,9 @@ namespace soft
             pnShowCompanies.Visible = false;
             pnUpdateCompany.Visible = false;
             pnMergeProductCompany.Visible = false;
-            lbwelcome.Text = "Welcome "+currentAdmin.Name;
-            
         }
-
-
-
-        //admin account
-        private void btnEditProfile_Click(object sender, EventArgs e)
-        {   //display admin account details
+        public void panelEditProfile()
+        {
             pnEditProfile.Visible = true;
             pnAddCompany.Visible = false;
             pnCreateProduct.Visible = false;
@@ -70,6 +79,140 @@ namespace soft
             pnShowCompanies.Visible = false;
             pnUpdateCompany.Visible = false;
             pnDashboard.Visible = false;
+        }
+
+        public void panelCreateProduct()
+        {
+            pnCreateProduct.Visible = true;
+            pnAddCompany.Visible = false;
+            pnEditProfile.Visible = false;
+            pnShowInventory.Visible = false;
+            pnCreateNewUser.Visible = false;
+            pnUpdateProduct.Visible = false;
+            pnShowCompanies.Visible = false;
+            pnUpdateCompany.Visible = false;
+            pnDashboard.Visible = false;
+            pnMergeProductCompany.Visible = false;
+        }
+
+        public void panelAddCompany()
+        {
+            pnAddCompany.Visible = true;
+            pnEditProfile.Visible = false;
+            pnCreateProduct.Visible = false;
+            pnShowInventory.Visible = false;
+            pnCreateNewUser.Visible = false;
+            pnUpdateProduct.Visible = false;
+            pnShowCompanies.Visible = false;
+            pnUpdateCompany.Visible = false;
+            pnDashboard.Visible = false;
+        }
+
+        public void panelShowInventory()
+        {
+            pnShowInventory.Visible = true;
+            pnAddCompany.Visible = false;
+            pnEditProfile.Visible = false;
+            pnCreateProduct.Visible = false;
+            pnCreateNewUser.Visible = false;
+            pnUpdateProduct.Visible = false;
+            pnShowCompanies.Visible = false;
+            pnUpdateCompany.Visible = false;
+            pnDashboard.Visible = false;
+            pnMergeProductCompany.Visible = false;
+        }
+
+        public void panelUpdateProduct()
+        {
+            pnUpdateProduct.Visible = true;
+            pnAddCompany.Visible = false;
+            pnShowInventory.Visible = false;
+            pnEditProfile.Visible = false;
+            pnCreateProduct.Visible = false;
+            pnCreateNewUser.Visible = false;
+            pnShowCompanies.Visible = false;
+            pnUpdateCompany.Visible = false;
+            pnDashboard.Visible = false;
+            pnMergeProductCompany.Visible = false;
+        }
+
+        public void panelMergeCompanyProduct()
+        {
+            pnCreateNewUser.Visible = false;
+            pnAddCompany.Visible = false;
+            pnCreateProduct.Visible = false;
+            pnEditProfile.Visible = false;
+            pnShowInventory.Visible = false;
+            pnUpdateProduct.Visible = false;
+            pnShowCompanies.Visible = false;
+            pnUpdateCompany.Visible = false;
+            pnDashboard.Visible = false;
+            pnMergeProductCompany.Visible = true;
+        }
+
+        public void panelShowCompanies()
+        {
+            pnUpdateProduct.Visible = false;
+            pnAddCompany.Visible = false;
+            pnShowInventory.Visible = false;
+            pnEditProfile.Visible = false;
+            pnCreateProduct.Visible = false;
+            pnCreateNewUser.Visible = false;
+            pnShowCompanies.Visible = true;
+            pnUpdateCompany.Visible = false;
+            pnDashboard.Visible = false;
+            pnMergeProductCompany.Visible = false;
+        }
+
+        public void panelUpdateCompanies()
+        {
+            pnUpdateCompany.Visible = true;
+            pnUpdateProduct.Visible = false;
+            pnAddCompany.Visible = false;
+            pnShowInventory.Visible = false;
+            pnEditProfile.Visible = false;
+            pnCreateProduct.Visible = false;
+            pnCreateNewUser.Visible = false;
+            pnShowCompanies.Visible = false;
+            pnDashboard.Visible = false;
+            pnMergeProductCompany.Visible = false;
+        }
+
+        public void panelCreateNewUser()
+        {
+            pnCreateNewUser.Visible = true;
+            pnAddCompany.Visible = false;
+            pnCreateProduct.Visible = false;
+            pnEditProfile.Visible = false;
+            pnShowInventory.Visible = false;
+            pnUpdateProduct.Visible = false;
+            pnShowCompanies.Visible = false;
+            pnUpdateCompany.Visible = false;
+            pnDashboard.Visible = false;
+            pnMergeProductCompany.Visible = false;
+        }
+
+        public void dgvAllProducts()
+        {
+            dgvViewproduct.DataSource = Product.showInventory(dbconnection, query).Tables[0];
+        }
+
+
+        
+        //welcome User
+        private void AdminDashboard_Load(object sender, EventArgs e)
+        {
+            
+            panelLoadDashboard();
+            lbwelcome.Text = "Welcome "+currentAdmin.Name; 
+        }
+
+
+
+        //admin account
+        private void btnEditProfile_Click(object sender, EventArgs e)
+        {   //display admin account details
+            panelEditProfile();
             pnMergeProductCompany.Visible = false;
             tbnewUserName.Text = currentAdmin.Name;
             tbNewEmail.Text = currentAdmin.Email;
@@ -96,16 +239,7 @@ namespace soft
         //Product info
         private void btnCreateProduct_Click(object sender, EventArgs e)
         {   //add a new product 
-            pnCreateProduct.Visible = true;
-            pnAddCompany.Visible = false;
-            pnEditProfile.Visible= false;
-            pnShowInventory.Visible= false;
-            pnCreateNewUser.Visible = false;
-            pnUpdateProduct.Visible = false;
-            pnShowCompanies.Visible = false;
-            pnUpdateCompany.Visible = false;
-            pnDashboard.Visible = false;
-            pnMergeProductCompany.Visible = false;
+           panelCreateProduct();
         }
         private void includePdf()
         {
@@ -114,7 +248,7 @@ namespace soft
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            
+            panelCreateProduct();
 
             try{ 
                 byte[] pdf = File.ReadAllBytes(lbfilePath.Text);
@@ -128,15 +262,7 @@ namespace soft
 
                 if (addCompany == DialogResult.Yes)
                 {
-                    pnAddCompany.Visible = true;
-                    pnEditProfile.Visible = false;
-                    pnCreateProduct.Visible = false;
-                    pnShowInventory.Visible = false;
-                    pnCreateNewUser.Visible = false;
-                    pnUpdateProduct.Visible = false;
-                    pnShowCompanies.Visible = false;
-                    pnUpdateCompany.Visible = false;
-                    pnDashboard.Visible = false;
+                    panelAddCompany();
                     pnMergeProductCompany.Visible = false;
                 }
                 
@@ -160,19 +286,10 @@ namespace soft
         
         private void btnShowInventory_Click(object sender, EventArgs e)
         {
-            pnShowInventory.Visible = true;
-            pnAddCompany.Visible = false;
-            pnEditProfile.Visible= false;
-            pnCreateProduct.Visible= false;
-            pnCreateNewUser.Visible = false;
-            pnUpdateProduct.Visible = false;
-            pnShowCompanies.Visible = false;
-            pnUpdateCompany.Visible = false;
-            pnDashboard.Visible = false;
-            pnMergeProductCompany.Visible = false;
+            panelShowInventory();
 
             //DataTable dataTable = getProduct.Tables[0];
-            dgvViewproduct.DataSource = Product.showInventory(dbconnection, query).Tables[0];
+            dgvAllProducts();
         }
 
         private void dgvViewproduct_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -182,16 +299,7 @@ namespace soft
                 DataRowView clicked_row = (DataRowView)dgvViewproduct.Rows[e.RowIndex].DataBoundItem;
                  ForeignKey.Text = clicked_row["CompanyId"].ToString();
 
-                pnUpdateProduct.Visible = true;
-                pnAddCompany.Visible = false;
-                pnShowInventory.Visible = false;
-                pnEditProfile.Visible = false;
-                pnCreateProduct.Visible = false;
-                pnCreateNewUser.Visible = false;
-                pnShowCompanies.Visible = false;
-                pnUpdateCompany.Visible = false;
-                pnDashboard.Visible = false;
-                pnMergeProductCompany.Visible = false;
+                panelUpdateProduct();             
 
                 Product clicked_Product = Product.displayCurrentProduct(clicked_row);
 
@@ -240,8 +348,21 @@ namespace soft
 
         private void btnChangeProduct_Click(object sender, EventArgs e)
         {
-            Product.changeCurrentProduct(dbconnection, query, Convert.ToInt16(clickedProductId.Text), tbNewProductName.Text , rtNewDescription.Text , tbNewProductSoftware.Text , tbNewBusinessArea.Text , File.ReadAllBytes(lbNewfilepath.Text) , tbNewURL.Text);
+            try
+            {
+                Product.changeCurrentProduct(dbconnection, query, Convert.ToInt16(clickedProductId.Text), tbNewProductName.Text , rtNewDescription.Text , tbNewProductSoftware.Text , tbNewBusinessArea.Text , File.ReadAllBytes(lbNewfilepath.Text) , tbNewURL.Text);
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                includePdf();
+            }
+            catch (System.ArgumentException)
+            {
+                includePdf();
+            }
         }
+        
+        
 
         private void btnDeleteCompanyInfo_Click(object sender, EventArgs e)
         {
@@ -262,32 +383,14 @@ namespace soft
                 Product.deleteproduct(dbconnection, query, Convert.ToInt16(clickedProductId.Text));
                 MessageBox.Show("Product deleted");
 
-                pnShowInventory.Visible = true;
-                pnAddCompany.Visible = false;
-                pnEditProfile.Visible = false;
-                pnCreateProduct.Visible = false;
-                pnCreateNewUser.Visible = false;
-                pnUpdateProduct.Visible = false;
-                pnShowCompanies.Visible = false;
-                pnUpdateCompany.Visible = false;
-                pnDashboard.Visible = false;
-                pnMergeProductCompany.Visible = false;
+                panelShowInventory();
 
             }
             
         }
         private void btnlinkProduct_Click(object sender, EventArgs e)
         {
-            pnCreateNewUser.Visible = false;
-            pnAddCompany.Visible = false;
-            pnCreateProduct.Visible = false;
-            pnEditProfile.Visible = false;
-            pnShowInventory.Visible = false;
-            pnUpdateProduct.Visible = false;
-            pnShowCompanies.Visible = false;
-            pnUpdateCompany.Visible = false;
-            pnDashboard.Visible = false;
-            pnMergeProductCompany.Visible = true;
+            panelMergeCompanyProduct();
 
             dgvMergeCompanyProduct.DataSource = Company.displayCompanies(dbconnection, query).Tables[0];
         }
@@ -296,16 +399,7 @@ namespace soft
         {
             if (tbsearchBox.Text != null && tbsearchBox.Text != "search vendor products")
             {
-                pnShowInventory.Visible = true;
-                pnAddCompany.Visible = false;
-                pnEditProfile.Visible = false;
-                pnCreateProduct.Visible = false;
-                pnCreateNewUser.Visible = false;
-                pnUpdateProduct.Visible = false;
-                pnShowCompanies.Visible = false;
-                pnUpdateCompany.Visible = false;
-                pnDashboard.Visible = false;
-                pnMergeProductCompany.Visible = false;
+                panelShowInventory();
 
                 //DataTable dataTable = getProduct.Tables[0];
                 
@@ -317,6 +411,11 @@ namespace soft
         private void pnImgsearchProduct_MouseClick(object sender, MouseEventArgs e)
         {
             searchProduct();
+        }
+
+        private void tbsearchBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            tbsearchBox.Text = "";
         }
 
 
@@ -334,16 +433,8 @@ namespace soft
 
         private void btnViewCompanyInfo_Click(object sender, EventArgs e)
         {
-            pnUpdateProduct.Visible = false;
-            pnAddCompany.Visible = false;
-            pnShowInventory.Visible = false;
-            pnEditProfile.Visible = false;
-            pnCreateProduct.Visible = false;
-            pnCreateNewUser.Visible = false;
-            pnShowCompanies.Visible = true;
-            pnUpdateCompany.Visible = false;
-            pnDashboard.Visible = false;
-            pnMergeProductCompany.Visible = false;
+            panelShowCompanies();
+            
 
             DataSet companyInventory = dbconnection.getDataSet(query.getCompanyWithForeignKey(Convert.ToInt16(clickedProductId.Text)));
             DataTable companydata = companyInventory.Tables[0];
@@ -352,16 +443,8 @@ namespace soft
 
         private void dgvShowCompanies_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            pnUpdateCompany.Visible = true;
-            pnUpdateProduct.Visible = false;
-            pnAddCompany.Visible = false;
-            pnShowInventory.Visible = false;
-            pnEditProfile.Visible = false;
-            pnCreateProduct.Visible = false;
-            pnCreateNewUser.Visible = false;
-            pnShowCompanies.Visible = false;
-            pnDashboard.Visible = false;
-            pnMergeProductCompany.Visible = false;
+            panelUpdateCompanies();
+            
 
             DataRowView clickedrow = (DataRowView)dgvShowCompanies.Rows[e.RowIndex].DataBoundItem;
 
@@ -388,12 +471,18 @@ namespace soft
             {
                 DataRowView clicked_row = (DataRowView)dgvMergeCompanyProduct.Rows[e.RowIndex].DataBoundItem;
                 int keyFromCompany = Convert.ToInt16(clicked_row.Row["Id"].ToString());
-                DialogResult sure = MessageBox.Show("Would you like to link product with {} company", "confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                string nameFromCompany = clicked_row.Row["Company_Name"].ToString();
+                DialogResult sure = MessageBox.Show($"Would you like to link product with '{nameFromCompany}' company", "confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (sure == DialogResult.Yes)
                 {
                     Product.changeCurrentProduct(dbconnection, query, Convert.ToInt16(clickedProductId.Text), keyFromCompany);
                 }
             }
+        }
+        private void btnshowAllRelatedProducts_Click(object sender, EventArgs e)
+        {
+            panelShowInventory();
+            dgvViewproduct.DataSource = Product.showInventory(dbconnection, query, Convert.ToInt16(lbNewCompanyId.Text)).Tables[0];
         }
 
 
@@ -410,18 +499,9 @@ namespace soft
         
         //User creation and role assignment
         private void btnCreateNewUser_Click(object sender, EventArgs e)
-        { 
-            pnCreateNewUser.Visible = true;
-            pnAddCompany.Visible = false;
-            pnCreateProduct.Visible = false;
-            pnEditProfile.Visible = false;
-            pnShowInventory.Visible = false;
-            pnUpdateProduct.Visible = false;
-            pnShowCompanies.Visible = false;
-            pnUpdateCompany.Visible = false;
-            pnDashboard.Visible = false;
-            pnMergeProductCompany.Visible = false;
-
+        {
+            panelCreateNewUser();
+            
             rbConsultant.Checked = true;
 
         }
@@ -440,6 +520,35 @@ namespace soft
             }
         }
 
-        
+        private void btnreturnUpdateCompany_Click(object sender, EventArgs e)
+        {
+            panelShowCompanies();
+        }
+
+        private void btnReturnCompanyinventory_Click(object sender, EventArgs e)
+        {
+            panelUpdateProduct();
+        }
+
+        private void btnReturnUpdateProduct_Click(object sender, EventArgs e)
+        {
+            panelShowInventory();
+            dgvAllProducts();
+        }
+
+        private void AdminDashboard_Resize(object sender, EventArgs e)
+        {
+            pnUpdateProduct.Width = this.ClientSize.Width - 20;
+            pnUpdateProduct.Height = this.ClientSize.Height - 20;
+
+            //panel1.Width = this.ClientSize.Width - 60;
+           // panel1.Height = this.ClientSize.Height - 20;
+
+        }
+
+        private void btnDashBoard_Click(object sender, EventArgs e)
+        {
+            panelLoadDashboard();
+        }
     }
 }

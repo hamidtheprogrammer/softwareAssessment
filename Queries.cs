@@ -108,6 +108,11 @@ namespace soft
             return $"SELECT Company.* FROM Company JOIN Product ON Company.Id = Product.CompanyId WHERE Product.Id = '{Id}'";
         }
 
+        public string getProductRelatedToCompany(int Id)
+        {
+            return $"SELECT * FROM product where CompanyId = '{Id}'";
+        }
+
         public String removeForeignKey(int Id)
         {
             return $"UPDATE product SET CompanyId = NULL Where ID = '{Id}'";

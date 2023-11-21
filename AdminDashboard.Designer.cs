@@ -30,6 +30,7 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.pnEditProfile = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnupdateAccount = new System.Windows.Forms.Button();
             this.tbNewEmail = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -61,6 +62,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pnShowInventory = new System.Windows.Forms.Panel();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
             this.dgvViewproduct = new System.Windows.Forms.DataGridView();
             this.btnShowInventory = new System.Windows.Forms.Button();
             this.pnCreateNewUser = new System.Windows.Forms.Panel();
@@ -75,6 +78,11 @@
             this.tbAddNewUserName = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.pnUpdateProduct = new System.Windows.Forms.Panel();
+            this.btnReturnUpdateProduct = new System.Windows.Forms.Button();
+            this.lbLinkProduct = new System.Windows.Forms.Label();
+            this.lbviewcompanyInfo = new System.Windows.Forms.Label();
+            this.lbdeletecompanyInfo = new System.Windows.Forms.Label();
+            this.btnlinkProduct = new System.Windows.Forms.Button();
             this.btnDeleteCompanyInfo = new System.Windows.Forms.Button();
             this.btnViewCompanyInfo = new System.Windows.Forms.Button();
             this.ForeignKey = new System.Windows.Forms.Label();
@@ -112,8 +120,13 @@
             this.tbCompanyContact = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.pnShowCompanies = new System.Windows.Forms.Panel();
+            this.btnReturnCompanyinventory = new System.Windows.Forms.Button();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
             this.dgvShowCompanies = new System.Windows.Forms.DataGridView();
             this.pnUpdateCompany = new System.Windows.Forms.Panel();
+            this.btnreturnUpdateCompany = new System.Windows.Forms.Button();
+            this.btnshowAllRelatedProducts = new System.Windows.Forms.Button();
             this.lbNewCompanyId = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.btnUpdateCompany = new System.Windows.Forms.Button();
@@ -132,26 +145,20 @@
             this.tbNewCompanyContact = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.pnDashboard = new System.Windows.Forms.Panel();
-            this.label37 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDashBoard = new System.Windows.Forms.Button();
             this.btnEditProfile = new System.Windows.Forms.Button();
             this.label38 = new System.Windows.Forms.Label();
             this.pnImgsearchProduct = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label23 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
             this.pnMergeProductCompany = new System.Windows.Forms.Panel();
-            this.dgvMergeCompanyProduct = new System.Windows.Forms.DataGridView();
             this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.btnlinkProduct = new System.Windows.Forms.Button();
-            this.lbdeletecompanyInfo = new System.Windows.Forms.Label();
-            this.lbviewcompanyInfo = new System.Windows.Forms.Label();
-            this.lbLinkProduct = new System.Windows.Forms.Label();
+            this.dgvMergeCompanyProduct = new System.Windows.Forms.DataGridView();
+            this.lbTime = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.lbproductCount = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.pnEditProfile.SuspendLayout();
             this.pnCreateProduct.SuspendLayout();
             this.pnShowInventory.SuspendLayout();
@@ -190,10 +197,22 @@
             this.pnEditProfile.Controls.Add(this.label3);
             this.pnEditProfile.Controls.Add(this.tbnewUserName);
             this.pnEditProfile.Controls.Add(this.label2);
-            this.pnEditProfile.Location = new System.Drawing.Point(385, 207);
+            this.pnEditProfile.Location = new System.Drawing.Point(382, 201);
             this.pnEditProfile.Name = "pnEditProfile";
-            this.pnEditProfile.Size = new System.Drawing.Size(1812, 904);
+            this.pnEditProfile.Size = new System.Drawing.Size(1812, 883);
             this.pnEditProfile.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 21.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label1.Location = new System.Drawing.Point(196, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(178, 40);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Edit Profile";
             // 
             // btnupdateAccount
             // 
@@ -267,7 +286,8 @@
             this.btnCreateProduct.FlatAppearance.BorderSize = 0;
             this.btnCreateProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateProduct.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateProduct.Location = new System.Drawing.Point(111, 397);
+            this.btnCreateProduct.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnCreateProduct.Location = new System.Drawing.Point(96, 456);
             this.btnCreateProduct.Name = "btnCreateProduct";
             this.btnCreateProduct.Size = new System.Drawing.Size(148, 40);
             this.btnCreateProduct.TabIndex = 2;
@@ -280,7 +300,8 @@
             this.btnCreateNewUser.FlatAppearance.BorderSize = 0;
             this.btnCreateNewUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateNewUser.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateNewUser.Location = new System.Drawing.Point(111, 514);
+            this.btnCreateNewUser.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnCreateNewUser.Location = new System.Drawing.Point(96, 573);
             this.btnCreateNewUser.Name = "btnCreateNewUser";
             this.btnCreateNewUser.Size = new System.Drawing.Size(148, 40);
             this.btnCreateNewUser.TabIndex = 3;
@@ -290,7 +311,7 @@
             // 
             // btnDeleteProduct
             // 
-            this.btnDeleteProduct.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnDeleteProduct.BackColor = System.Drawing.Color.Brown;
             this.btnDeleteProduct.FlatAppearance.BorderSize = 0;
             this.btnDeleteProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteProduct.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -312,12 +333,14 @@
             this.tbsearchBox.TabIndex = 6;
             this.tbsearchBox.Text = "search vendor products";
             this.tbsearchBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbsearchBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbsearchBox_MouseClick);
             this.tbsearchBox.TextChanged += new System.EventHandler(this.tbsearchBox_TextChanged);
             // 
             // lbwelcome
             // 
             this.lbwelcome.AutoSize = true;
             this.lbwelcome.Font = new System.Drawing.Font("Showcard Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbwelcome.ForeColor = System.Drawing.Color.Brown;
             this.lbwelcome.Location = new System.Drawing.Point(374, 82);
             this.lbwelcome.Name = "lbwelcome";
             this.lbwelcome.Size = new System.Drawing.Size(199, 46);
@@ -326,7 +349,7 @@
             // 
             // pnCreateProduct
             // 
-            this.pnCreateProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.pnCreateProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(37)))), ((int)(((byte)(60)))));
             this.pnCreateProduct.Controls.Add(this.label40);
             this.pnCreateProduct.Controls.Add(this.label39);
             this.pnCreateProduct.Controls.Add(this.lbfilePath);
@@ -343,7 +366,7 @@
             this.pnCreateProduct.Controls.Add(this.label6);
             this.pnCreateProduct.Controls.Add(this.tbProductName);
             this.pnCreateProduct.Controls.Add(this.label7);
-            this.pnCreateProduct.Location = new System.Drawing.Point(388, 202);
+            this.pnCreateProduct.Location = new System.Drawing.Point(382, 199);
             this.pnCreateProduct.Name = "pnCreateProduct";
             this.pnCreateProduct.Size = new System.Drawing.Size(1803, 905);
             this.pnCreateProduct.TabIndex = 10;
@@ -364,7 +387,7 @@
             // 
             this.label39.AutoSize = true;
             this.label39.Font = new System.Drawing.Font("Comic Sans MS", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.ForeColor = System.Drawing.Color.Indigo;
+            this.label39.ForeColor = System.Drawing.Color.Brown;
             this.label39.Location = new System.Drawing.Point(58, 53);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(249, 35);
@@ -396,6 +419,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.Window;
             this.label10.Location = new System.Drawing.Point(215, 459);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(134, 27);
@@ -413,6 +437,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.Window;
             this.label9.Location = new System.Drawing.Point(215, 373);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(48, 27);
@@ -430,6 +455,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.Window;
             this.label8.Location = new System.Drawing.Point(215, 305);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(137, 27);
@@ -447,7 +473,7 @@
             // 
             // btnAddProduct
             // 
-            this.btnAddProduct.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnAddProduct.BackColor = System.Drawing.Color.Brown;
             this.btnAddProduct.FlatAppearance.BorderSize = 0;
             this.btnAddProduct.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -472,6 +498,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.Window;
             this.label5.Location = new System.Drawing.Point(215, 233);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(175, 27);
@@ -482,6 +509,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.Window;
             this.label6.Location = new System.Drawing.Point(215, 558);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(114, 27);
@@ -499,6 +527,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.Window;
             this.label7.Location = new System.Drawing.Point(215, 173);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(64, 27);
@@ -511,14 +540,38 @@
             // 
             // pnShowInventory
             // 
-            this.pnShowInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.pnShowInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(37)))), ((int)(((byte)(60)))));
             this.pnShowInventory.Controls.Add(this.label44);
             this.pnShowInventory.Controls.Add(this.label42);
             this.pnShowInventory.Controls.Add(this.dgvViewproduct);
             this.pnShowInventory.Location = new System.Drawing.Point(385, 207);
             this.pnShowInventory.Name = "pnShowInventory";
-            this.pnShowInventory.Size = new System.Drawing.Size(1900, 907);
+            this.pnShowInventory.Size = new System.Drawing.Size(1900, 877);
             this.pnShowInventory.TabIndex = 11;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.BackColor = System.Drawing.Color.Transparent;
+            this.label44.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.ForeColor = System.Drawing.SystemColors.Window;
+            this.label44.Location = new System.Drawing.Point(23, 114);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(495, 23);
+            this.label44.TabIndex = 55;
+            this.label44.Text = "Place cursor on any text on a row and double-click to expand.";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.BackColor = System.Drawing.Color.Transparent;
+            this.label42.Font = new System.Drawing.Font("Comic Sans MS", 21.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.ForeColor = System.Drawing.Color.Brown;
+            this.label42.Location = new System.Drawing.Point(20, 41);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(270, 40);
+            this.label42.TabIndex = 54;
+            this.label42.Text = "Product Inventory";
             // 
             // dgvViewproduct
             // 
@@ -534,7 +587,8 @@
             this.btnShowInventory.FlatAppearance.BorderSize = 0;
             this.btnShowInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowInventory.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowInventory.Location = new System.Drawing.Point(111, 291);
+            this.btnShowInventory.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnShowInventory.Location = new System.Drawing.Point(96, 350);
             this.btnShowInventory.Name = "btnShowInventory";
             this.btnShowInventory.Size = new System.Drawing.Size(148, 37);
             this.btnShowInventory.TabIndex = 12;
@@ -544,7 +598,7 @@
             // 
             // pnCreateNewUser
             // 
-            this.pnCreateNewUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.pnCreateNewUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(37)))), ((int)(((byte)(60)))));
             this.pnCreateNewUser.Controls.Add(this.label14);
             this.pnCreateNewUser.Controls.Add(this.rbConsultant);
             this.pnCreateNewUser.Controls.Add(this.rbAdmin);
@@ -557,14 +611,14 @@
             this.pnCreateNewUser.Controls.Add(this.label13);
             this.pnCreateNewUser.Location = new System.Drawing.Point(382, 204);
             this.pnCreateNewUser.Name = "pnCreateNewUser";
-            this.pnCreateNewUser.Size = new System.Drawing.Size(1815, 907);
+            this.pnCreateNewUser.Size = new System.Drawing.Size(1815, 880);
             this.pnCreateNewUser.TabIndex = 16;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label14.ForeColor = System.Drawing.Color.Brown;
             this.label14.Location = new System.Drawing.Point(163, 130);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(265, 30);
@@ -575,6 +629,7 @@
             // 
             this.rbConsultant.AutoSize = true;
             this.rbConsultant.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbConsultant.ForeColor = System.Drawing.SystemColors.Window;
             this.rbConsultant.Location = new System.Drawing.Point(402, 459);
             this.rbConsultant.Name = "rbConsultant";
             this.rbConsultant.Size = new System.Drawing.Size(125, 31);
@@ -587,6 +642,7 @@
             // 
             this.rbAdmin.AutoSize = true;
             this.rbAdmin.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbAdmin.ForeColor = System.Drawing.SystemColors.Window;
             this.rbAdmin.Location = new System.Drawing.Point(277, 459);
             this.rbAdmin.Name = "rbAdmin";
             this.rbAdmin.Size = new System.Drawing.Size(85, 31);
@@ -597,7 +653,7 @@
             // 
             // btnAddNewUser
             // 
-            this.btnAddNewUser.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnAddNewUser.BackColor = System.Drawing.Color.Brown;
             this.btnAddNewUser.FlatAppearance.BorderSize = 0;
             this.btnAddNewUser.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnAddNewUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -622,6 +678,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.Window;
             this.label11.Location = new System.Drawing.Point(228, 301);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(75, 30);
@@ -639,6 +696,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.Window;
             this.label12.Location = new System.Drawing.Point(228, 382);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(112, 30);
@@ -656,6 +714,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.Window;
             this.label13.Location = new System.Drawing.Point(228, 219);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(120, 30);
@@ -664,7 +723,12 @@
             // 
             // pnUpdateProduct
             // 
-            this.pnUpdateProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.pnUpdateProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnUpdateProduct.AutoScroll = true;
+            this.pnUpdateProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(37)))), ((int)(((byte)(60)))));
+            this.pnUpdateProduct.Controls.Add(this.btnReturnUpdateProduct);
             this.pnUpdateProduct.Controls.Add(this.lbLinkProduct);
             this.pnUpdateProduct.Controls.Add(this.lbviewcompanyInfo);
             this.pnUpdateProduct.Controls.Add(this.lbdeletecompanyInfo);
@@ -689,10 +753,73 @@
             this.pnUpdateProduct.Controls.Add(this.label20);
             this.pnUpdateProduct.Controls.Add(this.tbNewProductName);
             this.pnUpdateProduct.Controls.Add(this.label21);
-            this.pnUpdateProduct.Location = new System.Drawing.Point(382, 207);
+            this.pnUpdateProduct.Location = new System.Drawing.Point(382, 201);
             this.pnUpdateProduct.Name = "pnUpdateProduct";
-            this.pnUpdateProduct.Size = new System.Drawing.Size(1818, 903);
+            this.pnUpdateProduct.Size = new System.Drawing.Size(1812, 885);
             this.pnUpdateProduct.TabIndex = 1;
+            // 
+            // btnReturnUpdateProduct
+            // 
+            this.btnReturnUpdateProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnReturnUpdateProduct.FlatAppearance.BorderSize = 0;
+            this.btnReturnUpdateProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReturnUpdateProduct.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturnUpdateProduct.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnReturnUpdateProduct.Location = new System.Drawing.Point(0, 0);
+            this.btnReturnUpdateProduct.Name = "btnReturnUpdateProduct";
+            this.btnReturnUpdateProduct.Size = new System.Drawing.Size(83, 32);
+            this.btnReturnUpdateProduct.TabIndex = 70;
+            this.btnReturnUpdateProduct.Text = "Go back";
+            this.btnReturnUpdateProduct.UseVisualStyleBackColor = false;
+            this.btnReturnUpdateProduct.Click += new System.EventHandler(this.btnReturnUpdateProduct_Click);
+            // 
+            // lbLinkProduct
+            // 
+            this.lbLinkProduct.AutoSize = true;
+            this.lbLinkProduct.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLinkProduct.ForeColor = System.Drawing.SystemColors.Window;
+            this.lbLinkProduct.Location = new System.Drawing.Point(742, 59);
+            this.lbLinkProduct.Name = "lbLinkProduct";
+            this.lbLinkProduct.Size = new System.Drawing.Size(408, 23);
+            this.lbLinkProduct.TabIndex = 40;
+            this.lbLinkProduct.Text = "Click to link product with an existing Company info.";
+            // 
+            // lbviewcompanyInfo
+            // 
+            this.lbviewcompanyInfo.AutoSize = true;
+            this.lbviewcompanyInfo.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbviewcompanyInfo.ForeColor = System.Drawing.SystemColors.Window;
+            this.lbviewcompanyInfo.Location = new System.Drawing.Point(742, 169);
+            this.lbviewcompanyInfo.Name = "lbviewcompanyInfo";
+            this.lbviewcompanyInfo.Size = new System.Drawing.Size(221, 23);
+            this.lbviewcompanyInfo.TabIndex = 39;
+            this.lbviewcompanyInfo.Text = "Click to view Company info.";
+            // 
+            // lbdeletecompanyInfo
+            // 
+            this.lbdeletecompanyInfo.AutoSize = true;
+            this.lbdeletecompanyInfo.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbdeletecompanyInfo.ForeColor = System.Drawing.SystemColors.Window;
+            this.lbdeletecompanyInfo.Location = new System.Drawing.Point(742, 113);
+            this.lbdeletecompanyInfo.Name = "lbdeletecompanyInfo";
+            this.lbdeletecompanyInfo.Size = new System.Drawing.Size(237, 23);
+            this.lbdeletecompanyInfo.TabIndex = 38;
+            this.lbdeletecompanyInfo.Text = "Click to delete Company info.";
+            // 
+            // btnlinkProduct
+            // 
+            this.btnlinkProduct.BackColor = System.Drawing.Color.Transparent;
+            this.btnlinkProduct.FlatAppearance.BorderSize = 0;
+            this.btnlinkProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnlinkProduct.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnlinkProduct.ForeColor = System.Drawing.Color.Green;
+            this.btnlinkProduct.Location = new System.Drawing.Point(1142, 59);
+            this.btnlinkProduct.Name = "btnlinkProduct";
+            this.btnlinkProduct.Size = new System.Drawing.Size(114, 28);
+            this.btnlinkProduct.TabIndex = 37;
+            this.btnlinkProduct.Text = "Merge product";
+            this.btnlinkProduct.UseVisualStyleBackColor = false;
+            this.btnlinkProduct.Click += new System.EventHandler(this.btnlinkProduct_Click);
             // 
             // btnDeleteCompanyInfo
             // 
@@ -701,7 +828,7 @@
             this.btnDeleteCompanyInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteCompanyInfo.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteCompanyInfo.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnDeleteCompanyInfo.Location = new System.Drawing.Point(1202, 108);
+            this.btnDeleteCompanyInfo.Location = new System.Drawing.Point(967, 105);
             this.btnDeleteCompanyInfo.Name = "btnDeleteCompanyInfo";
             this.btnDeleteCompanyInfo.Size = new System.Drawing.Size(71, 39);
             this.btnDeleteCompanyInfo.TabIndex = 36;
@@ -716,7 +843,7 @@
             this.btnViewCompanyInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewCompanyInfo.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViewCompanyInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnViewCompanyInfo.Location = new System.Drawing.Point(1204, 168);
+            this.btnViewCompanyInfo.Location = new System.Drawing.Point(969, 165);
             this.btnViewCompanyInfo.Name = "btnViewCompanyInfo";
             this.btnViewCompanyInfo.Size = new System.Drawing.Size(50, 33);
             this.btnViewCompanyInfo.TabIndex = 35;
@@ -727,6 +854,7 @@
             // ForeignKey
             // 
             this.ForeignKey.AutoSize = true;
+            this.ForeignKey.ForeColor = System.Drawing.SystemColors.Window;
             this.ForeignKey.Location = new System.Drawing.Point(839, 127);
             this.ForeignKey.Name = "ForeignKey";
             this.ForeignKey.Size = new System.Drawing.Size(41, 13);
@@ -736,6 +864,7 @@
             // clickedProductId
             // 
             this.clickedProductId.AutoSize = true;
+            this.clickedProductId.ForeColor = System.Drawing.SystemColors.Window;
             this.clickedProductId.Location = new System.Drawing.Point(844, 169);
             this.clickedProductId.Name = "clickedProductId";
             this.clickedProductId.Size = new System.Drawing.Size(41, 13);
@@ -775,6 +904,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.SystemColors.Window;
             this.label16.Location = new System.Drawing.Point(237, 391);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(112, 23);
@@ -792,6 +922,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.SystemColors.Window;
             this.label17.Location = new System.Drawing.Point(237, 328);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(41, 23);
@@ -809,6 +940,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.SystemColors.Window;
             this.label18.Location = new System.Drawing.Point(237, 255);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(115, 23);
@@ -825,7 +957,7 @@
             // 
             // btnChangeProduct
             // 
-            this.btnChangeProduct.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnChangeProduct.BackColor = System.Drawing.Color.Brown;
             this.btnChangeProduct.FlatAppearance.BorderSize = 0;
             this.btnChangeProduct.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnChangeProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -850,6 +982,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.SystemColors.Window;
             this.label19.Location = new System.Drawing.Point(237, 190);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(147, 23);
@@ -860,6 +993,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.SystemColors.Window;
             this.label20.Location = new System.Drawing.Point(237, 474);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(96, 23);
@@ -877,6 +1011,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.SystemColors.Window;
             this.label21.Location = new System.Drawing.Point(240, 117);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(53, 23);
@@ -904,7 +1039,7 @@
             this.pnAddCompany.Controls.Add(this.label28);
             this.pnAddCompany.Location = new System.Drawing.Point(385, 202);
             this.pnAddCompany.Name = "pnAddCompany";
-            this.pnAddCompany.Size = new System.Drawing.Size(1809, 912);
+            this.pnAddCompany.Size = new System.Drawing.Size(1809, 882);
             this.pnAddCompany.TabIndex = 16;
             // 
             // label29
@@ -1055,26 +1190,68 @@
             // pnShowCompanies
             // 
             this.pnShowCompanies.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.pnShowCompanies.Controls.Add(this.btnReturnCompanyinventory);
             this.pnShowCompanies.Controls.Add(this.label45);
             this.pnShowCompanies.Controls.Add(this.label41);
             this.pnShowCompanies.Controls.Add(this.dgvShowCompanies);
             this.pnShowCompanies.Location = new System.Drawing.Point(388, 202);
             this.pnShowCompanies.Name = "pnShowCompanies";
-            this.pnShowCompanies.Size = new System.Drawing.Size(1809, 912);
+            this.pnShowCompanies.Size = new System.Drawing.Size(1809, 882);
             this.pnShowCompanies.TabIndex = 33;
+            // 
+            // btnReturnCompanyinventory
+            // 
+            this.btnReturnCompanyinventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnReturnCompanyinventory.FlatAppearance.BorderSize = 0;
+            this.btnReturnCompanyinventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReturnCompanyinventory.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturnCompanyinventory.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnReturnCompanyinventory.Location = new System.Drawing.Point(-6, -1);
+            this.btnReturnCompanyinventory.Name = "btnReturnCompanyinventory";
+            this.btnReturnCompanyinventory.Size = new System.Drawing.Size(83, 32);
+            this.btnReturnCompanyinventory.TabIndex = 69;
+            this.btnReturnCompanyinventory.Text = "Go back";
+            this.btnReturnCompanyinventory.UseVisualStyleBackColor = false;
+            this.btnReturnCompanyinventory.Click += new System.EventHandler(this.btnReturnCompanyinventory_Click);
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.BackColor = System.Drawing.Color.Transparent;
+            this.label45.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.label45.Location = new System.Drawing.Point(26, 117);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(495, 23);
+            this.label45.TabIndex = 56;
+            this.label45.Text = "Place cursor on any text on a row and double-click to expand.";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.BackColor = System.Drawing.Color.Transparent;
+            this.label41.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label41.Location = new System.Drawing.Point(59, 48);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(190, 30);
+            this.label41.TabIndex = 54;
+            this.label41.Text = "Vendor Inventory";
             // 
             // dgvShowCompanies
             // 
             this.dgvShowCompanies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvShowCompanies.Location = new System.Drawing.Point(0, 144);
             this.dgvShowCompanies.Name = "dgvShowCompanies";
-            this.dgvShowCompanies.Size = new System.Drawing.Size(1806, 761);
+            this.dgvShowCompanies.Size = new System.Drawing.Size(1806, 738);
             this.dgvShowCompanies.TabIndex = 0;
             this.dgvShowCompanies.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowCompanies_CellContentDoubleClick);
             // 
             // pnUpdateCompany
             // 
             this.pnUpdateCompany.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.pnUpdateCompany.Controls.Add(this.btnreturnUpdateCompany);
+            this.pnUpdateCompany.Controls.Add(this.btnshowAllRelatedProducts);
             this.pnUpdateCompany.Controls.Add(this.lbNewCompanyId);
             this.pnUpdateCompany.Controls.Add(this.label26);
             this.pnUpdateCompany.Controls.Add(this.btnUpdateCompany);
@@ -1094,8 +1271,38 @@
             this.pnUpdateCompany.Controls.Add(this.label36);
             this.pnUpdateCompany.Location = new System.Drawing.Point(385, 204);
             this.pnUpdateCompany.Name = "pnUpdateCompany";
-            this.pnUpdateCompany.Size = new System.Drawing.Size(1806, 907);
+            this.pnUpdateCompany.Size = new System.Drawing.Size(1806, 880);
             this.pnUpdateCompany.TabIndex = 50;
+            // 
+            // btnreturnUpdateCompany
+            // 
+            this.btnreturnUpdateCompany.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnreturnUpdateCompany.FlatAppearance.BorderSize = 0;
+            this.btnreturnUpdateCompany.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnreturnUpdateCompany.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnreturnUpdateCompany.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnreturnUpdateCompany.Location = new System.Drawing.Point(0, 0);
+            this.btnreturnUpdateCompany.Name = "btnreturnUpdateCompany";
+            this.btnreturnUpdateCompany.Size = new System.Drawing.Size(83, 32);
+            this.btnreturnUpdateCompany.TabIndex = 68;
+            this.btnreturnUpdateCompany.Text = "Go back";
+            this.btnreturnUpdateCompany.UseVisualStyleBackColor = false;
+            this.btnreturnUpdateCompany.Click += new System.EventHandler(this.btnreturnUpdateCompany_Click);
+            // 
+            // btnshowAllRelatedProducts
+            // 
+            this.btnshowAllRelatedProducts.BackColor = System.Drawing.Color.Transparent;
+            this.btnshowAllRelatedProducts.FlatAppearance.BorderSize = 0;
+            this.btnshowAllRelatedProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnshowAllRelatedProducts.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnshowAllRelatedProducts.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnshowAllRelatedProducts.Location = new System.Drawing.Point(620, 26);
+            this.btnshowAllRelatedProducts.Name = "btnshowAllRelatedProducts";
+            this.btnshowAllRelatedProducts.Size = new System.Drawing.Size(219, 38);
+            this.btnshowAllRelatedProducts.TabIndex = 67;
+            this.btnshowAllRelatedProducts.Text = "Show All Related Products";
+            this.btnshowAllRelatedProducts.UseVisualStyleBackColor = false;
+            this.btnshowAllRelatedProducts.Click += new System.EventHandler(this.btnshowAllRelatedProducts_Click);
             // 
             // lbNewCompanyId
             // 
@@ -1253,53 +1460,52 @@
             // 
             // pnDashboard
             // 
-            this.pnDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.pnDashboard.Controls.Add(this.label37);
-            this.pnDashboard.Location = new System.Drawing.Point(385, 207);
+            this.pnDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(37)))), ((int)(((byte)(60)))));
+            this.pnDashboard.Controls.Add(this.button2);
+            this.pnDashboard.Controls.Add(this.lbproductCount);
+            this.pnDashboard.Controls.Add(this.button3);
+            this.pnDashboard.Controls.Add(this.lbTime);
+            this.pnDashboard.Location = new System.Drawing.Point(382, 201);
             this.pnDashboard.Name = "pnDashboard";
-            this.pnDashboard.Size = new System.Drawing.Size(1809, 907);
+            this.pnDashboard.Size = new System.Drawing.Size(1809, 883);
             this.pnDashboard.TabIndex = 34;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(234, 72);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(59, 13);
-            this.label37.TabIndex = 0;
-            this.label37.Text = "Dashboard";
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.AutoScroll = true;
+            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(7)))), ((int)(((byte)(30)))));
+            this.panel1.Controls.Add(this.btnDashBoard);
             this.panel1.Controls.Add(this.btnEditProfile);
             this.panel1.Controls.Add(this.btnShowInventory);
             this.panel1.Controls.Add(this.btnCreateProduct);
             this.panel1.Controls.Add(this.btnCreateNewUser);
-            this.panel1.Location = new System.Drawing.Point(2, 207);
+            this.panel1.Location = new System.Drawing.Point(2, 202);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(385, 903);
+            this.panel1.Size = new System.Drawing.Size(380, 902);
             this.panel1.TabIndex = 51;
             // 
-            // button2
+            // btnDashBoard
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(111, 97);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(148, 37);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Dashboard";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDashBoard.FlatAppearance.BorderSize = 0;
+            this.btnDashBoard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDashBoard.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashBoard.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnDashBoard.Location = new System.Drawing.Point(96, 156);
+            this.btnDashBoard.Name = "btnDashBoard";
+            this.btnDashBoard.Size = new System.Drawing.Size(148, 37);
+            this.btnDashBoard.TabIndex = 13;
+            this.btnDashBoard.Text = "Dashboard";
+            this.btnDashBoard.UseVisualStyleBackColor = true;
+            this.btnDashBoard.Click += new System.EventHandler(this.btnDashBoard_Click);
             // 
             // btnEditProfile
             // 
             this.btnEditProfile.FlatAppearance.BorderSize = 0;
             this.btnEditProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditProfile.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditProfile.Location = new System.Drawing.Point(111, 196);
+            this.btnEditProfile.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnEditProfile.Location = new System.Drawing.Point(96, 255);
             this.btnEditProfile.Name = "btnEditProfile";
             this.btnEditProfile.Size = new System.Drawing.Size(148, 37);
             this.btnEditProfile.TabIndex = 8;
@@ -1312,7 +1518,7 @@
             this.label38.AutoSize = true;
             this.label38.BackColor = System.Drawing.Color.Transparent;
             this.label38.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.ForeColor = System.Drawing.Color.DarkBlue;
+            this.label38.ForeColor = System.Drawing.Color.Brown;
             this.label38.Location = new System.Drawing.Point(56, 9);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(205, 27);
@@ -1350,51 +1556,27 @@
             this.label23.TabIndex = 0;
             this.label23.Text = "Admin";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 21.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label1.Location = new System.Drawing.Point(196, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 40);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Edit Profile";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.BackColor = System.Drawing.Color.Transparent;
-            this.label41.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label41.Location = new System.Drawing.Point(59, 48);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(190, 30);
-            this.label41.TabIndex = 54;
-            this.label41.Text = "Vendor Inventory";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.BackColor = System.Drawing.Color.Transparent;
-            this.label42.Font = new System.Drawing.Font("Comic Sans MS", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label42.Location = new System.Drawing.Point(65, 38);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(225, 35);
-            this.label42.TabIndex = 54;
-            this.label42.Text = "Product Inventory";
-            // 
             // pnMergeProductCompany
             // 
-            this.pnMergeProductCompany.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.pnMergeProductCompany.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(37)))), ((int)(((byte)(60)))));
             this.pnMergeProductCompany.Controls.Add(this.label43);
             this.pnMergeProductCompany.Controls.Add(this.dgvMergeCompanyProduct);
-            this.pnMergeProductCompany.Location = new System.Drawing.Point(385, 202);
+            this.pnMergeProductCompany.Location = new System.Drawing.Point(382, 202);
             this.pnMergeProductCompany.Name = "pnMergeProductCompany";
-            this.pnMergeProductCompany.Size = new System.Drawing.Size(1815, 909);
+            this.pnMergeProductCompany.Size = new System.Drawing.Size(1818, 882);
             this.pnMergeProductCompany.TabIndex = 55;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.BackColor = System.Drawing.Color.Transparent;
+            this.label43.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.ForeColor = System.Drawing.SystemColors.Window;
+            this.label43.Location = new System.Drawing.Point(22, 82);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(446, 30);
+            this.label43.TabIndex = 1;
+            this.label43.Text = "Select row to link product with a company";
             // 
             // dgvMergeCompanyProduct
             // 
@@ -1404,96 +1586,70 @@
             this.dgvMergeCompanyProduct.Location = new System.Drawing.Point(0, 112);
             this.dgvMergeCompanyProduct.Name = "dgvMergeCompanyProduct";
             this.dgvMergeCompanyProduct.ReadOnly = true;
-            this.dgvMergeCompanyProduct.Size = new System.Drawing.Size(1809, 797);
+            this.dgvMergeCompanyProduct.Size = new System.Drawing.Size(1809, 770);
             this.dgvMergeCompanyProduct.TabIndex = 0;
             this.dgvMergeCompanyProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMergeCompanyProduct_CellClick);
             // 
-            // label43
+            // lbTime
             // 
-            this.label43.AutoSize = true;
-            this.label43.BackColor = System.Drawing.Color.Transparent;
-            this.label43.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.Location = new System.Drawing.Point(22, 82);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(446, 30);
-            this.label43.TabIndex = 1;
-            this.label43.Text = "Select row to link product with a company";
+            this.lbTime.AutoSize = true;
+            this.lbTime.BackColor = System.Drawing.Color.Brown;
+            this.lbTime.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTime.ForeColor = System.Drawing.SystemColors.Window;
+            this.lbTime.Location = new System.Drawing.Point(781, 0);
+            this.lbTime.Name = "lbTime";
+            this.lbTime.Size = new System.Drawing.Size(99, 35);
+            this.lbTime.TabIndex = 1;
+            this.lbTime.Text = "label46";
             // 
-            // label44
+            // button3
             // 
-            this.label44.AutoSize = true;
-            this.label44.BackColor = System.Drawing.Color.Transparent;
-            this.label44.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label44.Location = new System.Drawing.Point(23, 114);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(495, 23);
-            this.label44.TabIndex = 55;
-            this.label44.Text = "Place cursor on any text on a row and double-click to expand.";
+            this.button3.BackColor = System.Drawing.Color.Transparent;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Comic Sans MS", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.Window;
+            this.button3.Location = new System.Drawing.Point(0, 38);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(244, 75);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "DashBoard";
+            this.button3.UseVisualStyleBackColor = false;
             // 
-            // label45
+            // lbproductCount
             // 
-            this.label45.AutoSize = true;
-            this.label45.BackColor = System.Drawing.Color.Transparent;
-            this.label45.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label45.Location = new System.Drawing.Point(26, 117);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(495, 23);
-            this.label45.TabIndex = 56;
-            this.label45.Text = "Place cursor on any text on a row and double-click to expand.";
+            this.lbproductCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.lbproductCount.FlatAppearance.BorderSize = 0;
+            this.lbproductCount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbproductCount.Font = new System.Drawing.Font("Comic Sans MS", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbproductCount.ForeColor = System.Drawing.SystemColors.Window;
+            this.lbproductCount.Location = new System.Drawing.Point(372, 215);
+            this.lbproductCount.Name = "lbproductCount";
+            this.lbproductCount.Size = new System.Drawing.Size(254, 185);
+            this.lbproductCount.TabIndex = 71;
+            this.lbproductCount.Text = "products added";
+            this.lbproductCount.UseVisualStyleBackColor = false;
             // 
-            // btnlinkProduct
+            // button2
             // 
-            this.btnlinkProduct.BackColor = System.Drawing.Color.Transparent;
-            this.btnlinkProduct.FlatAppearance.BorderSize = 0;
-            this.btnlinkProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnlinkProduct.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnlinkProduct.ForeColor = System.Drawing.Color.Green;
-            this.btnlinkProduct.Location = new System.Drawing.Point(1378, 60);
-            this.btnlinkProduct.Name = "btnlinkProduct";
-            this.btnlinkProduct.Size = new System.Drawing.Size(114, 28);
-            this.btnlinkProduct.TabIndex = 37;
-            this.btnlinkProduct.Text = "Merge product";
-            this.btnlinkProduct.UseVisualStyleBackColor = false;
-            this.btnlinkProduct.Click += new System.EventHandler(this.btnlinkProduct_Click);
-            // 
-            // lbdeletecompanyInfo
-            // 
-            this.lbdeletecompanyInfo.AutoSize = true;
-            this.lbdeletecompanyInfo.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbdeletecompanyInfo.Location = new System.Drawing.Point(977, 116);
-            this.lbdeletecompanyInfo.Name = "lbdeletecompanyInfo";
-            this.lbdeletecompanyInfo.Size = new System.Drawing.Size(237, 23);
-            this.lbdeletecompanyInfo.TabIndex = 38;
-            this.lbdeletecompanyInfo.Text = "Click to delete Company info.";
-            // 
-            // lbviewcompanyInfo
-            // 
-            this.lbviewcompanyInfo.AutoSize = true;
-            this.lbviewcompanyInfo.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbviewcompanyInfo.Location = new System.Drawing.Point(977, 172);
-            this.lbviewcompanyInfo.Name = "lbviewcompanyInfo";
-            this.lbviewcompanyInfo.Size = new System.Drawing.Size(221, 23);
-            this.lbviewcompanyInfo.TabIndex = 39;
-            this.lbviewcompanyInfo.Text = "Click to view Company info.";
-            // 
-            // lbLinkProduct
-            // 
-            this.lbLinkProduct.AutoSize = true;
-            this.lbLinkProduct.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLinkProduct.Location = new System.Drawing.Point(977, 62);
-            this.lbLinkProduct.Name = "lbLinkProduct";
-            this.lbLinkProduct.Size = new System.Drawing.Size(408, 23);
-            this.lbLinkProduct.TabIndex = 40;
-            this.lbLinkProduct.Text = "Click to link product with an existing Company info.";
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Comic Sans MS", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.Window;
+            this.button2.Location = new System.Drawing.Point(1061, 203);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(254, 185);
+            this.button2.TabIndex = 72;
+            this.button2.Text = "Client requests pending";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.MediumPurple;
-            this.ClientSize = new System.Drawing.Size(2195, 1112);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
+            this.ClientSize = new System.Drawing.Size(2193, 1086);
             this.Controls.Add(this.pnImgsearchProduct);
             this.Controls.Add(this.label38);
             this.Controls.Add(this.panel2);
@@ -1501,19 +1657,21 @@
             this.Controls.Add(this.lbwelcome);
             this.Controls.Add(this.tbsearchBox);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.pnDashboard);
+            this.Controls.Add(this.pnUpdateProduct);
             this.Controls.Add(this.pnMergeProductCompany);
             this.Controls.Add(this.pnShowInventory);
             this.Controls.Add(this.pnCreateNewUser);
             this.Controls.Add(this.pnUpdateCompany);
             this.Controls.Add(this.pnAddCompany);
             this.Controls.Add(this.pnShowCompanies);
-            this.Controls.Add(this.pnCreateProduct);
-            this.Controls.Add(this.pnUpdateProduct);
             this.Controls.Add(this.pnEditProfile);
-            this.Controls.Add(this.pnDashboard);
+            this.Controls.Add(this.pnCreateProduct);
             this.Name = "AdminDashboard";
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AdminDashboard_Load);
+            this.Resize += new System.EventHandler(this.AdminDashboard_Resize);
             this.pnEditProfile.ResumeLayout(false);
             this.pnEditProfile.PerformLayout();
             this.pnCreateProduct.ResumeLayout(false);
@@ -1647,7 +1805,6 @@
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label lbNewCompanyId;
         private System.Windows.Forms.Panel pnDashboard;
-        private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label ForeignKey;
         private System.Windows.Forms.Button btnDeleteCompanyInfo;
         private System.Windows.Forms.Button btnViewCompanyInfo;
@@ -1655,7 +1812,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDashBoard;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Panel pnImgsearchProduct;
@@ -1671,5 +1828,13 @@
         private System.Windows.Forms.Label lbviewcompanyInfo;
         private System.Windows.Forms.Label lbdeletecompanyInfo;
         private System.Windows.Forms.Label lbLinkProduct;
+        private System.Windows.Forms.Button btnshowAllRelatedProducts;
+        private System.Windows.Forms.Button btnreturnUpdateCompany;
+        private System.Windows.Forms.Button btnReturnCompanyinventory;
+        private System.Windows.Forms.Button btnReturnUpdateProduct;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label lbTime;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button lbproductCount;
     }
 }

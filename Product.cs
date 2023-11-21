@@ -71,7 +71,14 @@ namespace soft
             return getProduct;
         }
 
-        
+        //overloaded method to view particular company related product
+        public static DataSet showInventory(DBconnection dbconnection, Queries query, int Id)
+        {   
+            DataSet getProduct = dbconnection.getDataSet(query.getProductRelatedToCompany(Id));
+            return getProduct;
+        }
+
+
 
 
         public static int currentProductId;
