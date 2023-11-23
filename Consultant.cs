@@ -42,6 +42,11 @@ namespace soft
             Login.messagePrompt("User added successfully");
 
         }
-    
+        public void updateConsultant(Queries query, int Id, string newCurrentUserName, string newCurrentUserEmail, string newCurrentUserPassword)
+        {
+            dbconnection.saveToDb(query.updateAccount(Id), newCurrentUserName, newCurrentUserEmail, newCurrentUserPassword);
+            Login.messagePrompt("Account successfully updated");
+        }
+
     }
 }

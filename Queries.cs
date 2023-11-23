@@ -34,7 +34,7 @@ namespace soft
         public string updateAccount( int ID)
         {
             //return ("UPDATE '"+user+"' SET Name = '"+@newUsername+"', Email = '"+@newEmail+"', Password = '"+@newPassword+"' Where ID = '"+ID+"'" );string newUsername,, string newEmail, string newPassword
-            return ($"UPDATE admin SET Username = @Username, Email = @Email, Password = @Password Where ID = '{ID}'");
+            return ($"UPDATE consultant SET Username = @Username, Email = @Email, Password = @Password Where ID = '{ID}'");
             //dbconnection.saveToDb("INSERT INTO admin (Username, Email, Password) VALUES (@Username, @Email, @Password)", name, email, password);
         }
 
@@ -74,6 +74,10 @@ namespace soft
             return $"SELECT * from product where Name like '%{name}%'";
         }
 
+        public string countProduct()
+        {
+            return "SELECT COUNT(*) FROM product";
+        }
         public string addCompanyToDb()
         {
             return "INSERT INTO Company (Company_Name, Contact, Website, Established_Date, Location_Countries, Location_Cities, Addresses) VALUES (@Company_Name, @Contact, @Website, @Established_Date, @Location_Countries, @Location_Cities, @Addresses)";

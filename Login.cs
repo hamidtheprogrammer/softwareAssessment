@@ -63,7 +63,7 @@ namespace soft
                     currentUserEmail = dataTable.Rows[0]["Email"].ToString();
                     currentUserPassword = dataTable.Rows[0]["Password"].ToString();
 
-                    AdminDashboard adminDashboard = new AdminDashboard();
+                    ConsltantDashboard adminDashboard = new ConsltantDashboard();
                     adminDashboard.Show();
                     this.Hide();
                     

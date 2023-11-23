@@ -21,6 +21,7 @@ namespace soft
         public string BusinessArea {  get; set; }
         public byte[] PDF {  get; set; }
         public string Link {  get; set; }
+        public static object Files { get; private set; }
 
         DBconnection dbconnection = DBconnection.getInstanceOfDBconnection();
         Login login = new Login();
@@ -78,6 +79,12 @@ namespace soft
             return getProduct;
         }
 
+        public static DataSet counter(DBconnection dbconnection, Queries query)
+        {
+            DataSet getProduct = dbconnection.getDataSet(query.countProduct());
+            return getProduct;
+        }
+
 
 
 
@@ -96,7 +103,7 @@ namespace soft
             currentProductDescription= dataRowView["Description"].ToString();
             currentProductTypeOfSoftware = dataRowView["Type_Of_Software"].ToString();
             currentProductBusinessArea = dataRowView["Business_Area"].ToString();
-            //currentProductPDF = dataRowView
+            currentProductPDF = Encoding.UTF8.GetBytes(dataRowView["PDF"].ToString());
             currentProductURL = dataRowView["Link"].ToString();
 
             Product clicked_product = new Product(currentProductId, currentProductName, currentProductDescription, currentProductTypeOfSoftware,currentProductBusinessArea, currentProductPDF, currentProductURL);
@@ -132,7 +139,8 @@ namespace soft
 
         public static DataSet searchProduct(DBconnection dbconnection, Queries query, string name)
         {
-            return dbconnection.getDataSet(query.searchProduct(name));
+            DataSet matchedProducts =  dbconnection.getDataSet(query.searchProduct(name));
+            return matchedProducts;
         }
         //delete product
         public static void deleteproduct(DBconnection dbconnection, Queries query, int Id)
