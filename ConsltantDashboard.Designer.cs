@@ -75,6 +75,9 @@
             this.tbAddNewUserName = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.pnUpdateProduct = new System.Windows.Forms.Panel();
+            this.lnkProductURL = new System.Windows.Forms.LinkLabel();
+            this.lbpdfHolder = new System.Windows.Forms.Label();
+            this.btnOpenPdf = new System.Windows.Forms.Button();
             this.btnReturnUpdateProduct = new System.Windows.Forms.Button();
             this.lbLinkProduct = new System.Windows.Forms.Label();
             this.lbviewcompanyInfo = new System.Windows.Forms.Label();
@@ -159,9 +162,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.pnImgsearchProduct = new System.Windows.Forms.Panel();
             this.tbsearchBox = new System.Windows.Forms.TextBox();
-            this.btnOpenPdf = new System.Windows.Forms.Button();
-            this.lbpdfHolder = new System.Windows.Forms.Label();
-            this.lnkProductURL = new System.Windows.Forms.LinkLabel();
             this.pnEditProfile.SuspendLayout();
             this.pnCreateProduct.SuspendLayout();
             this.pnShowInventory.SuspendLayout();
@@ -280,7 +280,7 @@
             this.btnCreateProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateProduct.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateProduct.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnCreateProduct.Location = new System.Drawing.Point(62, 369);
+            this.btnCreateProduct.Location = new System.Drawing.Point(59, 432);
             this.btnCreateProduct.Name = "btnCreateProduct";
             this.btnCreateProduct.Size = new System.Drawing.Size(148, 40);
             this.btnCreateProduct.TabIndex = 2;
@@ -294,7 +294,7 @@
             this.btnCreateNewUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateNewUser.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateNewUser.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnCreateNewUser.Location = new System.Drawing.Point(62, 486);
+            this.btnCreateNewUser.Location = new System.Drawing.Point(59, 549);
             this.btnCreateNewUser.Name = "btnCreateNewUser";
             this.btnCreateNewUser.Size = new System.Drawing.Size(148, 40);
             this.btnCreateNewUser.TabIndex = 3;
@@ -527,9 +527,9 @@
             this.label44.ForeColor = System.Drawing.SystemColors.Window;
             this.label44.Location = new System.Drawing.Point(23, 114);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(495, 23);
+            this.label44.Size = new System.Drawing.Size(437, 23);
             this.label44.TabIndex = 55;
-            this.label44.Text = "Place cursor on any text on a row and double-click to expand.";
+            this.label44.Text = "Place cursor on any text on a row and click to expand.";
             // 
             // label42
             // 
@@ -558,7 +558,7 @@
             this.btnShowInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowInventory.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowInventory.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnShowInventory.Location = new System.Drawing.Point(62, 263);
+            this.btnShowInventory.Location = new System.Drawing.Point(59, 326);
             this.btnShowInventory.Name = "btnShowInventory";
             this.btnShowInventory.Size = new System.Drawing.Size(148, 37);
             this.btnShowInventory.TabIndex = 12;
@@ -727,8 +727,38 @@
             this.pnUpdateProduct.Controls.Add(this.label21);
             this.pnUpdateProduct.Location = new System.Drawing.Point(283, 201);
             this.pnUpdateProduct.Name = "pnUpdateProduct";
-            this.pnUpdateProduct.Size = new System.Drawing.Size(1594, 916);
+            this.pnUpdateProduct.Size = new System.Drawing.Size(5819, 2630);
             this.pnUpdateProduct.TabIndex = 1;
+            // 
+            // lnkProductURL
+            // 
+            this.lnkProductURL.AutoSize = true;
+            this.lnkProductURL.Location = new System.Drawing.Point(680, 297);
+            this.lnkProductURL.Name = "lnkProductURL";
+            this.lnkProductURL.Size = new System.Drawing.Size(55, 13);
+            this.lnkProductURL.TabIndex = 73;
+            this.lnkProductURL.TabStop = true;
+            this.lnkProductURL.Text = "linkLabel1";
+            this.lnkProductURL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkProductURL_LinkClicked);
+            // 
+            // lbpdfHolder
+            // 
+            this.lbpdfHolder.AutoSize = true;
+            this.lbpdfHolder.Location = new System.Drawing.Point(1230, 335);
+            this.lbpdfHolder.Name = "lbpdfHolder";
+            this.lbpdfHolder.Size = new System.Drawing.Size(41, 13);
+            this.lbpdfHolder.TabIndex = 72;
+            this.lbpdfHolder.Text = "label37";
+            // 
+            // btnOpenPdf
+            // 
+            this.btnOpenPdf.Location = new System.Drawing.Point(374, 391);
+            this.btnOpenPdf.Name = "btnOpenPdf";
+            this.btnOpenPdf.Size = new System.Drawing.Size(75, 23);
+            this.btnOpenPdf.TabIndex = 71;
+            this.btnOpenPdf.Text = "Open PDF";
+            this.btnOpenPdf.UseVisualStyleBackColor = true;
+            this.btnOpenPdf.Click += new System.EventHandler(this.btnOpenPdf_Click);
             // 
             // btnReturnUpdateProduct
             // 
@@ -856,7 +886,7 @@
             this.lbNewfilepath.AutoSize = true;
             this.lbNewfilepath.Font = new System.Drawing.Font("Gabriola", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNewfilepath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbNewfilepath.Location = new System.Drawing.Point(455, 359);
+            this.lbNewfilepath.Location = new System.Drawing.Point(486, 351);
             this.lbNewfilepath.Name = "lbNewfilepath";
             this.lbNewfilepath.Size = new System.Drawing.Size(130, 28);
             this.lbNewfilepath.TabIndex = 29;
@@ -864,11 +894,11 @@
             // 
             // btnAttachNewPDF
             // 
-            this.btnAttachNewPDF.Location = new System.Drawing.Point(374, 360);
+            this.btnAttachNewPDF.Location = new System.Drawing.Point(374, 354);
             this.btnAttachNewPDF.Name = "btnAttachNewPDF";
-            this.btnAttachNewPDF.Size = new System.Drawing.Size(75, 23);
+            this.btnAttachNewPDF.Size = new System.Drawing.Size(97, 23);
             this.btnAttachNewPDF.TabIndex = 28;
-            this.btnAttachNewPDF.Text = "Attach pdf";
+            this.btnAttachNewPDF.Text = "Attach New pdf";
             this.btnAttachNewPDF.UseVisualStyleBackColor = true;
             this.btnAttachNewPDF.Click += new System.EventHandler(this.btnAttachNewPDF_Click);
             // 
@@ -1194,9 +1224,9 @@
             this.label45.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.label45.Location = new System.Drawing.Point(26, 117);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(495, 23);
+            this.label45.Size = new System.Drawing.Size(437, 23);
             this.label45.TabIndex = 56;
-            this.label45.Text = "Place cursor on any text on a row and double-click to expand.";
+            this.label45.Text = "Place cursor on any text on a row and click to expand.";
             // 
             // label41
             // 
@@ -1218,7 +1248,6 @@
             this.dgvShowCompanies.Size = new System.Drawing.Size(1479, 729);
             this.dgvShowCompanies.TabIndex = 0;
             this.dgvShowCompanies.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowCompanies_CellClick);
-            this.dgvShowCompanies.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowCompanies_CellContentDoubleClick);
             // 
             // pnUpdateCompany
             // 
@@ -1518,7 +1547,7 @@
             this.btnDashBoard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDashBoard.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDashBoard.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnDashBoard.Location = new System.Drawing.Point(62, 69);
+            this.btnDashBoard.Location = new System.Drawing.Point(59, 132);
             this.btnDashBoard.Name = "btnDashBoard";
             this.btnDashBoard.Size = new System.Drawing.Size(148, 37);
             this.btnDashBoard.TabIndex = 13;
@@ -1532,7 +1561,7 @@
             this.btnEditProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditProfile.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditProfile.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnEditProfile.Location = new System.Drawing.Point(62, 168);
+            this.btnEditProfile.Location = new System.Drawing.Point(59, 231);
             this.btnEditProfile.Name = "btnEditProfile";
             this.btnEditProfile.Size = new System.Drawing.Size(148, 37);
             this.btnEditProfile.TabIndex = 8;
@@ -1651,43 +1680,13 @@
             this.tbsearchBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbsearchBox_MouseClick);
             this.tbsearchBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbsearchBox_KeyPress);
             // 
-            // btnOpenPdf
-            // 
-            this.btnOpenPdf.Location = new System.Drawing.Point(739, 360);
-            this.btnOpenPdf.Name = "btnOpenPdf";
-            this.btnOpenPdf.Size = new System.Drawing.Size(75, 23);
-            this.btnOpenPdf.TabIndex = 71;
-            this.btnOpenPdf.Text = "Open PDF";
-            this.btnOpenPdf.UseVisualStyleBackColor = true;
-            this.btnOpenPdf.Click += new System.EventHandler(this.btnOpenPdf_Click);
-            // 
-            // lbpdfHolder
-            // 
-            this.lbpdfHolder.AutoSize = true;
-            this.lbpdfHolder.Location = new System.Drawing.Point(1230, 335);
-            this.lbpdfHolder.Name = "lbpdfHolder";
-            this.lbpdfHolder.Size = new System.Drawing.Size(41, 13);
-            this.lbpdfHolder.TabIndex = 72;
-            this.lbpdfHolder.Text = "label37";
-            // 
-            // lnkProductURL
-            // 
-            this.lnkProductURL.AutoSize = true;
-            this.lnkProductURL.Location = new System.Drawing.Point(680, 297);
-            this.lnkProductURL.Name = "lnkProductURL";
-            this.lnkProductURL.Size = new System.Drawing.Size(55, 13);
-            this.lnkProductURL.TabIndex = 73;
-            this.lnkProductURL.TabStop = true;
-            this.lnkProductURL.Text = "linkLabel1";
-            this.lnkProductURL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkProductURL_LinkClicked);
-            // 
             // ConsltantDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(1332, 795);
+            this.ClientSize = new System.Drawing.Size(1366, 749);
             this.Controls.Add(this.pnImgsearchProduct);
             this.Controls.Add(this.label38);
             this.Controls.Add(this.panel2);
@@ -1695,8 +1694,6 @@
             this.Controls.Add(this.lbwelcome);
             this.Controls.Add(this.tbsearchBox);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.pnCreateProduct);
-            this.Controls.Add(this.pnDashboard);
             this.Controls.Add(this.pnUpdateProduct);
             this.Controls.Add(this.pnMergeProductCompany);
             this.Controls.Add(this.pnShowInventory);
@@ -1705,6 +1702,8 @@
             this.Controls.Add(this.pnAddCompany);
             this.Controls.Add(this.pnShowCompanies);
             this.Controls.Add(this.pnEditProfile);
+            this.Controls.Add(this.pnCreateProduct);
+            this.Controls.Add(this.pnDashboard);
             this.Name = "ConsltantDashboard";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

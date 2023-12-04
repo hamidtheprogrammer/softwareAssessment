@@ -30,16 +30,26 @@ namespace soft
         }
 
         DBconnection dBconnection = DBconnection.getInstanceOfDBconnection();
-
-        public void addClient(Queries query, Client client)
+        public string addClient()
         {
-            dBconnection.saveClientToDb(query.addClient() , client.Name , client.Email, client.Request, client.ClientType, client.Status);
+            return "INSERT INTO clients (Name, Email, Request, ClientType) VALUES (@Name, @Email, @Request, @ClientType)";
+        }
+
+        public string getClient()
+        {
+            return "SELECT * from clients";
+        }
+
+
+        public void addClient(Client client)
+        {
+            dBconnection.saveClientToDb(addClient() , client.Name , client.Email, client.Request, client.ClientType, client.Status);
             Login.messagePrompt("Client successfully added");
         }
 
-        public static DataSet getClient(DBconnection dbconnection , Queries query)
+        public static DataSet getClient(DBconnection dbconnection)
         {
-            DataSet getclient = dbconnection.getDataSet(query.getClient());
+            DataSet getclient = dbconnection.getDataSet("SELECT * from clients");
             return getclient;
         }
     }

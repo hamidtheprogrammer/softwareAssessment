@@ -1,18 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using System.Xml.Linq;
-using System.Drawing.Text;
-using System.Data.SqlTypes;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace soft
 {
@@ -119,7 +110,7 @@ namespace soft
             pnUpdateProduct.Visible = false;
             pnShowCompanies.Visible = false;
             pnUpdateCompany.Visible = false;
-            pnDashboard.Visible = false;
+            pnDashboard.Visible = false;           
         }
 
         public void panelShowInventory()
@@ -161,7 +152,7 @@ namespace soft
             pnShowCompanies.Visible = false;
             pnUpdateCompany.Visible = false;
             pnDashboard.Visible = false;
-            pnMergeProductCompany.Visible = true;
+            pnMergeProductCompany.Visible = true;           
         }
 
         public void panelShowCompanies()
@@ -214,10 +205,12 @@ namespace soft
         private void ConsltantDashboard_Load(object sender, EventArgs e)
         {
             panelLoadDashboard();
-            lbwelcome.Text = "Welcome "+currentConsultant.Name;
+            lbwelcome.Text = "Welcome Hamid"+currentConsultant.Name;
 
             dgvAllProducts();
             productCounter();
+            lbpdfHolder.Visible = false;
+            btnCreateNewUser.Visible = false;
 
 
             formOriginalSize = this.Size;
@@ -252,12 +245,26 @@ namespace soft
         }
         
 
+       
+
 
         //FUNCTIONS
 
 
 
+        //Load Dashboard function
+        public void loadDashBoard()
+        {
+            panelLoadDashboard();
+            dgvAllProducts();
+            productCounter();
+        }
+
+
+
         //Consultant Account functions
+
+
         private void displayConsultantAccount()
         {   //display Counsultant account details function
             panelEditProfile();
@@ -297,6 +304,9 @@ namespace soft
         }
         private void AddProduct()
         {// Add Product to record
+            if (tbProductName.Text == "") {
+                MessageBox.Show("Product must have a name");
+            }
             try
             {   //filepath stored in label is stored in a pdf variable for the contents of the file to be extracted
                 byte[] pdf = File.ReadAllBytes(lbfilePath.Text);
@@ -349,18 +359,15 @@ namespace soft
             //panel is displayed to expand clicked product details
             panelUpdateProduct();
 
-            //product info is stored as attributes for a product object 
-            Product clicked_Product = Product.displayCurrentProduct(clicked_row);
-
             //the products info are displayed in fields
-            clickedProductId.Text = Convert.ToString(clicked_Product.Id);
-            tbNewProductName.Text = clicked_Product.Name;
-            rtNewDescription.Text = clicked_Product.Description;
-            tbNewProductSoftware.Text = clicked_Product.TypeOfSoftware;
-            tbNewBusinessArea.Text = clicked_Product.BusinessArea;
-            lbpdfHolder.Text = System.Text.Encoding.UTF8.GetString(clicked_Product.PDF);
-            tbNewURL.Text = clicked_Product.Link;
-            lnkProductURL.Text = tbNewURL.Text;
+            clickedProductId.Text = Convert.ToString(clicked_row["Id"]);
+            tbNewProductName.Text = clicked_row["Name"].ToString();
+            rtNewDescription.Text = clicked_row["Description"].ToString();
+            tbNewProductSoftware.Text = clicked_row["Type_Of_Software"].ToString();
+            tbNewBusinessArea.Text = clicked_row["Business_Area"].ToString();
+            lbpdfHolder.Text = clicked_row["PDF"].ToString();
+            tbNewURL.Text = clicked_row["Link"].ToString();
+            lnkProductURL.Text = "Click to open link";
             clickedProductId.Visible = false;//the Id of the clicked product is made non-visible to the user.
 
             //if foreign key of product is nulled, then the product does not have a company information, therefore , button is displayed to add company info for product.
@@ -465,7 +472,7 @@ namespace soft
         }
         
         //search product
-        public void searchProduct()                                                                                                                                         
+        public void searchProduct()
         {
             if (tbsearchBox.Text != "" && tbsearchBox.Text != "search vendor products")
             {
@@ -483,10 +490,86 @@ namespace soft
         }
 
 
+        //company functions
+
+        //adding new company info to new product
+        public void addCompanyInfoToProduct()
+        { 
+            if (tbCompanyName.Text == "")
+            {
+                MessageBox.Show("must Include company");
+            }
+            else
+            {
+              //object of company created and text fields are passed to be stored in the database.
+                company = new Company(1, tbCompanyName.Text, tbCompanyContact.Text, tbCompanyWeb.Text, tbEstablishedDate.Text, tbCountries.Text, tbCities.Text, tbAddresses.Text);
+                company.addCompany(query, company);
+
+                //the company id is also recorded and stored as a foreign key for selected product
+                int companyId = company.getCompany(query);
+
+                Product.changeCurrentProduct(dbconnection, query, companyId);
+            } 
+           
+        }
+
+        //viewing the company information for a product
+        public void viewCompanyInfo()
+        {
+            panelShowCompanies();//company information panel
+            DataSet companyInventory = dbconnection.getDataSet(query.getCompanyWithForeignKey(Convert.ToInt16(clickedProductId.Text)));
+            DataTable companydata = companyInventory.Tables[0];
+            //the datagridview is populated with the company details for selected product
+            dgvShowCompanies.DataSource = companydata;
+        }
+        
+        //click a company
+        public void clickCompany(int row)
+        {
+            panelUpdateCompanies();//panel to update company 
+
+            DataRowView clickedrow = (DataRowView)dgvShowCompanies.Rows[row].DataBoundItem;
+
+            //clciked company information is expanded for edits or viewing
+            lbNewCompanyId.Text = Convert.ToString(clickedrow["Id"]);
+            tbNewCompanyName.Text = clickedrow["Company_Name"].ToString();
+            tbNewCompanyContact.Text = clickedrow["Contact"].ToString();
+            tbNewWebsite.Text = clickedrow["Website"].ToString();
+            tbNewCompanyEstablishedDate.Text = clickedrow["Established_Date"].ToString();
+            tbNewCompanyLocationCountries.Text = clickedrow["Location_Countries"].ToString();
+            tbNewCompanyLocationCities.Text = clickedrow["Location_Cities"].ToString();
+            tbNewCompanyAddresses.Text = clickedrow["Addresses"].ToString();
+        }
+
+        //update a Company
+        public void updateCompaany()
+        {   //text field details are recorded into an object to be updated in the database with specified Id
+            Company newCompany = new Company(Convert.ToInt16(lbNewCompanyId.Text), tbNewCompanyName.Text, tbNewCompanyContact.Text, tbNewWebsite.Text, tbNewCompanyEstablishedDate.Text, tbNewCompanyLocationCountries.Text, tbNewCompanyLocationCities.Text, tbNewCompanyAddresses.Text);
+            newCompany.addCompany(dbconnection, query, newCompany, newCompany.Id);
+        }
+
+        //show all products under a selected company
+        public void showProductsForCompany()
+        {   
+            panelShowInventory();
+            //all products containg selected company's foreign key are displayed
+            dgvViewproduct.DataSource = Product.showInventory(dbconnection, query, Convert.ToInt16(lbNewCompanyId.Text)).Tables[0];
+        }
+
+
+
+
 
 
 
         //FORMS
+        
+        
+        //dashboard form
+        private void btnDashBoard_Click(object sender, EventArgs e)
+        {
+            loadDashBoard();
+        }
 
 
         //Consultant account in forms
@@ -557,25 +640,41 @@ namespace soft
         //open PDF
         private void btnOpenPdf_Click(object sender, EventArgs e)                                                                                                       //NOT COMPLETED
         {
-            string pdf = Convert.ToBase64String(Encoding.UTF8.GetBytes(lbpdfHolder.Text));
-            WebBrowser wb = new WebBrowser();
-            wb.DocumentText = $"<html><body><embed type='application/pdf' width='100%' height='100%' src='data:application/pdf;base64,{pdf}'></embed></body></html>"; 
+            //The contents of the PDF file previously stored as varchar in the database is extracted ...
+            //into an invisible label and then stored in a pdf string
+            byte[] pdf = (byte[])System.Text.Encoding.UTF8.GetBytes(lbpdfHolder.Text);
+            //webBrowser is made visible
+            
+            //webBrowser1.DocumentText = $"<html><body><embed type='application/pdf' width='100%' height='100%' src='data:application/pdf;base64,{pdf}'></embed></body></html>"; 
+            string pdfFilePath = Path.GetTempFileName() + ".pdf";
+            File.WriteAllBytes(pdfFilePath, pdf);
+            System.Diagnostics.Process.Start(pdfFilePath);
         }
-        //update pdf
-        private void btnAttachNewPDF_Click(object sender, EventArgs e)
-        {  
-           changePdf();
-        }
+
+        //open URL
+        private void lnkProductURL_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(tbNewURL.Text.ToString());
+        }                                   
+
         //update product details
         private void btnChangeProduct_Click(object sender, EventArgs e)
         {  
            changeProductDetails();
         }
+        
+        //update pdf
+        private void btnAttachNewPDF_Click(object sender, EventArgs e)
+        {  
+           changePdf();
+        }
+       
         //delete company info for clicked product
         private void btnDeleteCompanyInfo_Click(object sender, EventArgs e)
         {
             deleteCompanyInfo();
         }
+       
         //delete selected product
         private void btnDeleteProduct_Click(object sender, EventArgs e)
         {
@@ -609,7 +708,7 @@ namespace soft
             tbsearchBox.Text = "";
         }
 
-        //allows enetr on keyboard to execute command
+        //allows enter on keyboard to execute command
         private void tbsearchBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(e.KeyChar == (char)Keys.Enter)
@@ -619,68 +718,58 @@ namespace soft
         }
 
 
+        //company info in forms
 
-
-
-
-        //company info
+        //adding new company for a new product
         private void btnAddCompany_Click(object sender, EventArgs e)
         {
-            company = new Company(1,tbCompanyName.Text, tbCompanyContact.Text , tbCompanyWeb.Text, tbEstablishedDate.Text, tbCountries.Text, tbCities.Text, tbAddresses.Text);
-            company.addCompany(query , company);
-
-            int companyId = company.getCompany(query);
-
-            Product.changeCurrentProduct(dbconnection, query, companyId);
+            addCompanyInfoToProduct();
+            
         }
 
+        //view company info for selected product in forms
         private void btnViewCompanyInfo_Click(object sender, EventArgs e)
         {
-            panelShowCompanies();
-            
-
-            DataSet companyInventory = dbconnection.getDataSet(query.getCompanyWithForeignKey(Convert.ToInt16(clickedProductId.Text)));
-            DataTable companydata = companyInventory.Tables[0];
-            dgvShowCompanies.DataSource = companydata;
+           viewCompanyInfo();
         }
 
-        private void dgvShowCompanies_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            panelUpdateCompanies();
-            
-
-            DataRowView clickedrow = (DataRowView)dgvShowCompanies.Rows[e.RowIndex].DataBoundItem;
-
-            Company clickedCompany = Company.displayclicked_company(clickedrow);
-            lbNewCompanyId.Text = Convert.ToString(clickedCompany.Id);
-            tbNewCompanyName.Text = clickedCompany.CompanyName;
-            tbNewCompanyContact.Text = clickedCompany.Contact;
-            tbNewWebsite.Text = clickedCompany.Website;
-            tbNewCompanyEstablishedDate.Text = clickedCompany.EstablishedDate;
-            tbNewCompanyLocationCountries.Text = clickedCompany.LocationCountries;
-            tbNewCompanyLocationCities.Text = clickedCompany.LocationCities;
-            tbNewCompanyAddresses.Text = clickedCompany.Addresses;
-        }
+       
+        //show company details
         private void dgvShowCompanies_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            clickCompany(e.RowIndex);
         }
 
-
+        //update company
         private void btnUpdateCompany_Click(object sender, EventArgs e)
         {
-            Company newCompany = new Company(Convert.ToInt16(lbNewCompanyId.Text), tbNewCompanyName.Text, tbNewCompanyContact.Text, tbNewWebsite.Text, tbNewCompanyEstablishedDate.Text, tbNewCompanyLocationCountries.Text, tbNewCompanyLocationCities.Text, tbNewCompanyAddresses.Text);
-            newCompany.addCompany(dbconnection, query, newCompany, newCompany.Id);
+            updateCompaany();
         }
 
-        
+        //show all products offered by company
         private void btnshowAllRelatedProducts_Click(object sender, EventArgs e)
         {
-            panelShowInventory();
-            dgvViewproduct.DataSource = Product.showInventory(dbconnection, query, Convert.ToInt16(lbNewCompanyId.Text)).Tables[0];
+            showProductsForCompany();
         }
 
 
+        //Back Trackers
+
+        private void btnreturnUpdateCompany_Click(object sender, EventArgs e)
+        {
+            panelShowCompanies();
+        }
+
+        private void btnReturnCompanyinventory_Click(object sender, EventArgs e)
+        {
+            panelUpdateProduct();
+        }
+
+        private void btnReturnUpdateProduct_Click(object sender, EventArgs e)
+        {
+            panelShowInventory();
+            dgvAllProducts();
+        }
 
 
         //logout
@@ -689,6 +778,11 @@ namespace soft
             this.Hide();
             login.Show();             
         }
+
+
+
+
+
 
 
         
@@ -713,36 +807,6 @@ namespace soft
                 Consultant consultant = new Consultant(1, tbAddNewUserName.Text, tbAddNewUserEmail.Text, tbAddNewUserPassword.Text);
                 consultant.saveConsultantToDb(query , consultant);
             }
-        }
-
-        private void btnreturnUpdateCompany_Click(object sender, EventArgs e)
-        {
-            panelShowCompanies();
-        }
-
-        private void btnReturnCompanyinventory_Click(object sender, EventArgs e)
-        {
-            panelUpdateProduct();
-        }
-
-        private void btnReturnUpdateProduct_Click(object sender, EventArgs e)
-        {
-            panelShowInventory();
-            dgvAllProducts();
-        }
-
-       
-
-        private void btnDashBoard_Click(object sender, EventArgs e)
-        {
-            panelLoadDashboard();
-            dgvAllProducts();
-            productCounter();
-        }
-
-        private void lnkProductURL_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start(e.Link.LinkData as string);
         }
 
         

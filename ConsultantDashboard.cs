@@ -80,7 +80,7 @@ namespace soft
                
 
                 Client client = new Client(1, tbAddClientName.Text , tbAddClientEmail.Text, tbAddClientRequest.Text, tbAddClientType.Text, "status");
-                client.addClient(query , client);
+                client.addClient(client);
             }
             else
             {
@@ -95,7 +95,7 @@ namespace soft
             pnAddClient.Visible = false;
             pnUpdateClient.Visible = false;
             pnClients.Visible = false;
-            dgvShowClients.DataSource = Client.getClient(dbconnection, query).Tables[0];
+            dgvShowClients.DataSource = Client.getClient(dbconnection).Tables[0];
         }
     }
 }

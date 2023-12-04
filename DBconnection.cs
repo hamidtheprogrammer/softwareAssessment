@@ -103,19 +103,23 @@ namespace soft
         {
             using (SqlConnection connToDb = new SqlConnection(_connectionString))
             {
+                // open connection
                 connToDb.Open();
 
+                //send SQL Query to the database
                 SqlCommand sqlCommand = new SqlCommand(sqlQuery, connToDb);
 
+                //set the sqlCommand's properties
                 sqlCommand.CommandType = CommandType.Text;
 
                 sqlCommand.Parameters.Add(new SqlParameter("Name",name ));
                 sqlCommand.Parameters.Add(new SqlParameter("Description", description));
                 sqlCommand.Parameters.Add(new SqlParameter("Type_Of_Software", typeOfSoftware));
                 sqlCommand.Parameters.Add(new SqlParameter("Business_Area", businessArea));             
-                sqlCommand.Parameters.Add(new SqlParameter("PDF", pdf));
+                sqlCommand.Parameters.Add(new SqlParameter("PDF", SqlDbType.VarBinary)).Value = pdf;
                 sqlCommand.Parameters.Add(new SqlParameter("Link", link));
 
+                //execute the command
                 sqlCommand.ExecuteNonQuery();
 
             }
@@ -159,9 +163,13 @@ namespace soft
         {
             using (SqlConnection connToDb = new SqlConnection(_connectionString))
             {
+                // open connection
                 connToDb.Open();
 
+                //send SQL Query to the database
                 SqlCommand sqlCommand = new SqlCommand(sqlQuery, connToDb);
+
+                //set the sqlCommand's properties
                 sqlCommand.CommandType = CommandType.Text;
 
                 sqlCommand.Parameters.Add(new SqlParameter("Company_Name", company_Name));
@@ -172,6 +180,7 @@ namespace soft
                 sqlCommand.Parameters.Add(new SqlParameter("Location_Cities", location_Cities));
                 sqlCommand.Parameters.Add(new SqlParameter("Addresses", addresses));
 
+                //execute the command
                 sqlCommand.ExecuteNonQuery();
 
             }

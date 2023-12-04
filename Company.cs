@@ -10,42 +10,54 @@ namespace soft
     public class Company
     {
         public int Id { get; set; }
-        public string CompanyName { get; set; }
-        public string Contact { get; set; }
-        public string Website { get; set; }
-        public string EstablishedDate { get; set; }
-        public string LocationCountries { get; set; }
-        public string LocationCities { get; set;}
-        public string Addresses { get; set;}
+        private string CompanyName { get; set; }
+        private string Contact { get; set; }
+        private string Website { get; set; }
+        private string EstablishedDate { get; set; }
+        private string LocationCountries { get; set; }
+        private string LocationCities { get; set;}
+        private string Addresses { get; set;}
 
         DBconnection dbconnection = DBconnection.getInstanceOfDBconnection();
 
         public Company(int id, string companyName, string contact, string website, string establishedDate, string locationCountries, string locationCities, string addresses)
         {
-            Id = id;
-            CompanyName = companyName;
-            Contact = contact;
-            Website = website;
-            EstablishedDate = establishedDate;
-            LocationCountries = locationCountries;
-            LocationCities = locationCities;
-            Addresses = addresses;
+            Id = id; //company Id
+            CompanyName = companyName; //company name
+            Contact = contact; // company contact
+            Website = website; //company website
+            EstablishedDate = establishedDate; //company established date
+            LocationCountries = locationCountries; // company country loactions
+            LocationCities = locationCities; // company city locations
+            Addresses = addresses; //company addresses
         }
 
-
+        //adding a company to database
         public void addCompany(Queries query, Company company)
-        {
+        {   
             dbconnection.saveCompanyToDb(query.addCompanyToDb(), company.CompanyName, company.Contact, company.Website, company.EstablishedDate, company.LocationCountries, company.LocationCities, company.Addresses);
+            //dbconnection class called to input queries to store passed parameters in the database
             Login.messagePrompt("Company successfully added");
+        }
+        
+        //method overload for updating company information.
+        public void addCompany(DBconnection dbconnection, Queries query, Company company, int id)
+        {
+            dbconnection.saveCompanyToDb(query.updateCompany(id), company.CompanyName, company.Contact, company.Website, company.EstablishedDate, company.LocationCountries, company.LocationCities, company.Addresses);
+            //overloaded method, query changed to update company with specified Id
+            Login.messagePrompt("Company successfully updated");
         }
 
         public static DataSet displayCompanies(DBconnection dbconnection , Queries query)
         {
             DataSet companies = dbconnection.getDataSet(query.displayCompany());
-            
+            //extraction of data from the database using queries, the data is stored into a dataset object.
+
             return companies;
+            //return companies
         }
 
+        //getting company Id to store as foreign key
         public int getCompany(Queries query)
         {
             DataSet getComp = dbconnection.getDataSet(query.getCompany());
@@ -55,27 +67,7 @@ namespace soft
         }
 
 
-        //method overload for updating company information.
-        public void addCompany(DBconnection dbconnection, Queries query, Company company, int id)
-        {
-            dbconnection.saveCompanyToDb(query.updateCompany(id), company.CompanyName, company.Contact, company.Website, company.EstablishedDate, company.LocationCountries, company.LocationCities, company.Addresses);
-            Login.messagePrompt("Company successfully updated");
-        }
+       
 
-        public static Company displayclicked_company(DataRowView dataRowView)
-        {
-            int clickedCompanyId = Convert.ToInt16(dataRowView["Id"]);
-            string clickedCompanyName = dataRowView["Company_Name"].ToString();
-            string clickedCompanyContact = dataRowView["Contact"].ToString();
-            string clickedCompanyWebsite = dataRowView["Website"].ToString();
-            string clickedCompanyEstablishedDate = dataRowView["Established_Date"].ToString();
-            string clickedCompanyLocationCountries = dataRowView["Location_Countries"].ToString();
-            string clickedCompanyLocationCities = dataRowView["Location_Cities"].ToString();
-            string clickedCompanyAddresses = dataRowView["Addresses"].ToString();
-
-            Company company = new Company(clickedCompanyId, clickedCompanyName, clickedCompanyContact, clickedCompanyWebsite, clickedCompanyEstablishedDate, clickedCompanyLocationCountries, clickedCompanyLocationCities, clickedCompanyAddresses);
-
-            return company;
-        }
     }
 }

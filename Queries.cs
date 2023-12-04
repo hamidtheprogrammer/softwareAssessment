@@ -38,6 +38,9 @@ namespace soft
             //dbconnection.saveToDb("INSERT INTO admin (Username, Email, Password) VALUES (@Username, @Email, @Password)", name, email, password);
         }
 
+
+
+
         public string saveProductToDb()
         {
             string query = "INSERT INTO product (Name, Description, Type_Of_Software, Business_Area, PDF, Link) VALUES (@Name, @Description, @Type_Of_Software, @Business_Area, @PDF, @Link)";
@@ -74,10 +77,6 @@ namespace soft
             return $"SELECT * from product where Name like '%{name}%'";
         }
 
-        public string countProduct()
-        {
-            return "SELECT COUNT(*) FROM product";
-        }
         public string addCompanyToDb()
         {
             return "INSERT INTO Company (Company_Name, Contact, Website, Established_Date, Location_Countries, Location_Cities, Addresses) VALUES (@Company_Name, @Contact, @Website, @Established_Date, @Location_Countries, @Location_Cities, @Addresses)";
@@ -102,10 +101,7 @@ namespace soft
             return $"DELETE from company where Id = '{Id}'";
         }
 
-        public string addForeignKeyToNewlyAddedProduct()
-        {
-            return $"UPDATE product SET CompanyId = @CompanyId WHERE ID = (SELECT MAX(ID) FROM product)";
-        }
+       
 
         public string getCompanyWithForeignKey(int Id)
         {
@@ -121,6 +117,12 @@ namespace soft
         {
             return $"UPDATE product SET CompanyId = NULL Where ID = '{Id}'";
         }
+        public string addForeignKeyToNewlyAddedProduct()
+        {
+            return $"UPDATE product SET CompanyId = @CompanyId WHERE ID = (SELECT MAX(ID) FROM product)";
+        }
+
+
 
         
 
