@@ -12,7 +12,7 @@ namespace soft
 {
     public class DBconnection
     {
-        private static DBconnection _instance;
+        private static DBconnection _instance; //singleton object can only be created once
 
         private String _connectionString;
 
@@ -21,7 +21,7 @@ namespace soft
             _connectionString = Properties.Settings.Default.DBconnectionstring;
         }
 
-        public static DBconnection getInstanceOfDBconnection()
+        public static DBconnection getInstanceOfDBconnection() // method to create singleton 
         {
             if (_instance == null)
             {

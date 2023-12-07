@@ -654,7 +654,14 @@ namespace soft
         //open URL
         private void lnkProductURL_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start(tbNewURL.Text.ToString());
+            try
+            {
+                System.Diagnostics.Process.Start(tbNewURL.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }                                   
 
         //update product details
