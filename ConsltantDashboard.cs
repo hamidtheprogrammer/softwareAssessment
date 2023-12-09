@@ -36,17 +36,13 @@ namespace soft
 
         //OBJECTS
 
-        Consultant currentConsultant = new Consultant(Login.Id, Login.currentUserName , Login.currentUserEmail, Login.currentUserPassword);
-        //create instance for the logged in consultant
+        
 
         Queries query = new Queries();
         //create query object to access queries
 
         DBconnection dbconnection = DBconnection.getInstanceOfDBconnection();
         //get instance of DBconnection
-
-        Login login = new Login();
-        //object of login class
 
         Product product;
         //object of product class
@@ -205,7 +201,7 @@ namespace soft
         private void ConsltantDashboard_Load(object sender, EventArgs e)
         {
             panelLoadDashboard();
-            lbwelcome.Text = "Welcome Hamid"+currentConsultant.Name;
+            lbwelcome.Text = "Welcome Hamid";
 
             dgvAllProducts();
             productCounter();
@@ -262,33 +258,7 @@ namespace soft
 
 
 
-        //Consultant Account functions
-
-
-        private void displayConsultantAccount()
-        {   //display Counsultant account details function
-            panelEditProfile();
-            tbnewUserName.Text = currentConsultant.Name;
-            tbNewEmail.Text = currentConsultant.Email;
-            tbnewPassword.Text = currentConsultant.Password;
-        }
-        private void updateConsultantAccount()
-        {
-            //update Consultant account function
-            //the newly added credentials are stored in a variable
-            string newCurrentUserName = tbnewUserName.Text;
-            string newCurrentUserEmail = tbNewEmail.Text;
-            string newCurrentUserPassword = tbnewPassword.Text;
-
-            //credentials are passed into a method that tellse the dbconnection class to update the account in the database using the specified Id 
-            currentConsultant.updateConsultant(query, currentConsultant.ID, newCurrentUserName, newCurrentUserEmail, newCurrentUserPassword);
-
-            tbnewUserName.Text = newCurrentUserName;
-            tbNewEmail.Text = newCurrentUserEmail;
-            tbnewPassword.Text = newCurrentUserPassword;
-
-            lbwelcome.Text = "Welcome " + newCurrentUserName;
-        }
+        
 
 
         //product functions
@@ -577,13 +547,11 @@ namespace soft
 
         //display profile
         private void btnEditProfile_Click(object sender, EventArgs e)
-        {   //display Consultant account
-            displayConsultantAccount();
+        {   
         }
         //update profile
         private void btnUpdateAccount_Click(object sender, EventArgs e)
-        {   //update Consultant Account
-            updateConsultantAccount();
+        {   
         }
 
 
@@ -782,8 +750,7 @@ namespace soft
         //logout
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            login.Show();             
+                         
         }
 
 
@@ -804,16 +771,8 @@ namespace soft
 
         private void btnAddNewUser_Click(object sender, EventArgs e)
         {
-            if(rbAdmin.Checked)
-            {
-                Admin admin = new Admin(1,tbAddNewUserName.Text, tbAddNewUserEmail.Text, tbAddNewUserPassword.Text);
-                admin.saveAdminToDb(query , admin);
-            }
-            else
-            {
-                Consultant consultant = new Consultant(1, tbAddNewUserName.Text, tbAddNewUserEmail.Text, tbAddNewUserPassword.Text);
-                consultant.saveConsultantToDb(query , consultant);
-            }
+           
+           
         }
 
         

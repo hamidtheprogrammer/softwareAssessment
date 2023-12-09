@@ -62,51 +62,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin.cs" />
-    <Compile Include="Client.cs" />
     <Compile Include="Company.cs" />
-    <Compile Include="Consultant.cs" />
-    <Compile Include="ConsultantDashboard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ConsultantDashboard.Designer.cs">
-      <DependentUpon>ConsultantDashboard.cs</DependentUpon>
-    </Compile>
     <Compile Include="Product.cs" />
     <Compile Include="DBconnection.cs" />
-    <Compile Include="AdminRegister.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminRegister.Designer.cs">
-      <DependentUpon>AdminRegister.cs</DependentUpon>
-    </Compile>
     <Compile Include="ConsltantDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ConsltantDashboard.Designer.cs">
       <DependentUpon>ConsltantDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries.cs" />
     <Compile Include="user.cs" />
-    <EmbeddedResource Include="AdminRegister.resx">
-      <DependentUpon>AdminRegister.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ConsltantDashboard.resx">
       <DependentUpon>ConsltantDashboard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ConsultantDashboard.resx">
-      <DependentUpon>ConsultantDashboard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -159,6 +129,25 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

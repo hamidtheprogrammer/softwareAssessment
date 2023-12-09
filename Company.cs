@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace soft
 {
@@ -37,7 +38,7 @@ namespace soft
         {   
             dbconnection.saveCompanyToDb(query.addCompanyToDb(), company.CompanyName, company.Contact, company.Website, company.EstablishedDate, company.LocationCountries, company.LocationCities, company.Addresses);
             //dbconnection class called to input queries to store passed parameters in the database
-            Login.messagePrompt("Company successfully added");
+            MessageBox.Show("Company successfully added");
         }
         
         //method overload for updating company information.
@@ -45,7 +46,7 @@ namespace soft
         {
             dbconnection.saveCompanyToDb(query.updateCompany(id), company.CompanyName, company.Contact, company.Website, company.EstablishedDate, company.LocationCountries, company.LocationCities, company.Addresses);
             //overloaded method, query changed to update company with specified Id
-            Login.messagePrompt("Company successfully updated");
+            MessageBox.Show("Company successfully updated");
         }
 
         public static DataSet displayCompanies(DBconnection dbconnection , Queries query)
@@ -57,7 +58,7 @@ namespace soft
             //return companies
         }
 
-        //getting company Id to store as foreign key
+        //getting company Id to store as foreign key in product info.
         public int getCompany(Queries query)
         {
             DataSet getComp = dbconnection.getDataSet(query.getCompany());

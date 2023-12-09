@@ -24,7 +24,7 @@ namespace soft
         private string Link {  get; set; }
 
         DBconnection dbconnection = DBconnection.getInstanceOfDBconnection();
-        Login login = new Login();
+        
 
         public Product( int id, string name, string description, string typeOfsoftware, string businessArea, byte[] pdf, string link)
         {
@@ -91,7 +91,7 @@ namespace soft
         public static void changeCurrentProduct(DBconnection dbconnection, Queries query, int id, string name, string description, string typeOfsoftware, string businessArea, byte[] pdf, string link)
         {   //Parameters are passed with queries to change a product information in the database
             dbconnection.saveProductToDb(query.updateProduct(id), name, description, typeOfsoftware, businessArea, pdf, link);
-            Login.messagePrompt("Product successfully updated");
+            MessageBox.Show("Product successfully updated");
            
         }
 

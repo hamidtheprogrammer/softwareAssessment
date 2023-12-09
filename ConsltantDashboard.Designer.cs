@@ -727,7 +727,7 @@
             this.pnUpdateProduct.Controls.Add(this.label21);
             this.pnUpdateProduct.Location = new System.Drawing.Point(283, 201);
             this.pnUpdateProduct.Name = "pnUpdateProduct";
-            this.pnUpdateProduct.Size = new System.Drawing.Size(5819, 2630);
+            this.pnUpdateProduct.Size = new System.Drawing.Size(6647, 2998);
             this.pnUpdateProduct.TabIndex = 1;
             // 
             // lnkProductURL
@@ -1686,7 +1686,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(1366, 749);
+            this.ClientSize = new System.Drawing.Size(1383, 766);
             this.Controls.Add(this.pnImgsearchProduct);
             this.Controls.Add(this.label38);
             this.Controls.Add(this.panel2);
